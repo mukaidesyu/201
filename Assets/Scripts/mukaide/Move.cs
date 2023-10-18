@@ -9,10 +9,21 @@ public class Move : MonoBehaviour
     private Vector2 move;
     private Vector3 targetPos;
 
+    Spawner spawner;    // スポナー
+    Piece activePiece;  // 生成されたピース 
+
     private void Start()
     {
         targetPos = transform.position;
+
+        // スポナーオブジェクトをスポナー変数に格納する
+        spawner = GameObject.FindObjectOfType<Spawner>();
+        if (!activePiece)
+        {
+            activePiece = spawner.SpawnPiece(this.gameObject);
+        }
     }
+
     void Update()
     {
         move.x = Input.GetAxisRaw("Horizontal");
