@@ -23,7 +23,16 @@ public class Move : MonoBehaviour
         }
         MovePlyer(targetPos);
 
-        if(Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            transform.Rotate(new Vector3(0, 0, 90));
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            transform.Rotate(new Vector3(0, 0, -90));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return))
         {
 
         }
