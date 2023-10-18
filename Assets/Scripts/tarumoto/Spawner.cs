@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour
     // ランダムにピースを一つ選ぶ関数
     Piece GetRandomPiece()
     {
-        int i = Random.Range(0, pieces.Length);
+        int i = Random.Range(0, 1);
 
         if (pieces[i])
         {
@@ -24,9 +24,11 @@ public class Spawner : MonoBehaviour
     }
 
     // 選ばれたピースを生成する関数
-    public Piece SpawnPiece()
+    public Piece SpawnPiece(GameObject player)
     {
-        Piece piece = Instantiate(GetRandomPiece(), transform.position, Quaternion.identity);
+        var playerpos = player.transform;
+
+        Piece piece = Instantiate(GetRandomPiece(), transform.position, Quaternion.identity, playerpos);
 
         if (piece)
         {

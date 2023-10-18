@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
         // スポナークラスからピース生成関数を呼んで変数に格納する
         if (!activePiece)
         {
-            activePiece = spawner.SpawnPiece();
+            //activePiece = spawner.SpawnPiece();
         }
     }  
 }

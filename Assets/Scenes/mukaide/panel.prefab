@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1667018753962549095}
   - component: {fileID: 7967518211606201064}
   - component: {fileID: 872938490744752941}
+  - component: {fileID: 7223578796231901328}
   m_Layer: 0
   m_Name: panel
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c8ff0a790a756c544b6fe3d6417b85c8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,3 +98,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7223578796231901328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7452266880455318879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15aa55e103f84f041b8bfae3d4eca1a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
