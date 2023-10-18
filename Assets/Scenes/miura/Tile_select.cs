@@ -4,36 +4,27 @@ using UnityEngine;
 
 public class Tile_select : MonoBehaviour
 {
-    public enum TileState
-    {
-       Select_None = 0,
-       Select = 1,
-       Select_Before 
-    }
-
-    [SerializeField] private TileState state;
+    // 歩けるパネルかどうか
+    public bool IsWalk;
 
     // Start is called before the first frame update
     void Start()
     {
         //　パネルが出る時にとりあえず初期化、必要か？
-        
+        IsWalk = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         // パネルの状態によって色が変わる
-        switch (state)
+        switch (IsWalk)
         {
-            case TileState.Select_None:
-                gameObject.GetComponent<Renderer>().material.color = Color.white;
-                break;
-            case TileState.Select:
+            case true:
                 gameObject.GetComponent<Renderer>().material.color = Color.red;
                 break;
-            case TileState.Select_Before:
-                gameObject.GetComponent<Renderer>().material.color = Color.blue;
+            case false:
+                gameObject.GetComponent<Renderer>().material.color = Color.white;
                 break;
         }
     }
