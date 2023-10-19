@@ -18,7 +18,7 @@ public class NekoFront : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        walkFront = false;
+      
     }
 
 
@@ -38,6 +38,11 @@ public class NekoFront : MonoBehaviour
     public bool GetWalkFront()
     {
         return walkFront;
+    }
+
+    public void SetWalkFront(bool val)
+    {
+        walkFront = val;
     }
 
     //  前のパネルのオブジェクトを返すす変数

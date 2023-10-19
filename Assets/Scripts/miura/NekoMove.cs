@@ -8,15 +8,15 @@ public class NekoMove : MonoBehaviour
     {
         Stop = 0,
         Think,
-        Move
+        Move,
+        Rotate
     }
 
-
-    [SerializeField] private float _speed = 5.0f;
-    private float distance = 1.0f;
-    private Vector2 move;
+// 猫の移動関係
+    // 移動時間
     private Vector3 targetPos;
-    
+    [SerializeField] private float _speed = 3.0f;
+
 
     [SerializeField] bool IsMove; // 動いていいタイミングかどうか
     bool frontMove; // 前のパネルに動けるかどうか
@@ -30,64 +30,92 @@ public class NekoMove : MonoBehaviour
         targetPos = transform.position;
 
         IsMove = false;
-        stopCount = 3; // 前、右、左の3つで判断
+        stopCount = 2; // 前、右、左の3つで判断
         nekoFrontScript = GameObject.Find("NekoFront").GetComponent<NekoFront>();
         state = NekoState.Think;
+
     }
     void Update()
     {
+
+
         if (IsMove) // 猫の動き
         {
+
+
+
             switch (state)
             {
                 case NekoState.Think:
 
                     // 前のパネルに動けるかどうか
                     frontMove = nekoFrontScript.GetWalkFront();
+                    Debug.Log(frontMove);
+
                     // 動ける時
                     if (frontMove)
                     {
-                        // 次のパネルに移動
-                        var target = nekoFrontScript.GetFrontPanel();
+                        // 目的地を前のパネルに設定
+                        var target = nekoFrontScript.GetFrontPanel(); // ここ怪しそう
                         targetPos = target.transform.position;
 
-                        // 暫定的にワープ
-                        this.transform.position = targetPos;
+ 
+                        // 猫の前をfalseに戻す 
+                        nekoFrontScript.SetWalkFront(false);
 
-                        stopCount = 3;
+                        stopCount = 2;
+
+                        // 歩きモードへ
+                        state = NekoState.Move;
                     }
                     else
                     {
-                        stopCount--;
-
-                        // 左右に向く
-                        // とりあえず右から
-                        if (stopCount == 2)
-                        {
-                            Debug.Log("右向くにゃ！");
-                            transform.localEulerAngles += new Vector3(90, 0, 0);
-                            IsMove = false;
-
-                        }
-                        else if (stopCount == 1) // 反対方向
-                        {
-                            Debug.Log("左向くにゃ！");
-                            transform.localEulerAngles += new Vector3(-180, 0, 0);
-                        }
-
-
-                        if (stopCount <= 0)
-                        {
-                            Debug.Log("止まるにゃ！");
-                            IsMove = false;// とりあえず止まる
-                            state = NekoState.Stop;
-                        }
+                        state = NekoState.Rotate;
                     }
 
 
                     break;
 
 
+                case NekoState.Move:
+                    transform.position = Vector3.MoveTowards(transform.position, targetPos,_speed * Time.deltaTime);
+
+                    float distance = Vector3.Distance(this.transform.position, targetPos);
+                    // 着いたら止まる
+                    if (distance <= 0.05)
+                    {
+                        state = NekoState.Think;
+                    }
+
+                    break;
+
+                case NekoState.Rotate:
+                  
+
+                    // 左右に向く
+                    // とりあえず右から
+                    if (stopCount == 2)
+                    {
+                        stopCount--;
+                        Debug.Log("右向くにゃ！");
+                        transform.Rotate(new Vector3(0, 90, 0));
+                        state = NekoState.Think;
+                    }
+                    else if (stopCount == 1)
+                    {
+                        stopCount--;
+                        Debug.Log("左向くにゃ！");
+                        transform.Rotate(new Vector3(0, 180, 0));
+                        state = NekoState.Think;
+                    }
+                    else if (stopCount <= 0)
+                    {
+                        Debug.Log("止まるにゃ！");
+                        transform.Rotate(new Vector3(0, 90, 0));
+                        IsMove = false;
+                        state = NekoState.Stop;
+                    }
+                    break;
             }
 
 
