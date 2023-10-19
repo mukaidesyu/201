@@ -10,7 +10,6 @@ public class tile : MonoBehaviour
     [SerializeField] private int _cols = 3;
     private int i = 1;
 
-    List<GameObject> tilelist = new List<GameObject>();
 
     private void Awake()
     {
@@ -22,17 +21,11 @@ public class tile : MonoBehaviour
                 Instantiate(_tile, new Vector3(row, col, 0),
                     Quaternion.identity, transform);
                 _tile.name = "panel"+ i;
-                tilelist.Add(_tile);
                 i++;
             }
         }
     }
 
-    public void Select()
-    {
-
-        tilelist[1].GetComponent<Tilemanager>();
-    }
 
 
 }

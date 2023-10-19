@@ -14,6 +14,7 @@ public class Move : MonoBehaviour
     Piece activePiece;  // ê∂ê¨Ç≥ÇÍÇΩÉsÅ[ÉX 
     GameObject Pice;
 
+
     private void Start()
     {
         targetPos = transform.position;
@@ -49,9 +50,7 @@ public class Move : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-
             Destroy(Pice);
-
             activePiece = spawner.SpawnPiece(this.gameObject);
             Pice = activePiece.gameObject;
 
@@ -64,7 +63,5 @@ public class Move : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPosition,
             _speed * Time.deltaTime);
-
-
     }
 }
