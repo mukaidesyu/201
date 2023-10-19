@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class tile : MonoBehaviour
 {
+
     [SerializeField] private GameObject _tile;
     [SerializeField] private int _rows = 3;
     [SerializeField] private int _cols = 3;
+    private int i = 1;
 
-    private void Start()
+    List<GameObject> tilelist = new List<GameObject>();
+
+    private void Awake()
     {
         for (int row = -3; row < _rows; row++)
         {
@@ -17,8 +21,17 @@ public class tile : MonoBehaviour
                 //ƒpƒlƒ‹‚Ì¶¬
                 Instantiate(_tile, new Vector3(row, col, 0),
                     Quaternion.identity, transform);
+                _tile.name = "panel"+ i;
+                tilelist.Add(_tile);
+                i++;
             }
         }
+    }
+
+    public void Select()
+    {
+
+        tilelist[1].GetComponent<Tilemanager>();
     }
 
 

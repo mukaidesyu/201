@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Move : MonoBehaviour
 {
     [SerializeField] private float _speed = 5.0f;
@@ -11,6 +12,7 @@ public class Move : MonoBehaviour
 
     Spawner spawner;    // スポナー
     Piece activePiece;  // 生成されたピース 
+    GameObject Pice;
 
     private void Start()
     {
@@ -21,6 +23,7 @@ public class Move : MonoBehaviour
         if (!activePiece)
         {
             activePiece = spawner.SpawnPiece(this.gameObject);
+            Pice = activePiece.gameObject;
         }
     }
 
@@ -31,6 +34,7 @@ public class Move : MonoBehaviour
         if (move != Vector2.zero && transform.position == targetPos)
         {
             targetPos += new Vector3(move.x, move.y, 0) * distance;
+
         }
         MovePlyer(targetPos);
 
@@ -46,12 +50,21 @@ public class Move : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
 
+            Destroy(Pice);
+
+            activePiece = spawner.SpawnPiece(this.gameObject);
+            Pice = activePiece.gameObject;
+
         }
+
     }
+
 
     private void MovePlyer(Vector3 targetPosition)
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPosition,
             _speed * Time.deltaTime);
+
+
     }
 }
