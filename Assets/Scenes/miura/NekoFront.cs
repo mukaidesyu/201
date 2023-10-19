@@ -45,7 +45,7 @@ public class NekoFront : MonoBehaviour
         walkFront = val;
     }
 
-    //  前のパネルのオブジェクトを返すす変数
+    //  前のパネルのオブジェクトを返す変数
     public GameObject GetFrontPanel()
     {
         return frontPanel;
