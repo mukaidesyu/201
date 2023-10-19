@@ -16,6 +16,9 @@ public class NekoMove : MonoBehaviour
     // 移動時間
     private Vector3 targetPos;
     [SerializeField] private float _speed = 3.0f;
+    int rotateY = 3;
+    int rotateCountR = 30;
+    int rotateCountL = 60;
 
 
     [SerializeField] bool IsMove; // 動いていいタイミングかどうか
@@ -50,6 +53,7 @@ public class NekoMove : MonoBehaviour
 
                     // 前のパネルに動けるかどうか
                     frontMove = nekoFrontScript.GetWalkFront();
+                    Debug.Log(nekoFrontScript.GetFrontPanel());
                     Debug.Log(frontMove);
 
                     // 動ける時
@@ -63,13 +67,14 @@ public class NekoMove : MonoBehaviour
                         // 猫の前をfalseに戻す 
                         nekoFrontScript.SetWalkFront(false);
 
-                        stopCount = 2;
+                        stopCount = 3;
 
                         // 歩きモードへ
                         state = NekoState.Move;
                     }
                     else
                     {
+                        stopCount--;
                         state = NekoState.Rotate;
                     }
 
@@ -96,17 +101,29 @@ public class NekoMove : MonoBehaviour
                     // とりあえず右から
                     if (stopCount == 2)
                     {
-                        stopCount--;
+                        
                         Debug.Log("右向くにゃ！");
-                        transform.Rotate(new Vector3(0, 90, 0));
-                        state = NekoState.Think;
+                        transform.Rotate(new Vector3(0, rotateY, 0));
+                        rotateCountR--;
+
+                        if (rotateCountR <= 0)
+                        {
+                            rotateCountR = 30;
+                            state = NekoState.Think;
+                        }
                     }
                     else if (stopCount == 1)
                     {
-                        stopCount--;
+                        
                         Debug.Log("左向くにゃ！");
-                        transform.Rotate(new Vector3(0, 180, 0));
-                        state = NekoState.Think;
+                        transform.Rotate(new Vector3(0, -rotateY, 0));
+                        rotateCountL--;
+
+                        if (rotateCountL <= 0)
+                        {
+                            rotateCountL = 60;
+                            state = NekoState.Think;
+                        }
                     }
                     else if (stopCount <= 0)
                     {
