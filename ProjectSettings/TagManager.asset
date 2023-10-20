@@ -4,8 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Panel
   - Piece
+=======
+  - Fade
+>>>>>>> feature/tarumoto
   layers:
   - Default
   - TransparentFX
