@@ -5,6 +5,7 @@ using UnityEngine;
 interface Clickable
 {
     void WalkFlag();
+  //  bool PutFlag();
 }
 
 
@@ -19,20 +20,25 @@ public class PieceRay : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         RaycastHit hit;
         if (Physics.Raycast(this.transform.position, Vector3.forward, out hit, 10.0f))
         {
-            if(Input.GetKeyDown(KeyCode.Return))
+
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
-                c.WalkFlag();
-            }
 
+                c.WalkFlag();
+                Debug.Log("êFïœÇ¶ÇÈ");
+
+            }
             // óŒêFÇ…ïœçXÇ∑ÇÈ
             hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.green;
         }
+
+
     }
 
 

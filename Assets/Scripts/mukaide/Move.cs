@@ -48,9 +48,12 @@ public class Move : MonoBehaviour
             transform.Rotate(new Vector3(0, 0, -90));
         }
 
+        //èÍèäÇëIÇ‘
         if (Input.GetKeyDown(KeyCode.Return))
         {
             Destroy(Pice);
+            targetPos = new Vector3(0.0f, 0.0f, -0.5f); 
+            //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
             activePiece = spawner.SpawnPiece(this.gameObject);
             Pice = activePiece.gameObject;
 
