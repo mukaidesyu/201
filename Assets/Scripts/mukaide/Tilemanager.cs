@@ -8,13 +8,13 @@ public class Tilemanager : MonoBehaviour, Clickable
 {
     public bool walkflag = false;
     private int TileNo = 0;
+    public bool putflag = false;
 
     public void WalkFlag()
     {
         // ƒNƒŠƒbƒN‚µ‚½‚Ìˆ—
         walkflag = true;
     }
-
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class Tilemanager : MonoBehaviour, Clickable
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if(walkflag == true)
         {
