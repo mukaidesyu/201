@@ -5,7 +5,8 @@ using TMPro;
 
 public class TreasureCount : MonoBehaviour
 {
-    public int treasure = 0;
+    public int treasure;
+    public int treasuremax;
     GameObject ui;
     TextMeshProUGUI tmp;
 
@@ -13,6 +14,7 @@ public class TreasureCount : MonoBehaviour
     void Start()
     {
         treasure = 0;
+        treasuremax = 0;
         ui = GameObject.Find("UI_TreasureCount");
         tmp = ui.GetComponent<TextMeshProUGUI>();
         tmp.enabled = true;
@@ -21,10 +23,14 @@ public class TreasureCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tmp.text = treasure.ToString("0") + "/" + 5/*ここにステージごとのMAX宝箱数を入れる*/;
-        if (Input.GetKeyDown(KeyCode.Return))
+        MaxTreasure();
+        if (treasure <= treasuremax)
         {
-            TreasurePlus();     //エンターしたら宝箱＋１関数呼び出し
+            tmp.text = treasure.ToString("0") + "/" + treasuremax/*ここにステージごとのMAX宝箱数を入れる*/;
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                TreasurePlus();     //エンターしたら宝箱＋１関数呼び出し
+            }
         }
     }
     void TreasurePlus() //宝箱＋１する関数
@@ -32,5 +38,9 @@ public class TreasureCount : MonoBehaviour
         treasure++;
     }
 
+    void MaxTreasure()//宝箱の最大数
+    {
+        treasuremax = 5;
+    }
    
 }
