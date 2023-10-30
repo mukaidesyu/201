@@ -14,7 +14,7 @@ public class TreasureCount : MonoBehaviour
     void Start()
     {
         treasure = 0;
-        treasuremax = 0;
+        treasuremax = 5;
         ui = GameObject.Find("UI_TreasureCount");
         tmp = ui.GetComponent<TextMeshProUGUI>();
         tmp.enabled = true;
@@ -23,7 +23,6 @@ public class TreasureCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MaxTreasure();
         if (treasure <= treasuremax)
         {
             tmp.text = treasure.ToString("0") + "/" + treasuremax/*‚±‚±‚ÉƒXƒe[ƒW‚²‚Æ‚ÌMAX•ó” ”‚ð“ü‚ê‚é*/;
@@ -36,11 +35,6 @@ public class TreasureCount : MonoBehaviour
     void TreasurePlus() //•ó” {‚P‚·‚éŠÖ”
     {
         treasure++;
-    }
-
-    void MaxTreasure()//•ó” ‚ÌÅ‘å”
-    {
-        treasuremax = 5;
     }
    
 }
