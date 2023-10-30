@@ -13,6 +13,8 @@ public class PieceRay : MonoBehaviour
 {
     List<GameObject> walkpanel = new List<GameObject>();
 
+    public bool putflag = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,14 +27,17 @@ public class PieceRay : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(this.transform.position, Vector3.forward, out hit, 10.0f))
         {
-
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (hit.collider.CompareTag("judgment")) putflag = false;
+            if (putflag)
             {
-                Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
 
-                c.WalkFlag();
-                Debug.Log("色変える");
+                    //c.WalkFlag();
+                    Debug.Log("色変える");
 
+                }
             }
             // 緑色に変更する
             hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.green;
