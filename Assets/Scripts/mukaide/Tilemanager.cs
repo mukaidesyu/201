@@ -8,7 +8,6 @@ public class Tilemanager : MonoBehaviour, Clickable
 {
     public bool walkflag = false;
     private int TileNo = 0;
-    public bool putflag = false;
 
     public void WalkFlag()
     {
