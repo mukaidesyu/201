@@ -26,7 +26,7 @@ public class TreasureCount : MonoBehaviour
         if (treasure <= treasuremax)
         {
             tmp.text = treasure.ToString("0") + "/" + treasuremax/*ここにステージごとのMAX宝箱数を入れる*/;
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.P))
             {
                 TreasurePlus();     //エンターしたら宝箱＋１関数呼び出し
             }

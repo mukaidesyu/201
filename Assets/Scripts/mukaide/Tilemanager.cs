@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class Tilemanager : MonoBehaviour, Clickable
 {
     public bool walkflag = false;
+
     private int TileNo = 0;
 
     public void WalkFlag()
@@ -25,7 +24,8 @@ public class Tilemanager : MonoBehaviour, Clickable
     // Update is called once per frame
     void Update()
     {
-        if(walkflag == true)
+
+        if (walkflag == true)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.yellow;
         }

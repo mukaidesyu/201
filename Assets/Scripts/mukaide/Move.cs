@@ -10,11 +10,16 @@ public class Move : MonoBehaviour
     public Vector2 move;
     private Vector3 targetPos;
     public bool putflag = true;
+
     Spawner spawner;    // スポナー
     Piece activePiece;  // 生成されたピース 
     GameObject Pice;
     GameObject old;
 
+    judgment tilemanager;
+    judgment1 tilemanager1;
+    judgment2 tilemanager2;
+    judgment3 tilemanager3;
 
     private void Start()
     {
@@ -27,19 +32,18 @@ public class Move : MonoBehaviour
             activePiece = spawner.SpawnPiece(this.gameObject);
             Pice = activePiece.gameObject;
         }
+
+        tilemanager = GameObject.Find("judgment1").GetComponent<judgment>();
+        tilemanager1 = GameObject.Find("judgment2").GetComponent<judgment1>();
+        tilemanager2 = GameObject.Find("judgment3").GetComponent<judgment2>();
+        tilemanager3 = GameObject.Find("judgment4").GetComponent<judgment3>();
     }
 
     void Update()
     {
-        //move.x = Input.GetAxisRaw("Horizontal");
-        //move.y = Input.GetAxisRaw("Vertical");
-        //if (move != Vector2.zero && transform.position == targetPos)
-        //{
-        //    targetPos += new Vector3(move.x, move.y, 0) * distance;
-        //}
         RaycastHit hit;
-       
-        
+           
+         //移動
         if (Input.GetKeyDown(KeyCode.W))
         {
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
@@ -74,12 +78,25 @@ public class Move : MonoBehaviour
                 if (hit.collider.CompareTag("tile"))
                 {
                     old = hit.collider.gameObject;
-                    Debug.Log(old.name);
                 }
             }
             targetPos += new Vector3(1, 0, 0) * distance;
         }
 
+        //回転
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            transform.Rotate(new Vector3(0, 0, 90));
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            transform.Rotate(new Vector3(0, 0, -90));
+        }
+
+        MovePlyer(targetPos);
+
+
+        //画面外判定
         if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
         {
             if (hit.collider.CompareTag("judgment"))
@@ -89,18 +106,9 @@ public class Move : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            transform.Rotate(new Vector3(0, 0, 90));
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            transform.Rotate(new Vector3(0, 0, -90));
-        }
-        MovePlyer(targetPos);
-        
+
         //場所を選ぶ
-        if (putflag)
+        if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
