@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour
     // ランダムにピースを一つ選ぶ関数
     Piece GetRandomPiece()
     {
-        int i = Random.Range(0,pieces.Length);
+        int i = Random.Range(0, pieces.Length);
 
         if (pieces[i])
         {

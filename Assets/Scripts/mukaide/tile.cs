@@ -13,9 +13,9 @@ public class tile : MonoBehaviour
 
     private void Awake()
     {
-        for (int row = -3; row < _rows; row++)
+        for (int row = -5; row < _rows; row++)
         {
-            for (int col = -3; col < _cols; col++)
+            for (int col = -5; col < _cols; col++)
             {
                 //ƒpƒlƒ‹‚Ì¶¬
                 Instantiate(_tile, new Vector3(row, col, 0),

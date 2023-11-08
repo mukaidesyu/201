@@ -5,6 +5,7 @@ using UnityEngine;
 interface Clickable
 {
     void WalkFlag();
+    bool Overlap();
 }
 
 public class PieceRay : MonoBehaviour
@@ -30,23 +31,26 @@ public class PieceRay : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(this.transform.position, Vector3.forward, out hit, 10.0f))
         {
-            if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true&& tilemanager2.PutFlag2() == true&& tilemanager3.PutFlag3() == true)
+            if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
 
-                    if (Input.GetKeyDown(KeyCode.Return))
-                    {
-                        Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
 
-                        c.WalkFlag();
-                        Debug.Log("色変える");
+                    c.WalkFlag();
+                    Debug.Log("色変える");
 
-                    }
-                
+                }
+
             }
-            // 緑色に変更する
-            hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.green;
+            if (hit.collider.CompareTag("tile"))
+            {
+                // 緑色に変更する
+                hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.green;
+            }
+        
         }
-
 
     }
 
