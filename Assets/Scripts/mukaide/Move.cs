@@ -44,8 +44,9 @@ public class Move : MonoBehaviour
         RaycastHit hit;
            
          //ˆÚ“®
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W)||Input.GetAxis("Vertical") > 0.1f)
         {
+            Debug.Log(Input.GetAxis("Vertical"));
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
             {
                 if (hit.collider.CompareTag("tile"))
@@ -53,7 +54,7 @@ public class Move : MonoBehaviour
             }
             targetPos += new Vector3(0, 1, 0) * distance;
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Vertical") < -0.1f)
         {
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
             {

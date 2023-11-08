@@ -14,6 +14,11 @@ public class Tilemanager : MonoBehaviour, Clickable
         walkflag = true;
     }
 
+    public bool Overlap()
+    {
+        return walkflag;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
