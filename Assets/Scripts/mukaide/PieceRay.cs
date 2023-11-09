@@ -5,6 +5,8 @@ using UnityEngine;
 interface Clickable
 {
     void WalkFlag();
+    int PutNo();
+    bool PutWalkFlag();
 }
 
 public class PieceRay : MonoBehaviour
@@ -14,6 +16,10 @@ public class PieceRay : MonoBehaviour
     judgment2 tilemanager2;
     judgment3 tilemanager3;
 
+    public bool putflag = false;
+
+    Piece piece;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +27,8 @@ public class PieceRay : MonoBehaviour
         tilemanager1 = GameObject.Find("judgment2").GetComponent<judgment1>();
         tilemanager2 = GameObject.Find("judgment3").GetComponent<judgment2>();
         tilemanager3 = GameObject.Find("judgment4").GetComponent<judgment3>();
+
+        piece = gameObject.transform.parent.gameObject.GetComponent<Piece>();
     }
 
     // Update is called once per frame
@@ -33,10 +41,16 @@ public class PieceRay : MonoBehaviour
             if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
                 Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
+                putflag = c.PutWalkFlag();
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    c.WalkFlag();
-                    Debug.Log("êFïœÇ¶ÇÈ");
+                    if (piece.flagp() == true)
+                    {
+                        c.WalkFlag();
+                        c.PutNo();
+                        Debug.Log("êFïœÇ¶ÇÈ");
+                    }
+
                 }
 
             }
@@ -50,5 +64,10 @@ public class PieceRay : MonoBehaviour
 
     }
 
+
+    public bool pfl()
+    {
+        return putflag;
+    }
 
 }
