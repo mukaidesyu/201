@@ -5,7 +5,6 @@ using UnityEngine;
 interface Clickable
 {
     void WalkFlag();
-    bool Overlap();
 }
 
 public class PieceRay : MonoBehaviour
@@ -33,14 +32,11 @@ public class PieceRay : MonoBehaviour
         {
             if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
-
+                Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
-
                     c.WalkFlag();
                     Debug.Log("êFïœÇ¶ÇÈ");
-
                 }
 
             }

@@ -10,6 +10,9 @@ public class tile : MonoBehaviour
     [SerializeField] private int _cols = 3;
     private int i = 1;
 
+    List<GameObject> cd = new List<GameObject>();
+    List<bool> flag = new List<bool>();
+
 
     private void Awake()
     {
@@ -24,8 +27,28 @@ public class tile : MonoBehaviour
                 i++;
             }
         }
+
+    }
+    private void Start()
+    {
+        for(int j = 0;j < i-1;j++)
+        {
+            Debug.Log(j);
+            cd.Add(transform.GetChild(j).gameObject);
+            flag.Add(cd[j].GetComponent<Tilemanager>().PutWalkFlag());
+        }
+
     }
 
-
+    private void Update()
+    {
+      //  if(Input.GetKeyDown(KeyCode.Return))
+      //  {
+      //      for (int j = 0; j < i-1; j++)
+      //      {
+      //          flag.Add(cd[i].GetComponent<Tilemanager>().PutWalkFlag());             
+      //      }
+      //  }
+    }
 
 }
