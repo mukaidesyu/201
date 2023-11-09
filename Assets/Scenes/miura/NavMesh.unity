@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 756b0c574f380324a85262e736c0418b, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 756b0c574f380324a85262e736c0418b, type: 3}
       propertyPath: m_LocalScale.x
@@ -369,7 +369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &634397178
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -441,13 +441,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634397177}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 740650353}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &740650351
 GameObject:
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_CollectObjects: 0
+  m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
@@ -493,7 +493,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.1
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 4c3ff55ce4e3ab846bb37561dec9fe40, type: 2}
   m_BuildHeightMesh: 0
@@ -508,9 +508,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1600064950}
+  - {fileID: 634397181}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &740650354
 MonoBehaviour:
@@ -537,7 +539,7 @@ GameObject:
   - component: {fileID: 1225590699}
   - component: {fileID: 1225590698}
   - component: {fileID: 1225590697}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -620,7 +622,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1271828779
 GameObject:
@@ -730,13 +732,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600064948}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 740650353}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1600064951
 MonoBehaviour:
