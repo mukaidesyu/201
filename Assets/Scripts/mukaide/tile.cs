@@ -42,13 +42,13 @@ public class tile : MonoBehaviour
 
     private void Update()
     {
-      //  if(Input.GetKeyDown(KeyCode.Return))
-      //  {
-      //      for (int j = 0; j < i-1; j++)
-      //      {
-      //          flag.Add(cd[i].GetComponent<Tilemanager>().PutWalkFlag());             
-      //      }
-      //  }
+        for (int j = 0; j < i - 1; j++)
+        {
+            flag[j] = cd[j].GetComponent<Tilemanager>().PutWalkFlag();
+            Debug.Log(flag[j]);
+        }
+
+        
     }
 
 }

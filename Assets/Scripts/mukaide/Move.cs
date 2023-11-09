@@ -21,6 +21,8 @@ public class Move : MonoBehaviour
     judgment2 tilemanager2;
     judgment3 tilemanager3;
 
+    public int putNo = 1;
+
     private void Start()
     {
         targetPos = transform.position;
@@ -44,7 +46,7 @@ public class Move : MonoBehaviour
         RaycastHit hit;
            
          //ˆÚ“®
-        if (Input.GetKeyDown(KeyCode.W)||Input.GetAxis("Vertical") > 0.1f)
+        if (Input.GetKeyDown(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)
         {
             Debug.Log(Input.GetAxis("Vertical"));
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
@@ -54,7 +56,7 @@ public class Move : MonoBehaviour
             }
             targetPos += new Vector3(0, 1, 0) * distance;
         }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Vertical") < -0.1f)
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Vertical") <= -1.0f)
         {
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
             {
@@ -113,12 +115,14 @@ public class Move : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                Destroy(Pice);
-                targetPos = new Vector3(0.0f, 0.0f, -0.5f);
-                //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
-                activePiece = spawner.SpawnPiece(this.gameObject);
-                Pice = activePiece.gameObject;
-
+                if(Pice.GetComponent<Piece>().flagp() == true)
+                {
+                    Destroy(Pice);
+                    targetPos = new Vector3(0.0f, 0.0f, -0.5f);
+                    //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
+                    activePiece = spawner.SpawnPiece(this.gameObject);
+                    Pice = activePiece.gameObject;
+                }
             }
         }
     }

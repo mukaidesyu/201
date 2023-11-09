@@ -8,18 +8,28 @@ public class Tilemanager : MonoBehaviour, Clickable
 
     private int TileNo = 0;
 
+    public int putno = 0;
+
     public void WalkFlag()
     {
         // ÉNÉäÉbÉNÇµÇΩéûÇÃèàóù
         walkflag = true;
     }
 
+    public int PutNo()
+    {
+        return TileNo;
+    }
 
+    public bool PutWalkFlag()
+    {
+        return walkflag;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-      gameObject.GetComponent<Renderer>().material.color = Color.red;
+        gameObject.GetComponent<Renderer>().material.color = Color.red;
         TileNo++;
     }
 
@@ -35,10 +45,8 @@ public class Tilemanager : MonoBehaviour, Clickable
         {
             gameObject.GetComponent<Renderer>().material.color = Color.red;
         }
+
     }
 
-    public bool PutWalkFlag()
-    {
-        return walkflag;
-    }
+
 }
