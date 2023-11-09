@@ -22,11 +22,9 @@ public class Tile_select : MonoBehaviour
         switch (IsWalk)
         {
             case true:
-                gameObject.GetComponent<Renderer>().material.color = Color.green;
                 this.gameObject.layer = 6;
                 break;
             case false:
-                gameObject.GetComponent<Renderer>().material.color = Color.red;
                 this.gameObject.layer = 7;
                 break;
         }

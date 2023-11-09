@@ -17,7 +17,7 @@ public class tile_miura : MonoBehaviour
             {
                 //ƒpƒlƒ‹‚Ì¶¬
                 Instantiate(_tile, new Vector3(row, 0,col),
-                   Quaternion.Euler(90,0,0), transform);
+                   Quaternion.Euler(-90,0,0), transform);
                 i++;
 
                 _tile.name = ""+i;
