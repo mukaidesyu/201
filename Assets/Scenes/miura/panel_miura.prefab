@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7967518211606201064}
   - component: {fileID: 872938490744752941}
   - component: {fileID: 2870633948971614682}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: panel_miura
   m_TagString: Panel
   m_Icon: {fileID: 0}
