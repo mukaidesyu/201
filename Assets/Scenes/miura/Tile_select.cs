@@ -18,13 +18,16 @@ public class Tile_select : MonoBehaviour
     void Update()
     {
         // パネルの状態によって色が変わる
+        // タイルのタグも変わる
         switch (IsWalk)
         {
             case true:
-                gameObject.GetComponent<Renderer>().material.color = Color.red;
+                gameObject.GetComponent<Renderer>().material.color = Color.green;
+                this.gameObject.layer = 6;
                 break;
             case false:
-                gameObject.GetComponent<Renderer>().material.color = Color.white;
+                gameObject.GetComponent<Renderer>().material.color = Color.red;
+                this.gameObject.layer = 7;
                 break;
         }
     }

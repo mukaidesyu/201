@@ -11,7 +11,8 @@ public class NavMesh_Surface : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // ‚±‚Ìˆ—‚Íƒ^ƒCƒ‹‚ğo‚µ‚½Œã‚©‚à`
+        Build();
     }
 
     // Update is called once per frame
