@@ -44,8 +44,25 @@ public class Move : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-           
-         //à⁄ìÆ
+
+
+
+        //âÊñ äOîªíË
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 10.0f))
+        {
+            Debug.DrawRay(transform.position, Vector3.down, Color.red);
+
+            if (hit.collider.CompareTag("judgment"))
+            {
+                Debug.Log(old);
+                //targetPos = new Vector3(0, 0, 0) * distance;
+                targetPos = new Vector3(old.transform.position.x, 0.1f, old.transform.position.z);
+            }
+        }
+
+        Debug.Log(old);
+
+        //à⁄ìÆ
         if (Input.GetKeyDown(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)
         {
             Debug.Log(Input.GetAxis("Vertical"));
@@ -99,17 +116,6 @@ public class Move : MonoBehaviour
         MovePlyer(targetPos);
 
 
-        //âÊñ äOîªíË
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 10.0f))
-        {
-            if (hit.collider.CompareTag("judgment"))
-            {
-                //targetPos = new Vector3(0, 0, 0) * distance;
-                targetPos = new Vector3(old.transform.position.x, old.transform.position.y, old.transform.position.z);
-            }
-        }
-
-
         //èÍèäÇëIÇ‘
         if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
         {
@@ -118,7 +124,7 @@ public class Move : MonoBehaviour
                 if(Pice.GetComponent<Piece>().flagp() == true)
                 {
                     Destroy(Pice);
-                    targetPos = new Vector3(0.0f, 0.0f, -0.5f);
+                    targetPos = new Vector3(0.0f, 0.1f, 0.0f);
                     //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
                     activePiece = spawner.SpawnPiece(this.gameObject);
                     Pice = activePiece.gameObject;
