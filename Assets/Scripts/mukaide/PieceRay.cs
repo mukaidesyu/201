@@ -40,6 +40,8 @@ public class PieceRay : MonoBehaviour
         {
             if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
+                Debug.Log(hit.collider.gameObject);
+                Debug.DrawRay(transform.position, Vector3.down, Color.red);
                 Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
                 putflag = c.PutWalkFlag();
                 if (Input.GetKeyDown(KeyCode.Return))
