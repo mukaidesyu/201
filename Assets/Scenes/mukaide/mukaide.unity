@@ -1546,6 +1546,7 @@ MonoBehaviour:
   _speed: 5
   move: {x: 0, y: 0}
   putflag: 1
+  feald: 0
   putNo: 0
 --- !u!135 &1393387419
 SphereCollider:

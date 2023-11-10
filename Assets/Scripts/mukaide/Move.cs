@@ -21,6 +21,8 @@ public class Move : MonoBehaviour
     judgment2 tilemanager2;
     judgment3 tilemanager3;
 
+    public int feald = 0;
+
     public int putNo = 1;
 
     private void Start()
@@ -56,7 +58,7 @@ public class Move : MonoBehaviour
             {
                 Debug.Log(old);
                 //targetPos = new Vector3(0, 0, 0) * distance;
-                targetPos = new Vector3(old.transform.position.x, 0.1f, old.transform.position.z);
+               // targetPos = new Vector3(old.transform.position.x, 0.1f, old.transform.position.z);
             }
         }
 
