@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
     {
         var playerpos = player.transform;
 
-        Piece piece = Instantiate(GetRandomPiece(), transform.position, Quaternion.identity, playerpos);
+        Piece piece = Instantiate(GetRandomPiece(), transform.position, Quaternion.Euler(90, 0, 0), playerpos);
 
         if (piece)
         {
