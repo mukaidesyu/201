@@ -54,7 +54,7 @@ public class Move : MonoBehaviour
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            targetPos += new Vector3(0, 1, 0) * distance;
+            targetPos += new Vector3(0, 0, 1) * distance;
         }
         else if (Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Vertical") <= -1.0f)
         {
@@ -63,7 +63,7 @@ public class Move : MonoBehaviour
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            targetPos += new Vector3(0, -1, 0) * distance;
+            targetPos += new Vector3(0, 0, -1) * distance;
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
@@ -100,12 +100,12 @@ public class Move : MonoBehaviour
 
 
         //‰æ–ÊŠO”»’è
-        if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 10.0f))
         {
             if (hit.collider.CompareTag("judgment"))
             {
                 //targetPos = new Vector3(0, 0, 0) * distance;
-                targetPos = new Vector3(old.transform.position.x, old.transform.position.y, -0.5f);
+                targetPos = new Vector3(old.transform.position.x, old.transform.position.y, old.transform.position.z);
             }
         }
 

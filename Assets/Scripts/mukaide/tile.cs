@@ -21,8 +21,8 @@ public class tile : MonoBehaviour
             {
                 _tile.name = "panel" + i;
                 //ƒpƒlƒ‹‚Ì¶¬
-                Instantiate(_tile, new Vector3(row, col, 0),
-                    Quaternion.identity, transform);
+                Instantiate(_tile, new Vector3(row,0, col),
+                    Quaternion.Euler(90, 0, 0), transform);
                 i++;
             }
         }
