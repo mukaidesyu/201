@@ -111,4 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkflag: 0
+  TileNo: 0
   putno: 0
+  Goalflag: 0
