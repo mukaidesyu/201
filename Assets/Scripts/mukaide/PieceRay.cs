@@ -5,6 +5,8 @@ using UnityEngine;
 interface Clickable
 {
     void WalkFlag();
+    int PutNo();
+    bool PutWalkFlag();
 }
 
 public class PieceRay : MonoBehaviour
@@ -14,6 +16,10 @@ public class PieceRay : MonoBehaviour
     judgment2 tilemanager2;
     judgment3 tilemanager3;
 
+    public bool putflag = false;
+
+    Piece piece;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +27,8 @@ public class PieceRay : MonoBehaviour
         tilemanager1 = GameObject.Find("judgment2").GetComponent<judgment1>();
         tilemanager2 = GameObject.Find("judgment3").GetComponent<judgment2>();
         tilemanager3 = GameObject.Find("judgment4").GetComponent<judgment3>();
+
+        piece = gameObject.transform.parent.gameObject.GetComponent<Piece>();
     }
 
     // Update is called once per frame
@@ -28,27 +36,38 @@ public class PieceRay : MonoBehaviour
     {
 
         RaycastHit hit;
-        if (Physics.Raycast(this.transform.position, Vector3.forward, out hit, 10.0f))
+        if (Physics.Raycast(this.transform.position, Vector3.down, out hit, 10.0f))
         {
-            if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true&& tilemanager2.PutFlag2() == true&& tilemanager3.PutFlag3() == true)
+            if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
-
-                    if (Input.GetKeyDown(KeyCode.Return))
+                Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
+                putflag = c.PutWalkFlag();
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    if (piece.flagp() == true)
                     {
-                        Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
-
                         c.WalkFlag();
+                        c.PutNo();
                         Debug.Log("色変える");
-
                     }
-                
-            }
-            // 緑色に変更する
-            hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.green;
-        }
 
+                }
+
+            }
+            if (hit.collider.CompareTag("tile"))
+            {
+                // 緑色に変更する
+                hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.green;
+            }
+        
+        }
 
     }
 
+
+    public bool pfl()
+    {
+        return putflag;
+    }
 
 }

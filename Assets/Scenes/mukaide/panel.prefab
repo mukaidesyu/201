@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7967518211606201064}
   - component: {fileID: 872938490744752941}
   - component: {fileID: 7223578796231901328}
+  - component: {fileID: 4688945455434805813}
   m_Layer: 0
   m_Name: panel
   m_TagString: tile
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c8ff0a790a756c544b6fe3d6417b85c8, type: 2}
+  - {fileID: 2100000, guid: 7c962b51045eea446b81c5dfe6bc078f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,3 +112,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkflag: 0
+  TileNo: 0
+  putno: 0
+  Goalflag: 0
+--- !u!114 &4688945455434805813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7452266880455318879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995971c47522f2f4e8ede314b2e45dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Materials:
+  - {fileID: 2100000, guid: 7c962b51045eea446b81c5dfe6bc078f, type: 2}
+  - {fileID: 2100000, guid: a80c02a4e82ca2d4ab2428043638bbb3, type: 2}
+  - {fileID: 2100000, guid: 195e7149a711ec54faa3a57567dc2ab8, type: 2}
+  - {fileID: 2100000, guid: 8432eb8af200a044c8d5ee82e2796b58, type: 2}
+  - {fileID: 2100000, guid: f35eb14d517560c4aae73cdb8aba142b, type: 2}

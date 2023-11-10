@@ -25,6 +25,6 @@ public class CameraZoom : MonoBehaviour
         {
             cam.fieldOfView = cam.fieldOfView + scroll; //ズームアウト。
         }
-        cam.fieldOfView = Mathf.Clamp(value: cam.fieldOfView, min: -10.0f, max: 40.0f);
+        cam.fieldOfView = Mathf.Clamp(value: cam.fieldOfView, min: -10.0f, max: 60.0f);
     }
 }

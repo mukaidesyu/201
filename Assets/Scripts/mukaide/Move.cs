@@ -21,6 +21,8 @@ public class Move : MonoBehaviour
     judgment2 tilemanager2;
     judgment3 tilemanager3;
 
+    public int putNo = 1;
+
     private void Start()
     {
         targetPos = transform.position;
@@ -42,25 +44,43 @@ public class Move : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-           
-         //ˆÚ“®
-        if (Input.GetKeyDown(KeyCode.W))
+
+
+
+        //‰æ–ÊŠO”»’è
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 10.0f))
         {
-            if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
+            Debug.DrawRay(transform.position, Vector3.down, Color.red);
+
+            if (hit.collider.CompareTag("judgment"))
             {
-                if (hit.collider.CompareTag("tile"))
-                    old = hit.collider.gameObject;
+                Debug.Log(old);
+                //targetPos = new Vector3(0, 0, 0) * distance;
+                targetPos = new Vector3(old.transform.position.x, 0.1f, old.transform.position.z);
             }
-            targetPos += new Vector3(0, 1, 0) * distance;
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+
+        Debug.Log(old);
+
+        //ˆÚ“®
+        if (Input.GetKeyDown(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)
+        {
+            Debug.Log(Input.GetAxis("Vertical"));
+            if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
+            {
+                if (hit.collider.CompareTag("tile"))
+                    old = hit.collider.gameObject;
+            }
+            targetPos += new Vector3(0, 0, 1) * distance;
+        }
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Vertical") <= -1.0f)
         {
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
             {
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            targetPos += new Vector3(0, -1, 0) * distance;
+            targetPos += new Vector3(0, 0, -1) * distance;
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
@@ -96,28 +116,19 @@ public class Move : MonoBehaviour
         MovePlyer(targetPos);
 
 
-        //‰æ–ÊŠO”»’è
-        if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
-        {
-            if (hit.collider.CompareTag("judgment"))
-            {
-                //targetPos = new Vector3(0, 0, 0) * distance;
-                targetPos = new Vector3(old.transform.position.x, old.transform.position.y, -0.5f);
-            }
-        }
-
-
         //êŠ‚ð‘I‚Ô
         if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                Destroy(Pice);
-                targetPos = new Vector3(0.0f, 0.0f, -0.5f);
-                //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
-                activePiece = spawner.SpawnPiece(this.gameObject);
-                Pice = activePiece.gameObject;
-
+                if(Pice.GetComponent<Piece>().flagp() == true)
+                {
+                    Destroy(Pice);
+                    targetPos = new Vector3(0.0f, 0.1f, 0.0f);
+                    //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
+                    activePiece = spawner.SpawnPiece(this.gameObject);
+                    Pice = activePiece.gameObject;
+                }
             }
         }
     }
