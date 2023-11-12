@@ -36,8 +36,12 @@ public class PieceRay : MonoBehaviour
     {
 
         RaycastHit hit;
+
         if (Physics.Raycast(this.transform.position, Vector3.down, out hit, 10.0f))
         {
+            // Ray‚Ì‰ÂŽ‹‰»
+            Debug.DrawRay(this.transform.position, Vector3.down, Color.red);
+
             if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
                 Debug.Log(hit.collider.gameObject);

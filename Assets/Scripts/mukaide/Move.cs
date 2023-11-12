@@ -123,7 +123,8 @@ public class Move : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                if(Pice.GetComponent<Piece>().flagp() == true)
+                // ピースを置くとここに入る
+                if(Pice.GetComponent<Piece>().flagp() == true) // 現状Pフラグが立ってない
                 {
                     Destroy(Pice);
                     targetPos = new Vector3(0.0f, 0.1f, 0.0f);
