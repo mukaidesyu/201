@@ -37,18 +37,15 @@ public class Move : MonoBehaviour
             Pice = activePiece.gameObject;
         }
 
-        tilemanager = GameObject.Find("judgment1").GetComponent<judgment>();
-        tilemanager1 = GameObject.Find("judgment2").GetComponent<judgment1>();
-        tilemanager2 = GameObject.Find("judgment3").GetComponent<judgment2>();
-        tilemanager3 = GameObject.Find("judgment4").GetComponent<judgment3>();
+        tilemanager = GameObject.Find("judgment1").GetComponent<judgment>(); // âE
+        tilemanager1 = GameObject.Find("judgment2").GetComponent<judgment1>(); // è„
+        tilemanager2 = GameObject.Find("judgment3").GetComponent<judgment2>(); // â∫
+        tilemanager3 = GameObject.Find("judgment4").GetComponent<judgment3>(); // ç∂
     }
 
     void Update()
     {
         RaycastHit hit;
-
-
-
         //âÊñ äOîªíË
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 10.0f))
         {
@@ -62,7 +59,7 @@ public class Move : MonoBehaviour
             }
         }
 
-        Debug.Log(old);
+        //Debug.Log(old);
 
         //à⁄ìÆ
         if (Input.GetKeyDown(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)

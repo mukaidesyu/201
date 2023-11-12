@@ -34,23 +34,19 @@ public class PieceRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        putflag = false;
         RaycastHit hit;
-
         if (Physics.Raycast(this.transform.position, Vector3.down, out hit, 10.0f))
         {
-            // RayÇÃâ¬éãâª
-            Debug.DrawRay(this.transform.position, Vector3.down, Color.red);
-
             if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
-                Debug.Log(hit.collider.gameObject);
+                //Debug.Log(hit.collider.gameObject);
                 Debug.DrawRay(transform.position, Vector3.down, Color.red);
                 Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
-                putflag = c.PutWalkFlag();
+                putflag = true;// ïœçXëO//putflag = c.PutWalkFlag();
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    if (piece.flagp() == true)
+                    if (piece.flagp() == true)// Ç±ÇÃï”å¥àˆ
                     {
                         c.WalkFlag();
                         c.PutNo();
