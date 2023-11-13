@@ -21,6 +21,8 @@ public class Move : MonoBehaviour
     judgment2 tilemanager2;
     judgment3 tilemanager3;
 
+    public int feald = 0;
+
     public int putNo = 1;
 
     private void Start()
@@ -35,17 +37,31 @@ public class Move : MonoBehaviour
             Pice = activePiece.gameObject;
         }
 
-        tilemanager = GameObject.Find("judgment1").GetComponent<judgment>();
-        tilemanager1 = GameObject.Find("judgment2").GetComponent<judgment1>();
-        tilemanager2 = GameObject.Find("judgment3").GetComponent<judgment2>();
-        tilemanager3 = GameObject.Find("judgment4").GetComponent<judgment3>();
+        tilemanager = GameObject.Find("judgment1").GetComponent<judgment>(); // 右
+        tilemanager1 = GameObject.Find("judgment2").GetComponent<judgment1>(); // 上
+        tilemanager2 = GameObject.Find("judgment3").GetComponent<judgment2>(); // 下
+        tilemanager3 = GameObject.Find("judgment4").GetComponent<judgment3>(); // 左
     }
 
     void Update()
     {
         RaycastHit hit;
-           
-         //移動
+        //画面外判定
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 10.0f))
+        {
+            Debug.DrawRay(transform.position, Vector3.down, Color.red);
+
+            if (hit.collider.CompareTag("judgment"))
+            {
+                Debug.Log(old);
+                //targetPos = new Vector3(0, 0, 0) * distance;
+               // targetPos = new Vector3(old.transform.position.x, 0.1f, old.transform.position.z);
+            }
+        }
+
+        //Debug.Log(old);
+
+        //移動
         if (Input.GetKeyDown(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)
         {
             Debug.Log(Input.GetAxis("Vertical"));
@@ -54,7 +70,7 @@ public class Move : MonoBehaviour
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            targetPos += new Vector3(0, 1, 0) * distance;
+            targetPos += new Vector3(0, 0, 1) * distance;
         }
         else if (Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Vertical") <= -1.0f)
         {
@@ -63,7 +79,7 @@ public class Move : MonoBehaviour
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            targetPos += new Vector3(0, -1, 0) * distance;
+            targetPos += new Vector3(0, 0, -1) * distance;
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
@@ -99,26 +115,16 @@ public class Move : MonoBehaviour
         MovePlyer(targetPos);
 
 
-        //画面外判定
-        if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
-        {
-            if (hit.collider.CompareTag("judgment"))
-            {
-                //targetPos = new Vector3(0, 0, 0) * distance;
-                targetPos = new Vector3(old.transform.position.x, old.transform.position.y, -0.5f);
-            }
-        }
-
-
         //場所を選ぶ
         if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                if(Pice.GetComponent<Piece>().flagp() == true)
+                // ピースを置くとここに入る
+                if(Pice.GetComponent<Piece>().flagp() == true) // 現状Pフラグが立ってない
                 {
                     Destroy(Pice);
-                    targetPos = new Vector3(0.0f, 0.0f, -0.5f);
+                    targetPos = new Vector3(0.0f, 0.1f, 0.0f);
                     //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
                     activePiece = spawner.SpawnPiece(this.gameObject);
                     Pice = activePiece.gameObject;

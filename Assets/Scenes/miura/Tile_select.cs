@@ -28,5 +28,7 @@ public class Tile_select : MonoBehaviour
                 this.gameObject.layer = 7;
                 break;
         }
+
+        this.GetComponent<Tile_Material>().SetMaterial(IsWalk);
     }
 }

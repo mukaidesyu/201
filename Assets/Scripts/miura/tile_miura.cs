@@ -11,16 +11,15 @@ public class tile_miura : MonoBehaviour
 
     private void Start()
     {
-        for (int row = - _rows / 2 ; row < _rows - row; row++)
+        for (int row = 0 ; row < _rows; row++)
         {
-            for (int col = - _cols / 2; col < _cols - col; col++)
+            for (int col = 0; col < _cols ; col++)
             {
+                _tile.name = "" + i;
                 //ƒpƒlƒ‹‚Ì¶¬
                 Instantiate(_tile, new Vector3(row, 0,col),
-                   Quaternion.Euler(-90,0,0), transform);
+                   Quaternion.Euler(90,0,0), transform);
                 i++;
-
-                _tile.name = ""+i;
             }
         }
     }

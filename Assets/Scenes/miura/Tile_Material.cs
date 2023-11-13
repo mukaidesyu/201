@@ -5,25 +5,44 @@ using UnityEngine;
 
 public class Tile_Material : MonoBehaviour
 {
+    enum TileStatus
+    {
+        Grass = 0,
+        Up,
+        Left,
+        Down,
+        Right
+
+    };
+
     Material[] tmp;
-    int idx;
+    TileStatus status;
     public Material[] Materials;
     // Start is called before the first frame update
     void Start()
     {
         Material[] tmp = gameObject.GetComponent<Renderer>().materials;
-        idx = 0;
+        status = TileStatus.Grass;
     }
 
     // Update is called once per frame
     void Update()
     {
-        tmp[0] = Materials[idx];
-        gameObject.GetComponent<Renderer>().materials = tmp;
+        GetComponent<Renderer>().material = Materials[(int)status];
     }
 
-    public void SetMaterial(int no)
+    // É^ÉCÉãÇ™ïœçXÇ∑ÇÈÇΩÇ—Ç…åƒÇ‘Ç∆Ç¢Ç¢Ç©Ç‡
+    public void SetMaterial(bool isWalk)
     {
-        idx = no;
+        if (isWalk)
+        {
+            status = TileStatus.Up;
+        }
+        else
+        {
+            status = TileStatus.Grass;
+        }
+
+
     }
 }

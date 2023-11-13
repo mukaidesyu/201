@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Tilemanager : MonoBehaviour, Clickable
 {
+    // 歩けるやつ
     public bool walkflag = false;
 
-    private int TileNo = 0;
+    public int TileNo;
 
     public int putno = 0;
+
+    public bool Goalflag = false;
 
     public void WalkFlag()
     {
@@ -26,26 +29,45 @@ public class Tilemanager : MonoBehaviour, Clickable
         return walkflag;
     }
 
+    public void Startpanel()
+    {
+        walkflag = true;
+    }
+
+    public void Goalpanel()
+    {
+        Goalflag = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         gameObject.GetComponent<Renderer>().material.color = Color.red;
+  
         TileNo++;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (walkflag == true)
+        // パネルの状態によって色が変わる
+        // タイルのタグも変わる
+        switch (walkflag)
         {
-            gameObject.GetComponent<Renderer>().material.color = Color.yellow;
-        }
-        else
-        {
-            gameObject.GetComponent<Renderer>().material.color = Color.red;
+            case true:
+                this.gameObject.layer = 6;
+                break;
+            case false:
+                this.gameObject.layer = 7;
+                break;
         }
 
+        this.GetComponent<Tile_Material>().SetMaterial(walkflag);
+
+        if (Goalflag == true)
+        {
+            gameObject.GetComponent<Renderer>().material.color = Color.gray;
+        }
     }
 
 
