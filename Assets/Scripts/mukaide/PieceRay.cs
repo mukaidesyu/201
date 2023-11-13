@@ -43,10 +43,10 @@ public class PieceRay : MonoBehaviour
                 //Debug.Log(hit.collider.gameObject);
                 Debug.DrawRay(transform.position, Vector3.down, Color.red);
                 Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
-                putflag = true;// ïœçXëO//putflag = c.PutWalkFlag();
+                putflag = c.PutWalkFlag();
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    if (piece.flagp() == true)// Ç±ÇÃï”å¥àˆ
+                    if (piece.flagp() == true)
                     {
                         c.WalkFlag();
                         c.PutNo();

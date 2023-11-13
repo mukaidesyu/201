@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tilemanager : MonoBehaviour, Clickable
 {
+    // 歩けるやつ
     public bool walkflag = false;
 
     public int TileNo;
@@ -48,18 +49,22 @@ public class Tilemanager : MonoBehaviour, Clickable
 
     // Update is called once per frame
     void Update()
-    { 
-
-        if (walkflag == true)
+    {
+        // パネルの状態によって色が変わる
+        // タイルのタグも変わる
+        switch (walkflag)
         {
-            gameObject.GetComponent<Renderer>().material.color = Color.yellow;
-        }
-        else
-        {
-            gameObject.GetComponent<Renderer>().material.color = Color.red;
+            case true:
+                this.gameObject.layer = 6;
+                break;
+            case false:
+                this.gameObject.layer = 7;
+                break;
         }
 
-        if(Goalflag == true)
+        this.GetComponent<Tile_Material>().SetMaterial(walkflag);
+
+        if (Goalflag == true)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.gray;
         }

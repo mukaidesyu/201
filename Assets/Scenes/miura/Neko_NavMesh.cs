@@ -19,6 +19,14 @@ public class Neko_NavMesh : MonoBehaviour
     void Update()
     {
         m_Agent.SetDestination(m_Target.position);
+
+
+        if (Vector3.Distance(this.transform.position, m_Target.position) < 1.0)
+        {
+
+
+        }
+
     }
 
 }
