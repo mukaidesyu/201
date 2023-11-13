@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Neko_NavMesh : MonoBehaviour
 {
@@ -23,8 +24,7 @@ public class Neko_NavMesh : MonoBehaviour
 
         if (Vector3.Distance(this.transform.position, m_Target.position) < 1.0)
         {
-
-
+            SceneManager.LoadScene("StartScene");
         }
 
     }
