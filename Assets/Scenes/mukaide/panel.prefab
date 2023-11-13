@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkflag: 0
-  TileNo: 0
+  TileNo: 120
   putno: 0
   Goalflag: 0
 --- !u!114 &4688945455434805813

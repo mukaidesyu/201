@@ -6,6 +6,8 @@ public class Tile_select : MonoBehaviour
 {
     // 歩けるパネルかどうか
     public bool IsWalk;
+    // タイルのID
+    [SerializeField]int tileID;
 
     // Start is called before the first frame update
     void Start()
@@ -30,5 +32,10 @@ public class Tile_select : MonoBehaviour
         }
 
         this.GetComponent<Tile_Material>().SetMaterial(IsWalk);
+    }
+
+    public void SetTileID(int no)
+    {
+        tileID = no;
     }
 }

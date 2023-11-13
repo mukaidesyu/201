@@ -16,6 +16,7 @@ public class tile_miura : MonoBehaviour
             for (int col = 0; col < _cols ; col++)
             {
                 _tile.name = "" + i;
+                _tile.GetComponent<Tile_select>().SetTileID(i);
                 //ƒpƒlƒ‹‚Ì¶¬
                 Instantiate(_tile, new Vector3(row, 0,col),
                    Quaternion.Euler(90,0,0), transform);

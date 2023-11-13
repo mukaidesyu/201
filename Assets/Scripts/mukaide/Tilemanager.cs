@@ -7,7 +7,7 @@ public class Tilemanager : MonoBehaviour, Clickable
     // 歩けるやつ
     public bool walkflag = false;
 
-    public int TileNo;
+    [SerializeField]int TileNo; // 識別番号
 
     public int putno = 0;
 
@@ -43,8 +43,6 @@ public class Tilemanager : MonoBehaviour, Clickable
     void Start()
     {
         gameObject.GetComponent<Renderer>().material.color = Color.red;
-  
-        TileNo++;
     }
 
     // Update is called once per frame
@@ -70,5 +68,10 @@ public class Tilemanager : MonoBehaviour, Clickable
         }
     }
 
+    // 外からタイル番号をセットする関数
+    public void SetTileNo(int no)
+    {
+        TileNo = no;
+    }
 
 }

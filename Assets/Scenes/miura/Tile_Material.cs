@@ -17,6 +17,7 @@ public class Tile_Material : MonoBehaviour
 
     Material[] tmp;
     TileStatus status;
+
     public Material[] Materials;
     // Start is called before the first frame update
     void Start()

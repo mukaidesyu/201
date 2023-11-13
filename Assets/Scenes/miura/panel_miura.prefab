@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsWalk: 0
+  tileID: 99
 --- !u!114 &5110567478042991069
 MonoBehaviour:
   m_ObjectHideFlags: 0

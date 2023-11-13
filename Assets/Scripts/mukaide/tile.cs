@@ -20,6 +20,9 @@ public class tile : MonoBehaviour
             for (int col = -5; col < _cols; col++)
             {
                 _tile.name = "panel" + i;
+                // タイルにIDを設定する
+                _tile.GetComponent<Tilemanager>().SetTileNo(i);
+
                 //パネルの生成
                 Instantiate(_tile, new Vector3(row,0, col),
                     Quaternion.Euler(90, 0, 0), transform);
