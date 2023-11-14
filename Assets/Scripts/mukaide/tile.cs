@@ -66,14 +66,23 @@ public class tile : MonoBehaviour
     public GameObject GetOnTile()
     {
         List < GameObject > tmp = new List<GameObject>();
+        int trueCount = 0;
         for (int j = 0; j < i; j++)
         {
+            // タイルが被ってるか判断
             if(cd[j].GetComponent<Tilemanager>().GetOnTile() == true)
             {
-
+                tmp.Add(cd[j].gameObject);
+                trueCount++;
             }
-
         }
 
+
+        // 被ったタイルの中からランダムで1つ引き渡す
+        if(trueCount <= 0) return null;
+        int rand = Random.Range(1, trueCount);
+        return tmp[rand].gameObject;
+
+        // ↑もしかしてリストのdeleteいらない？？
     }
 }
