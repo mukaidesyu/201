@@ -48,7 +48,7 @@ public class Move : MonoBehaviour
         RaycastHit hit;
 
         //ˆÚ“®
-        if (Input.GetKeyDown(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)
+        if (Input.GetKey(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)
         {
             Debug.Log(Input.GetAxis("Vertical"));
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
@@ -56,27 +56,27 @@ public class Move : MonoBehaviour
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            targetPos += new Vector3(0, 0, 1) * distance;
+            this.transform.position += new Vector3(0, 0, 0.05f);
         }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Vertical") <= -1.0f)
+        else if (Input.GetKey(KeyCode.S) || Input.GetAxis("Vertical") <= -1.0f)
         {
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
             {
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            targetPos += new Vector3(0, 0, -1) * distance;
+            this.transform.position += new Vector3(0, 0, -0.05f);
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A))
         {
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
             {
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            targetPos += new Vector3(-1, 0, 0) * distance;
+            this.transform.position += new Vector3(-0.05f, 0, 0);
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         {
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
             {
@@ -85,7 +85,7 @@ public class Move : MonoBehaviour
                     old = hit.collider.gameObject;
                 }
             }
-            targetPos += new Vector3(1, 0, 0) * distance;
+            this.transform.position += new Vector3(0.05f, 0, 0);
         }
 
         //‰ñ“]
@@ -97,9 +97,6 @@ public class Move : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, 0, -90));
         }
-
-        MovePlyer(targetPos);
-
 
         //êŠ‚ð‘I‚Ô
         if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
