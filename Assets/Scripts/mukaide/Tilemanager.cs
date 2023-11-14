@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Tilemanager : MonoBehaviour, Clickable
 {
+    int TileNo; // 識別番号
+
+    // 猫と連携する系の関数
     // 歩けるやつ
-    public bool walkflag = false;
-
-    [SerializeField]int TileNo; // 識別番号
-
-    public int putno = 0;
-
-    public bool Goalflag = false;
+    public bool walkflag = false; // 歩けるピースかどうか
+    public bool Goalflag = false; // 自分かゴールなのかどうか
+    bool nowPut = false; // 今置いたかどうか
+    bool onTile = false; // タイルが被ったかどうか
+    bool walkedNeko = false; // 猫があるいたかどうか
 
     public void WalkFlag()
     {
@@ -68,10 +69,40 @@ public class Tilemanager : MonoBehaviour, Clickable
         }
     }
 
-    // 外からタイル番号をセットする関数
+    // ゲッターとセッター
+    // タイルNO
     public void SetTileNo(int no)
     {
         TileNo = no;
     }
+    public int GetTileNo()
+    {
+        return TileNo;
+    }
 
+    // 猫が使いそうな
+    public void SetNowPut(bool set)
+    {
+        nowPut = set;
+    }
+    public bool GetNowPut()
+    {
+        return nowPut;
+    }
+    public void OnTile(bool set)
+    {
+        onTile = set;
+    }
+    public bool GetOnTile()
+    {
+        return onTile;
+    }
+    public void SetWalkedNeko(bool set)
+    {
+        walkedNeko = set;
+    }
+    public bool GetWalkedNeko()
+    {
+        return walkedNeko;
+    }
 }

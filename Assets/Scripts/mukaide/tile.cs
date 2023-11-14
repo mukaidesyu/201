@@ -10,8 +10,8 @@ public class tile : MonoBehaviour
     [SerializeField] private int _cols = 3;
     private int i = 0;
 
+    // 生成したタイル全部のリスト
     List<GameObject> cd = new List<GameObject>();
-    List<bool> flag = new List<bool>();
 
     private void Awake()
     {
@@ -36,7 +36,6 @@ public class tile : MonoBehaviour
         for(int j = 0;j < i;j++)
         {
             cd.Add(transform.GetChild(j).gameObject);
-            flag.Add(cd[j].GetComponent<Tilemanager>().PutWalkFlag());
             if(j <= 0)
             {
                 cd[j].GetComponent<Tilemanager>().Startpanel();
@@ -51,13 +50,30 @@ public class tile : MonoBehaviour
 
     private void Update()
     {
-        for (int j = 0; j < i ; j++)
-        {
-            flag[j] = cd[j].GetComponent<Tilemanager>().PutWalkFlag();
-            //Debug.Log(flag[j]);
-        }
 
-        
     }
 
+    // 縦横のゲッターとセッター
+    public int GetRows()
+    {
+        return _rows;
+    }
+    public int GetCols()
+    {
+        return _cols;
+    }
+
+    public GameObject GetOnTile()
+    {
+        List < GameObject > tmp = new List<GameObject>();
+        for (int j = 0; j < i; j++)
+        {
+            if(cd[j].GetComponent<Tilemanager>().GetOnTile() == true)
+            {
+
+            }
+
+        }
+
+    }
 }

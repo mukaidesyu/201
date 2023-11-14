@@ -18,6 +18,8 @@ public class Tile_Material : MonoBehaviour
     Material[] tmp;
     TileStatus status;
 
+    [SerializeField]GameObject UpPanel;
+
     public Material[] Materials;
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,12 @@ public class Tile_Material : MonoBehaviour
     // タイルが変更するたびに呼ぶといいかも
     public void SetMaterial(bool isWalk)
     {
+        // パネルのIDを取得
+        int id = GetComponent<Tilemanager>().GetTileNo();
+
+        // 上のパネルを取得
+        if (id > 0) { UpPanel = GameObject.Find("panel" + (id++) + "(Clone)"); } 
+
         if (isWalk)
         {
             status = TileStatus.Up;
