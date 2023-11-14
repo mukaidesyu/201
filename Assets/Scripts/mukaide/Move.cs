@@ -46,20 +46,6 @@ public class Move : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        //‰æ–ÊŠO”»’è
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 10.0f))
-        {
-            Debug.DrawRay(transform.position, Vector3.down, Color.red);
-
-            if (hit.collider.CompareTag("judgment"))
-            {
-                Debug.Log(old);
-                //targetPos = new Vector3(0, 0, 0) * distance;
-               // targetPos = new Vector3(old.transform.position.x, 0.1f, old.transform.position.z);
-            }
-        }
-
-        //Debug.Log(old);
 
         //ˆÚ“®
         if (Input.GetKeyDown(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)
