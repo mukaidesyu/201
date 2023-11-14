@@ -63,6 +63,7 @@ public class tile : MonoBehaviour
         return _cols;
     }
 
+    // 被ったピースをなんかいっこ返す
     public GameObject GetOnTile()
     {
         List < GameObject > tmp = new List<GameObject>();
@@ -84,5 +85,55 @@ public class tile : MonoBehaviour
         return tmp[rand].gameObject;
 
         // ↑もしかしてリストのdeleteいらない？？
+    }
+
+    // 置いたピースの中で1番遠いピースを返す
+    public GameObject GetFarTile(GameObject onTile) // 引数：1つに決めた後の被ったピース
+    {
+        List<GameObject> tmp = new List<GameObject>();
+        for (int j = 0; j < i; j++)
+        {
+            // 今置いたタイル全てを取得
+            if (cd[j].GetComponent<Tilemanager>().GetNowPut() == true)
+            {
+                tmp.Add(cd[j].gameObject);
+            }
+        }
+
+        GameObject farTile = tmp[0].gameObject;
+
+        for (int j = 1; j < tmp.Count ;j++)
+        {
+            // 今1番遠いタイルより今びのタイルが遠かったら
+            if (Vector3.Distance(farTile.transform.position,onTile.transform.position)
+                < Vector3.Distance(tmp[j].transform.position, onTile.transform.position))
+            {
+                farTile = tmp[j].gameObject;// 入れ替え
+            }
+            else if (Vector3.Distance(farTile.transform.position, onTile.transform.position)
+                == Vector3.Distance(tmp[j].transform.position, onTile.transform.position)) // 一緒だったら50%で入れ替え
+            {
+                int rand = Random.Range(0, 1);
+                if(rand == 0)
+                {
+                    farTile = tmp[j].gameObject;
+                }
+            }
+        }
+
+        return farTile.gameObject;
+    }
+
+
+    // 全部のタイルを今置いてないフラグにする
+    public void EndNowPut()
+    {
+        for (int j = 0; j < i; j++)
+        {
+            if (cd[j].GetComponent<Tilemanager>().GetNowPut() == true)
+            {
+                cd[j].GetComponent<Tilemanager>().SetNowPut(false);
+            }
+        }
     }
 }
