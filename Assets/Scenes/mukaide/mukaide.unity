@@ -534,7 +534,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &250635367
 GameObject:
@@ -613,7 +613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 756b0c574f380324a85262e736c0418b, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 756b0c574f380324a85262e736c0418b, type: 3}
       propertyPath: m_LocalScale.x
@@ -1111,7 +1111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766e79d713b020942a2b23efcff94af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Target: {fileID: 240118569}
+  target: {fileID: 0}
 --- !u!135 &1144678881
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1220,7 +1220,7 @@ RectTransform:
   - {fileID: 860993191}
   - {fileID: 378753586}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2037,7 +2037,7 @@ GameObject:
   - component: {fileID: 1924298264}
   - component: {fileID: 1924298263}
   m_Layer: 0
-  m_Name: NavMesh Surface
+  m_Name: NavMeshSurface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2100,5 +2100,5 @@ Transform:
   m_Children:
   - {fileID: 1600064950}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

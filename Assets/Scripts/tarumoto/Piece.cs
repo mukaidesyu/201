@@ -23,12 +23,18 @@ public class Piece : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Return))
         {
-            for (int i = 0; i < this.transform.childCount; i++)
+            int i = 0;
+            for (i = 0; i < this.transform.childCount; i++)
             {
                 if (pc[i].GetComponent<PieceRay>().pfl() == true)
                 {
                     pflag = true;
                 }
+            }
+
+            if (i >= this.transform.childCount)
+            {
+
             }
         }
 

@@ -23,7 +23,7 @@ public class judge : MonoBehaviour, Clickable
 
     }
 
-    public void OnTile(bool set)
+    public void SetOnTile(bool set)
     {
 
     }

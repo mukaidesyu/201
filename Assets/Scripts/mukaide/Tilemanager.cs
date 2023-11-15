@@ -89,7 +89,7 @@ public class Tilemanager : MonoBehaviour, Clickable
     {
         return nowPut;
     }
-    public void OnTile(bool set)
+    public void SetOnTile(bool set)
     {
         onTile = set;
     }

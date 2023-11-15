@@ -111,6 +111,21 @@ public class Move : MonoBehaviour
                     //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
                     activePiece = spawner.SpawnPiece(this.gameObject);
                     Pice = activePiece.gameObject;
+
+
+                    // ここで渡すピースを判定する
+                    tile tileScript = GameObject.Find("Tile").GetComponent<tile>();
+                    GameObject onTile = tileScript.GetOnTile();
+                    GameObject farTile = tileScript.GetFarTile(onTile);
+                    
+                    // 猫に渡す
+                    Neko_NavMesh nekoScript = GameObject.Find("Neko").GetComponent<Neko_NavMesh>();
+                    nekoScript.SetTarget(onTile);
+                    nekoScript.SetNextTarget(farTile);
+
+
+                    // 全フラグ下げる
+                    tileScript.EndNowPut();
                 }
             }
         }
@@ -121,5 +136,11 @@ public class Move : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPosition,
             _speed * Time.deltaTime);
+    }
+
+    private void FixedUpdate()
+    {
+        //ベイク
+        GameObject.Find("NavMeshSurface").GetComponent<NavMesh_Surface>().Bake();
     }
 }

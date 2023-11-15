@@ -82,7 +82,7 @@ public class tile : MonoBehaviour
         // 被ったタイルの中からランダムで1つ引き渡す
         if(trueCount <= 0) return null;
         int rand = Random.Range(1, trueCount);
-        return tmp[rand].gameObject;
+        return tmp[rand - 1].gameObject;
 
         // ↑もしかしてリストのdeleteいらない？？
     }
@@ -134,6 +134,12 @@ public class tile : MonoBehaviour
             {
                 cd[j].GetComponent<Tilemanager>().SetNowPut(false);
             }
+
+            if (cd[j].GetComponent<Tilemanager>().GetOnTile() == true)
+            {
+                cd[j].GetComponent<Tilemanager>().SetOnTile(false);
+            }
         }
+
     }
 }

@@ -9,7 +9,7 @@ interface Clickable
     bool PutWalkFlag();
 
     void SetNowPut(bool set);
-    void OnTile(bool set);
+    void SetOnTile(bool set);
 }
 
 public class PieceRay : MonoBehaviour
@@ -54,7 +54,7 @@ public class PieceRay : MonoBehaviour
                         c.SetNowPut(true);
                         if(putflag == true)
                         {
-                            c.OnTile(true);
+                            c.SetOnTile(true);
                         }
                     }
 

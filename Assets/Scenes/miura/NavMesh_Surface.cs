@@ -12,21 +12,18 @@ public class NavMesh_Surface : MonoBehaviour
     void Start()
     {
         // この処理はタイルを出した後かも～
-        Build();
+        Bake();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            Build();
-        }
+
 
     }
 
     // ナビメッシュのBulid関数
-    public void Build()
+    public void Bake()
     {
         surface.BuildNavMesh();
     }

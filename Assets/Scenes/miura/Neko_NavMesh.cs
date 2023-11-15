@@ -7,26 +7,44 @@ using UnityEngine.SceneManagement;
 public class Neko_NavMesh : MonoBehaviour
 {
     [SerializeField]
-    private Transform m_Target;
+    private Transform target;
+    private Transform nextTarget;
     private NavMeshAgent m_Agent;
 
+    // ターゲットにする物のリスト
 
 
     void Start()
     {
+        target = this.transform;
+        nextTarget = null;
         m_Agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
-        m_Agent.SetDestination(m_Target.position);
-
-
-        if (Vector3.Distance(this.transform.position, m_Target.position) < 1.0)
+        m_Agent.SetDestination(target.position);
+        if(nextTarget != null && Vector3.Distance(this.transform.position, target.transform.position) < 1)
         {
-            SceneManager.LoadScene("StartScene");
+            target = nextTarget;
+            nextTarget = null;
+        }
+
+
+        if (Vector3.Distance(this.transform.position, target.position) < 1.0)
+        {
+            //SceneManager.LoadScene("StartScene");
         }
 
     }
 
+    // ターゲットセット
+    public void SetTarget(GameObject _target)
+    {
+        target = _target.transform;
+    }
+    public void SetNextTarget(GameObject _next)
+    {
+        nextTarget = _next.transform;
+    }
 }
