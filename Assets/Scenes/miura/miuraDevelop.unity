@@ -1637,7 +1637,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  move: {x: 0, y: 0}
   putflag: 1
   feald: 0
   putNo: 0
