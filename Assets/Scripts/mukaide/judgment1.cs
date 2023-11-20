@@ -9,7 +9,6 @@ public class judgment1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.transform.position = new Vector3(-6f, 7.2f, 0.3f);
 
     }
 

@@ -8,9 +8,7 @@ public class judgment3 : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-
-        this.gameObject.transform.position = new Vector3(-0f, 1.2f, 0.3f);
+    { 
     }
 
     // Update is called once per frame
