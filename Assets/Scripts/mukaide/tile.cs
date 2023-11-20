@@ -43,6 +43,8 @@ public class tile : MonoBehaviour
             if(j == i-1)
             {
                 cd[j].GetComponent<Tilemanager>().Goalpanel();
+                // ”L‚ÉƒS[ƒ‹‚Ìƒ^ƒCƒ‹‚ğ“n‚·
+                GameObject.Find("Neko").GetComponent<Neko_NavMesh>().SetGoal(cd[j]);
             }
         }
 
