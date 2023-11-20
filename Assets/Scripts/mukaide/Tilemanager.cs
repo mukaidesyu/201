@@ -39,6 +39,10 @@ public class Tilemanager : MonoBehaviour, Clickable
     {
         Goalflag = true;
     }
+    bool GetGoalFlag() // 11/20ŽO‰Y’Ç‹L
+    {
+        return Goalflag;
+    }
 
     // Start is called before the first frame update
     void Start()
