@@ -29,6 +29,11 @@ public class Neko_NavMesh : MonoBehaviour
         {
             target = goalPanel.transform;
             nextTarget = null;
+            // ƒS[ƒ‹”»’è
+            if (Vector3.Distance(this.transform.position, target.position) < 1.0)
+            {
+                SceneManager.LoadScene("StartScene");
+            }
         }
         else if(nextTarget != null && Vector3.Distance(this.transform.position, target.transform.position) < 1)
         {
@@ -38,11 +43,7 @@ public class Neko_NavMesh : MonoBehaviour
         m_Agent.SetDestination(target.position); // ˆÚ“®ˆ—
 
 
-        // ƒS[ƒ‹”»’è
-        if (Vector3.Distance(this.transform.position, target.position) < 1.0)
-        {
-            SceneManager.LoadScene("StartScene");
-        }
+
 
     }
 
