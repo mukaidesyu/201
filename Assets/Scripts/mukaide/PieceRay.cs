@@ -7,6 +7,9 @@ interface Clickable
     void WalkFlag();
     int PutNo();
     bool PutWalkFlag();
+
+    void SetNowPut(bool set);
+    void SetOnTile(bool set);
 }
 
 public class PieceRay : MonoBehaviour
@@ -40,8 +43,6 @@ public class PieceRay : MonoBehaviour
         {
             if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
-                //Debug.Log(hit.collider.gameObject);
-                Debug.DrawRay(transform.position, Vector3.down, Color.red);
                 Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
                 putflag = c.PutWalkFlag();
                 if (Input.GetKeyDown(KeyCode.Return))
@@ -50,7 +51,11 @@ public class PieceRay : MonoBehaviour
                     {
                         c.WalkFlag();
                         c.PutNo();
-                        Debug.Log("êFïœÇ¶ÇÈ");
+                        c.SetNowPut(true);
+                        if(putflag == true)
+                        {
+                            c.SetOnTile(true);
+                        }
                     }
 
                 }

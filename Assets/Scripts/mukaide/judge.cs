@@ -18,7 +18,15 @@ public class judge : MonoBehaviour, Clickable
     {
         return false;
     }
+    public void SetNowPut(bool set)
+    {
 
+    }
+
+    public void SetOnTile(bool set)
+    {
+
+    }
 
     // Start is called before the first frame update
     void Start()

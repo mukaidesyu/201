@@ -46,23 +46,9 @@ public class Move : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        //画面外判定
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 10.0f))
-        {
-            Debug.DrawRay(transform.position, Vector3.down, Color.red);
-
-            if (hit.collider.CompareTag("judgment"))
-            {
-                Debug.Log(old);
-                //targetPos = new Vector3(0, 0, 0) * distance;
-               // targetPos = new Vector3(old.transform.position.x, 0.1f, old.transform.position.z);
-            }
-        }
-
-        //Debug.Log(old);
 
         //移動
-        if (Input.GetKeyDown(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)
+        if (Input.GetKey(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)
         {
             Debug.Log(Input.GetAxis("Vertical"));
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
@@ -70,27 +56,27 @@ public class Move : MonoBehaviour
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            targetPos += new Vector3(0, 0, 1) * distance;
+            this.transform.position += new Vector3(0, 0, 0.05f);
         }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Vertical") <= -1.0f)
+        else if (Input.GetKey(KeyCode.S) || Input.GetAxis("Vertical") <= -1.0f)
         {
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
             {
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            targetPos += new Vector3(0, 0, -1) * distance;
+            this.transform.position += new Vector3(0, 0, -0.05f);
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A))
         {
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
             {
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            targetPos += new Vector3(-1, 0, 0) * distance;
+            this.transform.position += new Vector3(-0.05f, 0, 0);
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         {
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
             {
@@ -99,7 +85,7 @@ public class Move : MonoBehaviour
                     old = hit.collider.gameObject;
                 }
             }
-            targetPos += new Vector3(1, 0, 0) * distance;
+            this.transform.position += new Vector3(0.05f, 0, 0);
         }
 
         //回転
@@ -111,9 +97,6 @@ public class Move : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, 0, -90));
         }
-
-        MovePlyer(targetPos);
-
 
         //場所を選ぶ
         if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
@@ -128,6 +111,21 @@ public class Move : MonoBehaviour
                     //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
                     activePiece = spawner.SpawnPiece(this.gameObject);
                     Pice = activePiece.gameObject;
+
+
+                    // ここで渡すピースを判定する
+                    tile tileScript = GameObject.Find("Tile").GetComponent<tile>();
+                    GameObject onTile = tileScript.GetOnTile();
+                    GameObject farTile = tileScript.GetFarTile(onTile);
+                    
+                    // 猫に渡す
+                    Neko_NavMesh nekoScript = GameObject.Find("Neko").GetComponent<Neko_NavMesh>();
+                    nekoScript.SetTarget(onTile);
+                    nekoScript.SetNextTarget(farTile);
+
+
+                    // 全フラグ下げる
+                    tileScript.EndNowPut();
                 }
             }
         }
@@ -138,5 +136,11 @@ public class Move : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPosition,
             _speed * Time.deltaTime);
+    }
+
+    private void FixedUpdate()
+    {
+        //ベイク
+        GameObject.Find("NavMeshSurface").GetComponent<NavMesh_Surface>().Bake();
     }
 }

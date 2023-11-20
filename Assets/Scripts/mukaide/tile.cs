@@ -10,8 +10,8 @@ public class tile : MonoBehaviour
     [SerializeField] private int _cols = 3;
     private int i = 0;
 
+    // 生成したタイル全部のリスト
     List<GameObject> cd = new List<GameObject>();
-    List<bool> flag = new List<bool>();
 
     private void Awake()
     {
@@ -20,6 +20,9 @@ public class tile : MonoBehaviour
             for (int col = -5; col < _cols; col++)
             {
                 _tile.name = "panel" + i;
+                // タイルにIDを設定する
+                _tile.GetComponent<Tilemanager>().SetTileNo(i);
+
                 //パネルの生成
                 Instantiate(_tile, new Vector3(row,0, col),
                     Quaternion.Euler(90, 0, 0), transform);
@@ -33,7 +36,6 @@ public class tile : MonoBehaviour
         for(int j = 0;j < i;j++)
         {
             cd.Add(transform.GetChild(j).gameObject);
-            flag.Add(cd[j].GetComponent<Tilemanager>().PutWalkFlag());
             if(j <= 0)
             {
                 cd[j].GetComponent<Tilemanager>().Startpanel();
@@ -48,13 +50,96 @@ public class tile : MonoBehaviour
 
     private void Update()
     {
-        for (int j = 0; j < i ; j++)
-        {
-            flag[j] = cd[j].GetComponent<Tilemanager>().PutWalkFlag();
-            //Debug.Log(flag[j]);
-        }
 
-        
     }
 
+    // 縦横のゲッターとセッター
+    public int GetRows()
+    {
+        return _rows;
+    }
+    public int GetCols()
+    {
+        return _cols;
+    }
+
+    // 被ったピースをなんかいっこ返す
+    public GameObject GetOnTile()
+    {
+        List < GameObject > tmp = new List<GameObject>();
+        int trueCount = 0;
+        for (int j = 0; j < i; j++)
+        {
+            // タイルが被ってるか判断
+            if(cd[j].GetComponent<Tilemanager>().GetOnTile() == true)
+            {
+                tmp.Add(cd[j].gameObject);
+                trueCount++;
+            }
+        }
+
+
+        // 被ったタイルの中からランダムで1つ引き渡す
+        if(trueCount <= 0) return null;
+        int rand = Random.Range(1, trueCount);
+        return tmp[rand - 1].gameObject;
+
+        // ↑もしかしてリストのdeleteいらない？？
+    }
+
+    // 置いたピースの中で1番遠いピースを返す
+    public GameObject GetFarTile(GameObject onTile) // 引数：1つに決めた後の被ったピース
+    {
+        List<GameObject> tmp = new List<GameObject>();
+        for (int j = 0; j < i; j++)
+        {
+            // 今置いたタイル全てを取得
+            if (cd[j].GetComponent<Tilemanager>().GetNowPut() == true)
+            {
+                tmp.Add(cd[j].gameObject);
+            }
+        }
+
+        GameObject farTile = tmp[0].gameObject;
+
+        for (int j = 1; j < tmp.Count ;j++)
+        {
+            // 今1番遠いタイルより今びのタイルが遠かったら
+            if (Vector3.Distance(farTile.transform.position,onTile.transform.position)
+                < Vector3.Distance(tmp[j].transform.position, onTile.transform.position))
+            {
+                farTile = tmp[j].gameObject;// 入れ替え
+            }
+            else if (Vector3.Distance(farTile.transform.position, onTile.transform.position)
+                == Vector3.Distance(tmp[j].transform.position, onTile.transform.position)) // 一緒だったら50%で入れ替え
+            {
+                int rand = Random.Range(0, 1);
+                if(rand == 0)
+                {
+                    farTile = tmp[j].gameObject;
+                }
+            }
+        }
+
+        return farTile.gameObject;
+    }
+
+
+    // 全部のタイルを今置いてないフラグにする
+    public void EndNowPut()
+    {
+        for (int j = 0; j < i; j++)
+        {
+            if (cd[j].GetComponent<Tilemanager>().GetNowPut() == true)
+            {
+                cd[j].GetComponent<Tilemanager>().SetNowPut(false);
+            }
+
+            if (cd[j].GetComponent<Tilemanager>().GetOnTile() == true)
+            {
+                cd[j].GetComponent<Tilemanager>().SetOnTile(false);
+            }
+        }
+
+    }
 }
