@@ -30,4 +30,13 @@ public class SceneController : MonoBehaviour
         await Task.Delay(200);//暗転するまで待つ
         SceneManager.LoadScene(sceneName);//シーンチェンジ
     }
+
+    public void EndGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
+#else
+    Application.Quit();//ゲームプレイ終了
+#endif
+    }
 }
