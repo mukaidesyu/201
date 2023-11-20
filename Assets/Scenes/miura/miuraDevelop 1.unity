@@ -1948,8 +1948,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tile: {fileID: 7452266880455318879, guid: 20078514f2f727a4abfd74832800d819, type: 3}
-  _rows: 6
-  _cols: 6
+  _rows: 11
+  _cols: 11
 --- !u!4 &1600064950
 Transform:
   m_ObjectHideFlags: 0
