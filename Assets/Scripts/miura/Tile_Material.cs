@@ -57,7 +57,12 @@ public class Tile_Material : MonoBehaviour
                 {
                     status = TileStatus.Warm;
                 }
-                RightPanel = GameObject.Find("panel" + (id + 11) + "(Clone)").GetComponent<Tilemanager>();
+                DownPanel = GameObject.Find("panel" + (id - 1) + "(Clone)").GetComponent<Tilemanager>();
+
+                int cols = GameObject.Find("Tile").GetComponent<tile>()._cols;
+                RightPanel = GameObject.Find("panel" + (id + cols) + "(Clone)").GetComponent<Tilemanager>();
+
+                LeftPanel = GameObject.Find("panel" + (id + -cols) + "(Clone)").GetComponent<Tilemanager>();
             }
         }
         else
