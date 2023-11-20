@@ -7,7 +7,7 @@ public class Move : MonoBehaviour
 {
     [SerializeField] private float _speed = 5.0f;
     private float distance = 1.0f;
-    public Vector2 move;
+    private float move = 5.0f;
     private Vector3 targetPos;
     public bool putflag = true;
 
@@ -50,13 +50,12 @@ public class Move : MonoBehaviour
         //ˆÚ“®
         if (Input.GetKey(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)
         {
-            Debug.Log(Input.GetAxis("Vertical"));
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
             {
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            this.transform.position += new Vector3(0, 0, 0.05f);
+            this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetAxis("Vertical") <= -1.0f)
         {
@@ -65,7 +64,7 @@ public class Move : MonoBehaviour
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            this.transform.position += new Vector3(0, 0, -0.05f);
+            this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
         }
         else if (Input.GetKey(KeyCode.A) || Input.GetAxis("Horizontal") <= -1.0f)
         {
@@ -74,7 +73,7 @@ public class Move : MonoBehaviour
                 if (hit.collider.CompareTag("tile"))
                     old = hit.collider.gameObject;
             }
-            this.transform.position += new Vector3(-0.05f, 0, 0);
+            this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetAxis("Horizontal") >= 1.0f)
         {
@@ -85,7 +84,7 @@ public class Move : MonoBehaviour
                     old = hit.collider.gameObject;
                 }
             }
-            this.transform.position += new Vector3(0.05f, 0, 0);
+            this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
         }
 
         //‰ñ“]
