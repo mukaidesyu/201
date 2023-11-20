@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15aa55e103f84f041b8bfae3d4eca1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TileNo: 120
   walkflag: 0
   Goalflag: 0
 --- !u!114 &4688945455434805813
@@ -126,9 +127,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpPanel: {fileID: 0}
+  id: 0
   Materials:
   - {fileID: 2100000, guid: 7c962b51045eea446b81c5dfe6bc078f, type: 2}
   - {fileID: 2100000, guid: a80c02a4e82ca2d4ab2428043638bbb3, type: 2}
   - {fileID: 2100000, guid: 195e7149a711ec54faa3a57567dc2ab8, type: 2}
   - {fileID: 2100000, guid: 8432eb8af200a044c8d5ee82e2796b58, type: 2}
   - {fileID: 2100000, guid: f35eb14d517560c4aae73cdb8aba142b, type: 2}
+  - {fileID: 2100000, guid: e5d05c64c5e5a0c4f92713ea99785768, type: 2}
+  - {fileID: 2100000, guid: f615ee45216ede44c8f2e92501f4da87, type: 2}

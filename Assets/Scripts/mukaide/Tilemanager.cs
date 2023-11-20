@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tilemanager : MonoBehaviour, Clickable
 {
-    int TileNo; // ¯•Ê”Ô†
+    [SerializeField]  private int TileNo; // ¯•Ê”Ô†
 
     // ”L‚Æ˜AŒg‚·‚éŒn‚ÌŠÖ”
     // •à‚¯‚é‚â‚Â
