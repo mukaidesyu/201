@@ -6,8 +6,8 @@ public class tile : MonoBehaviour
 {
 
     [SerializeField] private GameObject _tile;
-    [SerializeField] private int _rows = 3;
-    [SerializeField] private int _cols = 3;
+    public int _rows = 3;
+    public int _cols = 3;
     private int i = 0;
 
     Rigidbody rb;
@@ -17,9 +17,9 @@ public class tile : MonoBehaviour
 
     private void Awake()
     {
-        for (int row = -5; row < _rows; row++)
+        for (int row = -5; row < _rows -5; row++)
         {
-            for (int col = -5; col < _cols; col++)
+            for (int col = -5; col < _cols -5; col++)
             {
                 _tile.name = "panel" + i;
                 // ƒ^ƒCƒ‹‚ÉID‚ðÝ’è‚·‚é
