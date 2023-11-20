@@ -10,6 +10,8 @@ public class tile : MonoBehaviour
     [SerializeField] private int _cols = 3;
     private int i = 0;
 
+    Rigidbody rb;
+
     // 生成したタイル全部のリスト
     List<GameObject> cd = new List<GameObject>();
 
@@ -47,6 +49,9 @@ public class tile : MonoBehaviour
                 GameObject.Find("Neko").GetComponent<Neko_NavMesh>().SetGoal(cd[j]);
             }
         }
+
+        //Rigidbodyの取得
+        rb = GetComponent<Rigidbody>();
 
     }
 
