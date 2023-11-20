@@ -49,7 +49,7 @@ public class Tile_Material : MonoBehaviour
 
             // ã‚Ìƒpƒlƒ‹‚ðŽæ“¾
             if (id > 0)
-            { Debug.Log("’Ê‚Á‚½"); UpPanel = GameObject.Find("panel" + (id + 1) + "(Clone)"); status = TileStatus.Warm; }
+            {  UpPanel = GameObject.Find("panel" + (id + 1) + "(Clone)"); status = TileStatus.Warm; }
 
         }
         else

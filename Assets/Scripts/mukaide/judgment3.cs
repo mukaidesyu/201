@@ -10,7 +10,7 @@ public class judgment3 : MonoBehaviour
     void Start()
     {
 
-
+        this.gameObject.transform.position = new Vector3(-0f, 1.2f, 0.3f);
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class judgment3 : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionStay(Collision collision)
     {
         putflag3 = false;
     }

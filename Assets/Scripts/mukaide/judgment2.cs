@@ -9,7 +9,7 @@ public class judgment2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        this.gameObject.transform.position = new Vector3(-6f, 5.2f, 0.3f);
 
     }
 
@@ -19,7 +19,7 @@ public class judgment2 : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionStay(Collision collision)
     {
         putflag2 = false;
     }
