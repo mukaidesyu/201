@@ -67,7 +67,7 @@ public class Move : MonoBehaviour
             }
             this.transform.position += new Vector3(0, 0, -0.05f);
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A) || Input.GetAxis("Horizontal") <= -1.0f)
         {
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
             {
@@ -76,7 +76,7 @@ public class Move : MonoBehaviour
             }
             this.transform.position += new Vector3(-0.05f, 0, 0);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || Input.GetAxis("Horizontal") >= 1.0f)
         {
             if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
             {
@@ -89,11 +89,11 @@ public class Move : MonoBehaviour
         }
 
         //‰ñ“]
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 4"))
         {
             transform.Rotate(new Vector3(0, 0, 90));
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown("joystick button 5"))
         {
             transform.Rotate(new Vector3(0, 0, -90));
         }
