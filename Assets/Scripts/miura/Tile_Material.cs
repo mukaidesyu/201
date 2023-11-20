@@ -19,7 +19,10 @@ public class Tile_Material : MonoBehaviour
     Material[] tmp;
     TileStatus status;
 
-    [SerializeField]GameObject UpPanel;
+    [SerializeField]Tilemanager UpPanel;
+    [SerializeField]Tilemanager RightPanel;
+    [SerializeField]Tilemanager LeftPanel;
+    [SerializeField]Tilemanager DownPanel;
 
     [SerializeField]  private int id;
 
@@ -42,15 +45,20 @@ public class Tile_Material : MonoBehaviour
     // タイルが変更するたびに呼ぶといいかも
     public void SetMaterial(bool isWalk)
     {
-
         if (isWalk)
         {
             status = TileStatus.Up;
-
             // 上のパネルを取得
             if (id > 0)
-            { Debug.Log("通った"); UpPanel = GameObject.Find("panel" + (id + 1) + "(Clone)"); status = TileStatus.Warm; }
-
+            {
+                /*Debug.Log("通った");*/
+                UpPanel = GameObject.Find("panel" + (id + 1) + "(Clone)").GetComponent<Tilemanager>();
+                if (UpPanel.PutWalkFlag() == true)
+                {
+                    status = TileStatus.Warm;
+                }
+                RightPanel = GameObject.Find("panel" + (id + 11) + "(Clone)").GetComponent<Tilemanager>();
+            }
         }
         else
         {

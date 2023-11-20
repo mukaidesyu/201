@@ -127,6 +127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpPanel: {fileID: 0}
+  RightPanel: {fileID: 0}
+  LeftPanel: {fileID: 0}
+  DownPanel: {fileID: 0}
   id: 0
   Materials:
   - {fileID: 2100000, guid: 7c962b51045eea446b81c5dfe6bc078f, type: 2}
