@@ -50,10 +50,6 @@ public class Tile_Material : MonoBehaviour
             status = TileStatus.Up;
             // ã‚Ìƒpƒlƒ‹‚ðŽæ“¾
             if (id > 0)
-<<<<<<< HEAD
-            {  UpPanel = GameObject.Find("panel" + (id + 1) + "(Clone)"); status = TileStatus.Warm; }
-
-=======
             {
                 /*Debug.Log("’Ê‚Á‚½");*/
                 UpPanel = GameObject.Find("panel" + (id + 1) + "(Clone)").GetComponent<Tilemanager>();
@@ -63,7 +59,6 @@ public class Tile_Material : MonoBehaviour
                 }
                 RightPanel = GameObject.Find("panel" + (id + 11) + "(Clone)").GetComponent<Tilemanager>();
             }
->>>>>>> feature/Kenchan
         }
         else
         {
