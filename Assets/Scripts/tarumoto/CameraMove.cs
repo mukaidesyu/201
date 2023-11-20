@@ -14,7 +14,7 @@ public class CameraMove : MonoBehaviour
     void Update()
     {
         // プレイヤーの情報を取得
-        GameObject player = GameObject.Find("player");
+        GameObject player = GameObject.Find("Neko");
         
         if (player != null)// プレイヤーがいるか確認
         {
