@@ -6,43 +6,53 @@ using UnityEngine.SceneManagement;
 
 public class Neko_NavMesh : MonoBehaviour
 {
-    
-    private Transform target;
-    private Transform nextTarget;
+
+    [SerializeField] private Transform target;
+    [SerializeField]private Transform nextTarget;
     private NavMeshAgent m_Agent;
-    [SerializeField] private GameObject goalPanel;
-
-    // ターゲットにする物のリスト
-
+    private GameObject goalPanel;
+    Animator animator;
+    bool isRun;
 
     void Start()
     {
         target = this.transform;
         nextTarget = null;
         m_Agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        isRun = false;
     }
 
     void Update()
     {
+        isRun = true;
         // ゴールのパネルが歩ける状態のときは優先的にゴールに向かう
         if (goalPanel.GetComponent<Tilemanager>().PutWalkFlag())
         {
             target = goalPanel.transform;
             nextTarget = null;
             // ゴール判定
-            if (Vector3.Distance(this.transform.position, target.position) < 1.0)
+            if (Vector3.Distance(this.transform.position, target.position) < 0.5)
             {
+                isRun = false;
                 SceneManager.LoadScene("StartScene");
             }
         }
-        else if(nextTarget != null && Vector3.Distance(this.transform.position, target.transform.position) < 1)
+        else if (nextTarget != null && Vector3.Distance(this.transform.position, target.transform.position) < 0.5)
         {
+            Debug.Log("次に向かうにゃ！");
             target = nextTarget;
             nextTarget = null;
+
         }
+        else if(nextTarget == null && Vector3.Distance(this.transform.position, target.transform.position) < 0.5)
+        {
+            isRun = false;
+        }
+
         m_Agent.SetDestination(target.position); // 移動処理
 
-
+        animator.SetBool("IsRun", isRun); // アニメーション処理
 
 
     }
