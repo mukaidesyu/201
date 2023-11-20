@@ -11,8 +11,9 @@ public class Tile_Material : MonoBehaviour
         Up,
         Left,
         Down,
-        Right
-
+        Right,
+        Warm,
+        Side,
     };
 
     Material[] tmp;
@@ -20,12 +21,16 @@ public class Tile_Material : MonoBehaviour
 
     [SerializeField]GameObject UpPanel;
 
+    [SerializeField]  private int id;
+
     public Material[] Materials;
     // Start is called before the first frame update
     void Start()
     {
         Material[] tmp = gameObject.GetComponent<Renderer>().materials;
         status = TileStatus.Grass;
+        //タイルのid取得
+        id = this.gameObject.GetComponent<Tilemanager>().GetTileNo();
     }
 
     // Update is called once per frame
@@ -37,21 +42,19 @@ public class Tile_Material : MonoBehaviour
     // タイルが変更するたびに呼ぶといいかも
     public void SetMaterial(bool isWalk)
     {
-        // パネルのIDを取得
-        int id = GetComponent<Tilemanager>().GetTileNo();
-
-        // 上のパネルを取得
-        if (id > 0) { UpPanel = GameObject.Find("panel" + (id++) + "(Clone)"); } 
 
         if (isWalk)
         {
             status = TileStatus.Up;
+
+            // 上のパネルを取得
+            if (id > 0)
+            { Debug.Log("通った"); UpPanel = GameObject.Find("panel" + (id + 1) + "(Clone)"); status = TileStatus.Warm; }
+
         }
         else
         {
             status = TileStatus.Grass;
         }
-
-
     }
 }
