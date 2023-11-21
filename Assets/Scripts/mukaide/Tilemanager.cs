@@ -13,6 +13,7 @@ public class Tilemanager : MonoBehaviour, Clickable
     bool nowPut = false; // 今置いたかどうか
     bool onTile = false; // タイルが被ったかどうか
     bool walkedNeko = false; // 猫があるいたかどうか
+    bool Event = false;
 
     public void WalkFlag()
     {
@@ -39,7 +40,7 @@ public class Tilemanager : MonoBehaviour, Clickable
     {
         Goalflag = true;
     }
-    bool GetGoalFlag() // 11/20三浦追記
+    public bool GetGoalFlag() // 11/20三浦追記
     {
         return Goalflag;
     }
@@ -108,5 +109,13 @@ public class Tilemanager : MonoBehaviour, Clickable
     public bool GetWalkedNeko()
     {
         return walkedNeko;
+    }
+    public void SetEvent(bool set)
+    {
+        walkedNeko = set;
+    }
+    public bool GetEvent()
+    {
+        return Event;
     }
 }
