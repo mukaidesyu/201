@@ -51,18 +51,19 @@ public class Tile_Material : MonoBehaviour
             // ã‚Ìƒpƒlƒ‹‚ðŽæ“¾
             if (id > 0)
             {
-                /*Debug.Log("’Ê‚Á‚½");*/
-                UpPanel = GameObject.Find("panel" + (id + 1) + "(Clone)").GetComponent<Tilemanager>();
-                if (UpPanel.PutWalkFlag() == true)
-                {
-                    status = TileStatus.Warm;
-                }
-                DownPanel = GameObject.Find("panel" + (id - 1) + "(Clone)").GetComponent<Tilemanager>();
-
-                int cols = GameObject.Find("Tile").GetComponent<tile>()._cols;
-                RightPanel = GameObject.Find("panel" + (id + cols) + "(Clone)").GetComponent<Tilemanager>();
-
-                LeftPanel = GameObject.Find("panel" + (id + -cols) + "(Clone)").GetComponent<Tilemanager>();
+               // /*Debug.Log("’Ê‚Á‚½");*/
+               // UpPanel = GameObject.Find("panel" + (id + 1) + "(Clone)").GetComponent<Tilemanager>();
+               // if()
+               // if (UpPanel.PutWalkFlag() == true)
+               // {
+               //     status = TileStatus.Warm;
+               // }
+               // DownPanel = GameObject.Find("panel" + (id - 1) + "(Clone)").GetComponent<Tilemanager>();
+               //
+               // int cols = GameObject.Find("Tile").GetComponent<tile>()._cols;
+               // RightPanel = GameObject.Find("panel" + (id + cols) + "(Clone)").GetComponent<Tilemanager>();
+               //
+               // LeftPanel = GameObject.Find("panel" + (id + -cols) + "(Clone)").GetComponent<Tilemanager>();
             }
         }
         else
