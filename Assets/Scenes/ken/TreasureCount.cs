@@ -26,13 +26,9 @@ public class TreasureCount : MonoBehaviour
         if (treasure <= treasuremax)
         {
             tmp.text = treasure.ToString("0") + "/" + treasuremax/*‚±‚±‚ÉƒXƒe[ƒW‚²‚Æ‚ÌMAX•ó” ”‚ð“ü‚ê‚é*/;
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                TreasurePlus();     //ƒGƒ“ƒ^[‚µ‚½‚ç•ó” {‚PŠÖ”ŒÄ‚Ño‚µ
-            }
         }
     }
-    void TreasurePlus() //•ó” {‚P‚·‚éŠÖ”
+    public void TreasurePlus() //•ó” {‚P‚·‚éŠÖ”
     {
         treasure++;
     }

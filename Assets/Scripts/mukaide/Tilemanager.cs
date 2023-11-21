@@ -13,7 +13,9 @@ public class Tilemanager : MonoBehaviour, Clickable
     bool nowPut = false; // 今置いたかどうか
     bool onTile = false; // タイルが被ったかどうか
     bool walkedNeko = false; // 猫があるいたかどうか
-    bool Event = false;
+    bool Event = false;//イベントがあるか否か
+
+    Eventmanager eventmanager;
 
     public void WalkFlag()
     {
@@ -49,6 +51,7 @@ public class Tilemanager : MonoBehaviour, Clickable
     void Start()
     {
         gameObject.GetComponent<Renderer>().material.color = Color.red;
+
     }
 
     // Update is called once per frame
@@ -114,8 +117,9 @@ public class Tilemanager : MonoBehaviour, Clickable
     {
         walkedNeko = set;
     }
+    //イベントのフラグ取得
     public bool GetEvent()
-    {
+    { 
         return Event;
     }
 }
