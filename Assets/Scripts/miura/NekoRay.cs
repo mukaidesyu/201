@@ -19,10 +19,15 @@ public class NekoRay : MonoBehaviour
             Debug.DrawRay(this.transform.position, Vector3.down, Color.red);
 
             // ‚ ‚½‚Á‚½‚ç
-            //if (hit.collider)
-            //{
-
-            //}
+            if (hit.collider.tag == "tile")
+            {
+                int status = (int)hit.collider.GetComponent<Tilemanager>().GetEvent();
+                if (status > 0)
+                {
+                    GameObject.Find("Event").GetComponent<Eventmanager>().Event(hit.collider.GetComponent<Tilemanager>().GetEvent());
+                    hit.collider.GetComponent<Tilemanager>().FinishEvent();
+                }
+            }
         }
     }
 }
