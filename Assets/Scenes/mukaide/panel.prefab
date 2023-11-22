@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15aa55e103f84f041b8bfae3d4eca1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TileNo: 120
+  TileNo: 95
   walkflag: 0
   Goalflag: 0
 --- !u!114 &4688945455434805813
@@ -126,10 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995971c47522f2f4e8ede314b2e45dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpPanel: {fileID: 0}
-  RightPanel: {fileID: 0}
-  LeftPanel: {fileID: 0}
-  DownPanel: {fileID: 0}
+  UpPanel: 0
+  RightPanel: 0
+  LeftPanel: 0
+  DownPanel: 0
   id: 0
   Materials:
   - {fileID: 2100000, guid: 7c962b51045eea446b81c5dfe6bc078f, type: 2}
@@ -139,3 +139,12 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f35eb14d517560c4aae73cdb8aba142b, type: 2}
   - {fileID: 2100000, guid: e5d05c64c5e5a0c4f92713ea99785768, type: 2}
   - {fileID: 2100000, guid: f615ee45216ede44c8f2e92501f4da87, type: 2}
+  - {fileID: 2100000, guid: f2d0f40fd845a3648b190b7bae42eb9f, type: 2}
+  - {fileID: 2100000, guid: 124e9e5763c9329408295727de37c280, type: 2}
+  - {fileID: 2100000, guid: 6e333cdf3447fb848b3494c374f47418, type: 2}
+  - {fileID: 2100000, guid: eb3f76d139002934d923faf63f627bc2, type: 2}
+  - {fileID: 2100000, guid: 7769a7ebd5811ff45a5e92afefbfba95, type: 2}
+  - {fileID: 2100000, guid: 3d718b7865c5bad47b60eff1e63f1970, type: 2}
+  - {fileID: 2100000, guid: b3bacd5a73bd6a244ac2476be2a7b278, type: 2}
+  - {fileID: 2100000, guid: db601254e2e3f61489862ddfcb73915b, type: 2}
+  - {fileID: 2100000, guid: 60798442f8d2d9540a884e5fa8586425, type: 2}
