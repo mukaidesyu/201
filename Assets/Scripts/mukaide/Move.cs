@@ -10,6 +10,8 @@ public class Move : MonoBehaviour
     private float move = 5.0f;
     public bool putflag = true;
 
+    bool rot = true;
+
     Spawner spawner;    // スポナー
     Piece activePiece;  // 生成されたピース 
     GameObject Pice;
@@ -45,7 +47,6 @@ public class Move : MonoBehaviour
 
     void Update()
     {
-
         //移動
         if (Input.GetKey(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)
         {
@@ -71,20 +72,22 @@ public class Move : MonoBehaviour
         //回転
         if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 4"))
         {
-            transform.Rotate(new Vector3(0, 0, 90));
+            rot = false;
+            StartCoroutine(rt());
         }
         else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown("joystick button 5"))
         {
-            transform.Rotate(new Vector3(0, 0, -90));
+            rot = false;
+            StartCoroutine(rt2());
         }
 
         //操作可能か判断
-        if(Unpossible == true)
+        if (Unpossible == true)
         {
             //場所を選ぶ
             if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
-                if (Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
                 {
                     // ピースを置くとここに入る
                     if (Pice.GetComponent<Piece>().flagp() == true) // 現状Pフラグが立ってない
@@ -150,4 +153,29 @@ public class Move : MonoBehaviour
     {
         return Unpossible;
     }
+
+    IEnumerator rt()
+    {
+        int i = 0;
+        while (i < 90)
+        {
+            i++;
+            this.transform.Rotate(0, 0, 1);
+            yield return null;
+        }
+        rot = true;
+    }
+ 
+    IEnumerator rt2()
+    {
+        int i = 0;
+        while (i > -90)
+        {
+            i--;
+            this.transform.Rotate(0, 0, -1);
+            yield return null;
+        }
+        rot = true;
+    }
 }
+// Input.GetButtonDown("Fire1")
