@@ -8,13 +8,16 @@ public class Eventmanager : MonoBehaviour
 
     //猫ちゃんに呼んでほしい関数(タイルのイベントフラグが立ってたのをとったら)
     //今からいろんな動き追加していくから待っててほしいとりあえずで作った
-    public void Event(EventStatus status) // 引数イベントの種類
+    public void Event(GameObject eventTile) // 引数イベントの種類
     {
-        switch (status)// イベント内容をスイッチしそう
+        Tilemanager script = eventTile.GetComponent<Tilemanager>();
+        switch (script.GetEvent())// イベント内容をスイッチしそう
         {
             case EventStatus.Juel:
             treasure.TreasurePlus();
-                
+            // ここに演出的な処理入れる、、、？
+
+            script.SetEvent(EventStatus.Juel_Got);
                 break;
         }
     }
@@ -31,7 +34,6 @@ public class Eventmanager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log("足し算！");
-            Event(EventStatus.Juel);
         }
     }
 

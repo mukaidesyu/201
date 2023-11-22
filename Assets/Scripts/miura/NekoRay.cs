@@ -24,8 +24,7 @@ public class NekoRay : MonoBehaviour
                 int status = (int)hit.collider.GetComponent<Tilemanager>().GetEvent();
                 if (status > 0)
                 {
-                    GameObject.Find("Event").GetComponent<Eventmanager>().Event(hit.collider.GetComponent<Tilemanager>().GetEvent());
-                    hit.collider.GetComponent<Tilemanager>().FinishEvent();
+                    GameObject.Find("Event").GetComponent<Eventmanager>().Event(hit.collider.gameObject);
                 }
             }
         }

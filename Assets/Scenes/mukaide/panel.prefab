@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15aa55e103f84f041b8bfae3d4eca1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TileNo: 95
+  TileNo: 120
   walkflag: 0
   Goalflag: 0
   Event: 0

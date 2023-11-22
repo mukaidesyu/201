@@ -124,10 +124,8 @@ public class Tilemanager : MonoBehaviour, Clickable
         return Event;
     }
 
-    public void FinishEvent()
+    public void SetEvent(EventStatus set)
     {
-        // おそらくスイッチ分でFinishを管理するほうが正確
-        // ↓むりやり！！
-        Event = (EventStatus)((int)Event++); 
+        Event = set;
     }
 }
