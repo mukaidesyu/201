@@ -145,4 +145,9 @@ public class Move : MonoBehaviour
             Unpossible = true;
         }
     }
+
+    public bool GetUnpossible()
+    {
+        return Unpossible;
+    }
 }

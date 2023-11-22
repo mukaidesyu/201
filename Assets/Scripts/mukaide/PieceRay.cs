@@ -41,33 +41,37 @@ public class PieceRay : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(this.transform.position, Vector3.down, out hit, 10.0f))
         {
-
-             Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
-            if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
+            // クールタイム中かどうか判断する
+            if (GameObject.Find("player").GetComponent<Move>().GetUnpossible())
             {
-                putflag = c.PutWalkFlag();
-                if (Input.GetKeyDown(KeyCode.Return))
+
+                Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
+                if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
                 {
-                    if (piece.flagp() == true)
+                    putflag = c.PutWalkFlag();
+                    if (Input.GetKeyDown(KeyCode.Return))
                     {
-                        c.WalkFlag();
-                        c.PutNo();
-                        c.SetNowPut(true);
-                        if(putflag == true)
+                        if (piece.flagp() == true)
                         {
-                            c.SetOnTile(true);
+                            c.WalkFlag();
+                            c.PutNo();
+                            c.SetNowPut(true);
+                            if (putflag == true)
+                            {
+                                c.SetOnTile(true);
+                            }
                         }
+
                     }
 
                 }
+                if (hit.collider.CompareTag("tile"))
+                {
+                    // 緑色に変更する
+                    hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.green;
+                }
+            }
 
-            }
-            if (hit.collider.CompareTag("tile"))
-            {
-                // 緑色に変更する
-                hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.green;
-            }
-        
         }
 
     }
