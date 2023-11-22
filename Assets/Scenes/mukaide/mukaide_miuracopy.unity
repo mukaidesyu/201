@@ -1492,6 +1492,8 @@ MonoBehaviour:
   putflag: 1
   feald: 0
   putNo: 0
+  Unpossible: 0
+  UnpossibleTimer: 0
 --- !u!135 &1393387419
 SphereCollider:
   m_ObjectHideFlags: 0

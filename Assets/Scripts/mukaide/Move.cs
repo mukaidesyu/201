@@ -8,13 +8,11 @@ public class Move : MonoBehaviour
     [SerializeField] private float _speed = 5.0f;
     private float distance = 1.0f;
     private float move = 5.0f;
-    private Vector3 targetPos;
     public bool putflag = true;
 
     Spawner spawner;    // スポナー
     Piece activePiece;  // 生成されたピース 
     GameObject Pice;
-    GameObject old;
 
     judgment tilemanager;
     judgment1 tilemanager1;
@@ -25,9 +23,11 @@ public class Move : MonoBehaviour
 
     public int putNo = 1;
 
+    public bool Unpossible = true;//操作不能フラグ
+    public float UnpossibleTimer = 0;//操作不能タイマー
+
     private void Start()
     {
-        targetPos = transform.position;
 
         // スポナーオブジェクトをスポナー変数に格納する
         spawner = GameObject.FindObjectOfType<Spawner>();
@@ -45,45 +45,26 @@ public class Move : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hit;
 
         //移動
         if (Input.GetKey(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)
         {
-            if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
-            {
-                if (hit.collider.CompareTag("tile"))
-                    old = hit.collider.gameObject;
-            }
+
             this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetAxis("Vertical") <= -1.0f)
         {
-            if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
-            {
-                if (hit.collider.CompareTag("tile"))
-                    old = hit.collider.gameObject;
-            }
+
             this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
         }
         else if (Input.GetKey(KeyCode.A) || Input.GetAxis("Horizontal") <= -1.0f)
         {
-            if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
-            {
-                if (hit.collider.CompareTag("tile"))
-                    old = hit.collider.gameObject;
-            }
+
             this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetAxis("Horizontal") >= 1.0f)
         {
-            if (Physics.Raycast(transform.position, Vector3.forward, out hit, 10.0f))
-            {
-                if (hit.collider.CompareTag("tile"))
-                {
-                    old = hit.collider.gameObject;
-                }
-            }
+
             this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
         }
 
@@ -97,37 +78,50 @@ public class Move : MonoBehaviour
             transform.Rotate(new Vector3(0, 0, -90));
         }
 
-        //場所を選ぶ
-        if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
+        //操作可能か判断
+        if(Unpossible == true)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            //場所を選ぶ
+            if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
-                // ピースを置くとここに入る
-                if(Pice.GetComponent<Piece>().flagp() == true) // 現状Pフラグが立ってない
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    Destroy(Pice);
-                    targetPos = new Vector3(0.0f, 0.1f, 0.0f);
-                    //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
-                    activePiece = spawner.SpawnPiece(this.gameObject);
-                    Pice = activePiece.gameObject;
+                    // ピースを置くとここに入る
+                    if (Pice.GetComponent<Piece>().flagp() == true) // 現状Pフラグが立ってない
+                    {
+                        Destroy(Pice);
+                        //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
+                        activePiece = spawner.SpawnPiece(this.gameObject);
+                        Pice = activePiece.gameObject;
 
 
-                    // ここで渡すピースを判定する
-                    tile tileScript = GameObject.Find("Tile").GetComponent<tile>();
-                    GameObject onTile = tileScript.GetOnTile();
-                    GameObject farTile = tileScript.GetFarTile(onTile);
-                    
-                    // 猫に渡す
-                    Neko_NavMesh nekoScript = GameObject.Find("Neko").GetComponent<Neko_NavMesh>();
-                    nekoScript.SetTarget(onTile);
-                    nekoScript.SetNextTarget(farTile);
+                        // ここで渡すピースを判定する
+                        tile tileScript = GameObject.Find("Tile").GetComponent<tile>();
+                        GameObject onTile = tileScript.GetOnTile();
+                        GameObject farTile = tileScript.GetFarTile(onTile);
+
+                        // 猫に渡す
+                        Neko_NavMesh nekoScript = GameObject.Find("Neko").GetComponent<Neko_NavMesh>();
+                        nekoScript.SetTarget(onTile);
+                        nekoScript.SetNextTarget(farTile);
 
 
-                    // 全フラグ下げる
-                    tileScript.EndNowPut();
+                        // 全フラグ下げる
+                        tileScript.EndNowPut();
+
+                        //操作不能時間のフラグ
+                        Unpossible = false; 
+                        UnpossibleTimer = 5.0f;
+                    }
                 }
             }
         }
+
+        if(Unpossible == false)
+        {
+            UnpossibleTimerCount();
+        }
+  
     }
 
 
@@ -141,5 +135,14 @@ public class Move : MonoBehaviour
     {
         //ベイク
         GameObject.Find("NavMeshSurface").GetComponent<NavMesh_Surface>().Bake();
+    }
+
+    public void UnpossibleTimerCount()
+    {
+        UnpossibleTimer -= Time.deltaTime;
+        if(UnpossibleTimer <= 0)
+        {
+            Unpossible = true;
+        }
     }
 }

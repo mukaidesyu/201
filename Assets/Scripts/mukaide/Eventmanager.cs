@@ -16,8 +16,7 @@ public class Eventmanager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        treasure = GameObject.Find("UI_TreasureCount").GetComponent<TreasureCount>();
-    
+        treasure = GameObject.Find("UI_TreasureCount").GetComponent<TreasureCount>();  
     }
 
     // Update is called once per frame
