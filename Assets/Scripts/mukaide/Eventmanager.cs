@@ -8,9 +8,15 @@ public class Eventmanager : MonoBehaviour
 
     //猫ちゃんに呼んでほしい関数(タイルのイベントフラグが立ってたのをとったら)
     //今からいろんな動き追加していくから待っててほしいとりあえずで作った
-    public void Event()
+    public void Event(EventStatus status) // 引数イベントの種類
     {
-        treasure.TreasurePlus();
+        switch (status)// イベント内容をスイッチしそう
+        {
+            case EventStatus.Juel:
+            treasure.TreasurePlus();
+                
+                break;
+        }
     }
 
     // Start is called before the first frame update
@@ -25,7 +31,7 @@ public class Eventmanager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log("足し算！");
-            Event();
+            Event(EventStatus.Juel);
         }
     }
 

@@ -13,8 +13,8 @@ public class Tilemanager : MonoBehaviour, Clickable
     bool nowPut = false; // 今置いたかどうか
     bool onTile = false; // タイルが被ったかどうか
     bool walkedNeko = false; // 猫があるいたかどうか
-    bool Event = false;//イベントがあるか否か
-
+    public EventStatus Event = EventStatus.None;//イベントがあるか否か
+    
     Eventmanager eventmanager;
 
     public void WalkFlag()
@@ -117,9 +117,17 @@ public class Tilemanager : MonoBehaviour, Clickable
     {
         walkedNeko = set;
     }
-    //イベントのフラグ取得
-    public bool GetEvent()
+
+    //イベントの種類取得
+    public EventStatus GetEvent()
     { 
         return Event;
+    }
+
+    public void FinishEvent()
+    {
+        // おそらくスイッチ分でFinishを管理するほうが正確
+        // ↓むりやり！！
+        Event = (EventStatus)((int)Event++); 
     }
 }
