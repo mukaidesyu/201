@@ -12,6 +12,8 @@ public class Move : MonoBehaviour
 
     bool rot = true;
 
+    public float Rtspeed = 1.0f;
+
     Spawner spawner;    // スポナー
     Piece activePiece;  // 生成されたピース 
     GameObject Pice;
@@ -160,7 +162,7 @@ public class Move : MonoBehaviour
         while (i < 90)
         {
             i++;
-            this.transform.Rotate(0, 0, 1);
+            this.transform.Rotate(0, 0, Rtspeed /* Time.deltaTime*/ );
             yield return null;
         }
         rot = true;
@@ -172,10 +174,9 @@ public class Move : MonoBehaviour
         while (i > -90)
         {
             i--;
-            this.transform.Rotate(0, 0, -1);
+            this.transform.Rotate(0, 0, -Rtspeed /* Time.deltaTime */);
             yield return null;
         }
         rot = true;
     }
 }
-// Input.GetButtonDown("Fire1")
