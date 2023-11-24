@@ -1112,6 +1112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  nextTarget: {fileID: 0}
 --- !u!135 &1144678881
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1657,10 +1658,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  move: {x: 0, y: 0}
   putflag: 1
+  Rtspeed: 1
   feald: 0
   putNo: 0
+  Unpossible: 1
+  UnpossibleTimer: 0
 --- !u!135 &1393387419
 SphereCollider:
   m_ObjectHideFlags: 0
