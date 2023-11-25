@@ -40,10 +40,8 @@ public class Neko_NavMesh : MonoBehaviour
         }
         else if (nextTarget != null && Vector3.Distance(this.transform.position, target.transform.position) < 0.5)
         {
-            Debug.Log("ŽŸ‚ÉŒü‚©‚¤‚É‚áI");
             target = nextTarget;
             nextTarget = null;
-
         }
         else if(nextTarget == null && Vector3.Distance(this.transform.position, target.transform.position) < 0.5)
         {

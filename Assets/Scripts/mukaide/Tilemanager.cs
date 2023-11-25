@@ -14,6 +14,7 @@ public class Tilemanager : MonoBehaviour, Clickable
     bool onTile = false; // タイルが被ったかどうか
     bool walkedNeko = false; // 猫があるいたかどうか
     public EventStatus Event = EventStatus.None;//イベントがあるか否か
+    [SerializeField] PanelStatus panelStatus = PanelStatus.Walkable; // 0:ゲーム内に表示しない 1:表示するけど歩けない 2:普通の道になる
     
     Eventmanager eventmanager;
 
@@ -52,21 +53,33 @@ public class Tilemanager : MonoBehaviour, Clickable
     {
         gameObject.GetComponent<Renderer>().material.color = Color.red;
 
+        if (panelStatus == PanelStatus.Nothing)// "無い"の状態のときは表示しない
+        {
+            GetComponent<MeshRenderer>().enabled = false; // もしかしてNavMeshこわれる？？
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // パネルの状態によって色が変わる
-        // タイルのタグも変わる
-        switch (walkflag)
+        if (panelStatus != PanelStatus.CantWalk) 
         {
-            case true:
-                this.gameObject.layer = 6;
-                break;
-            case false:
-                this.gameObject.layer = 7;
-                break;
+
+            // パネルの状態によって色が変わる
+            // タイルのタグも変わる
+            switch (walkflag)
+            {
+                case true:
+                    this.gameObject.layer = 6;
+                    break;
+                case false:
+                    this.gameObject.layer = 7;
+                    break;
+            }
+        }
+        else// パネルの状況がCantWalkだと絶対に歩けるようにならない
+        {
+            this.gameObject.layer = 7; // 7はNotWalk
         }
 
         this.GetComponent<Tile_Material>().SetMaterial(walkflag);
@@ -123,9 +136,16 @@ public class Tilemanager : MonoBehaviour, Clickable
     { 
         return Event;
     }
-
     public void SetEvent(EventStatus set)
     {
         Event = set;
+    }
+    public PanelStatus GetPanelStatus()
+    {
+        return panelStatus;
+    }
+    public void SetPanelStatus(PanelStatus status)
+    {
+        panelStatus = status;
     }
 }

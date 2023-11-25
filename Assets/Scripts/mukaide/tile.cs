@@ -17,6 +17,7 @@ public class tile : MonoBehaviour
 
     private void Awake()
     {
+        // タイル生成
         for (int row = -5; row < _rows -5; row++)
         {
             for (int col = -5; col < _cols -5; col++)
@@ -32,23 +33,36 @@ public class tile : MonoBehaviour
             }
         }
 
-    }
-    private void Start()
-    {
-        for(int j = 0;j < i;j++)
+
+        // ステージデータにアクセスする
+        StageData data = GameObject.Find("StageData").GetComponent<StageData>();
+
+        // タイルの状態セット
+        for (int j = 0; j < i; j++)
         {
             cd.Add(transform.GetChild(j).gameObject);
-            if(j <= 0)
+
+            if (j <= 0)// 一番左下が最初におけるピース
             {
                 cd[j].GetComponent<Tilemanager>().Startpanel();
             }
-            if(j == i-1)
+            //if (j == data.GoalID) // 任意で設定したゴールのID
+            if (j == i - 1)// 最後のピース
             {
                 cd[j].GetComponent<Tilemanager>().Goalpanel();
                 // 猫にゴールのタイルを渡す
                 GameObject.Find("Neko").GetComponent<Neko_NavMesh>().SetGoal(cd[j]);
             }
+
+            // ステージデータのゲーム情報をタイルに設定する
+            cd[j].GetComponent<Tilemanager>().SetEvent(data.EventSta[j]);
+            cd[j].GetComponent<Tilemanager>().SetPanelStatus(data.PanelSta[j]);
         }
+
+    }
+    private void Start()
+    {
+
 
         //Rigidbodyの取得
         rb = GetComponent<Rigidbody>();
