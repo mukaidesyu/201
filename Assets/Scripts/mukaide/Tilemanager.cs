@@ -20,6 +20,9 @@ public class Tilemanager : MonoBehaviour, Clickable
 
     public void WalkFlag()
     {
+        // 表示してない状態は処理しない
+        if (panelStatus == PanelStatus.CantWalk) return;
+
         // クリックした時の処理
         walkflag = true;
     }
@@ -56,6 +59,11 @@ public class Tilemanager : MonoBehaviour, Clickable
         if (panelStatus == PanelStatus.Nothing)// "無い"の状態のときは表示しない
         {
             GetComponent<MeshRenderer>().enabled = false; // もしかしてNavMeshこわれる？？
+        }else if (Event == EventStatus.Juel)
+        {
+            GameObject tmp = (GameObject)Resources.Load("Item");
+            Instantiate(tmp, new Vector3(this.transform.position.x,transform.position.y + 0.4f,transform.position.z)
+                ,Quaternion.Euler(45,0,0),this.gameObject.transform);
         }
     }
 

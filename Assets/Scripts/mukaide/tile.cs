@@ -62,11 +62,8 @@ public class tile : MonoBehaviour
     }
     private void Start()
     {
-
-
         //Rigidbody�̎擾
         rb = GetComponent<Rigidbody>();
-
     }
 
     private void Update()
