@@ -30,6 +30,9 @@ public class Move : MonoBehaviour
     public bool Unpossible = true;//操作不能フラグ
     public float UnpossibleTimer = 0;//操作不能タイマー
 
+    //SE
+    SEenter se;
+
     private void Start()
     {
 
@@ -45,6 +48,8 @@ public class Move : MonoBehaviour
         tilemanager1 = GameObject.Find("judgment2").GetComponent<judgment1>(); // 上
         tilemanager2 = GameObject.Find("judgment3").GetComponent<judgment2>(); // 下
         tilemanager3 = GameObject.Find("judgment4").GetComponent<judgment3>(); // 左
+
+        se = GameObject.Find("playerSE").GetComponent<SEenter>();
     }
 
     void Update()
@@ -94,6 +99,8 @@ public class Move : MonoBehaviour
                     // ピースを置くとここに入る
                     if (Pice.GetComponent<Piece>().flagp() == true) // 現状Pフラグが立ってない
                     {
+                        se.EnterSE();
+
                         Destroy(Pice);
                         //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
                         activePiece = spawner.SpawnPiece(this.gameObject);
