@@ -49,10 +49,11 @@ public class PieceRay : MonoBehaviour
                 if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
                 {
                     putflag = c.PutWalkFlag();
-                    if (Input.GetKeyDown(KeyCode.Return))
+                    if (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown("joystick button 1"))
                     {
                         if (piece.flagp() == true)
                         {
+                            Debug.Log("êÑÇ∑");
                             c.WalkFlag();
                             c.PutNo();
                             c.SetNowPut(true);

@@ -21,7 +21,7 @@ public class Piece : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
+        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
         {
             int i = 0;
             for (i = 0; i < this.transform.childCount; i++)
