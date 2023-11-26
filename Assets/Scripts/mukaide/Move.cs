@@ -123,7 +123,7 @@ public class Move : MonoBehaviour
 
                         //操作不能時間のフラグ
                         Unpossible = false; 
-                        UnpossibleTimer = 5.0f;
+                        UnpossibleTimer = 1.0f;
                     }
                 }
             }
