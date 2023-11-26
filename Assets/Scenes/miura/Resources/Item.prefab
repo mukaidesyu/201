@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3628838928967141489}
   - component: {fileID: 8350562420718830882}
   - component: {fileID: 223060850695299377}
+  - component: {fileID: 5495695330248881129}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &223060850695299377
@@ -99,6 +100,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite:
   - {fileID: 0}
-  - {fileID: 21300000, guid: 3762532f20cdd1941b04bcc2679e17eb, type: 3}
+  - {fileID: 21300000, guid: a262f58136b2ab24eabb51ef534ded21, type: 3}
   - {fileID: 21300000, guid: c219e7115ba476b4ca7498e0e40f12ac, type: 3}
+  - {fileID: 21300000, guid: a262f58136b2ab24eabb51ef534ded21, type: 3}
   - {fileID: 21300000, guid: a96ceb5d275a120469591f4d01eda043, type: 3}
+  - {fileID: 21300000, guid: a262f58136b2ab24eabb51ef534ded21, type: 3}
+  - {fileID: 21300000, guid: 2c2441ddb0e12c243b2dadd3653c294b, type: 3}
+  - {fileID: 21300000, guid: a262f58136b2ab24eabb51ef534ded21, type: 3}
+  - {fileID: 21300000, guid: ec947a78c26c48940ba79cc8b36c5d19, type: 3}
+  - {fileID: 21300000, guid: a262f58136b2ab24eabb51ef534ded21, type: 3}
+  - {fileID: 21300000, guid: 1409dc2b16a05fe4cb2ee867a5a5623e, type: 3}
+--- !u!95 &5495695330248881129
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654442931695075039}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3f9189eccdc9ff9448619e463f7a871b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

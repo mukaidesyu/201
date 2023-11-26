@@ -5,8 +5,17 @@ using UnityEngine;
 public enum EventStatus // イベントの種類
 {
     None = 0,
-    Juel,
-    Juel_Got,
+    Kinoko,
+    Kinoko_Got,
+    Sakana,
+    Sakana_Got,
+    Kari1,
+    Kari1_Got,
+    Kari2,
+    Kari2_Got,
+    Kari3,
+    Kari3_Got,
+    // 追加した場合,Itemプレハブのスプライトも追加しないとNuる。
 
     EventMax
 }
