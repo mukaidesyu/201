@@ -12,7 +12,7 @@ public class Move : MonoBehaviour
 
     bool rot = true;
 
-    public float Rtspeed = 1.0f;
+    public float Rtspeed = 3.0f;
 
     Spawner spawner;    // スポナー
     Piece activePiece;  // 生成されたピース 
@@ -123,7 +123,7 @@ public class Move : MonoBehaviour
 
                         //操作不能時間のフラグ
                         Unpossible = false; 
-                        UnpossibleTimer = 5.0f;
+                        UnpossibleTimer = 1.0f;//クールタイム
                     }
                 }
             }
@@ -181,7 +181,7 @@ public class Move : MonoBehaviour
         while (i > -90)
         {
             i--;
-            this.transform.Rotate(0, 0, -Rtspeed /* Time.deltaTime */);
+            this.transform.Rotate(0, 0, -Rtspeed * Time.deltaTime );
             yield return null;
         }
         rot = true;
