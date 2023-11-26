@@ -115,7 +115,7 @@ MonoBehaviour:
   walkflag: 0
   Goalflag: 0
   Event: 0
-  panelStatus: 0
+  eventObject: {fileID: 0}
 --- !u!114 &4688945455434805813
 MonoBehaviour:
   m_ObjectHideFlags: 0
