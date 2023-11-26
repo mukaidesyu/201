@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3628838928967141489}
   - component: {fileID: 8350562420718830882}
+  - component: {fileID: 223060850695299377}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -25,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4654442931695075039}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,14 +74,31 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4581ba19f6c9b5040982c44d4565b9e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3762532f20cdd1941b04bcc2679e17eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10, y: 10}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &223060850695299377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654442931695075039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 703fba480c2dc234a9c278f9f43771dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 3762532f20cdd1941b04bcc2679e17eb, type: 3}
+  - {fileID: 21300000, guid: c219e7115ba476b4ca7498e0e40f12ac, type: 3}
+  - {fileID: 21300000, guid: a96ceb5d275a120469591f4d01eda043, type: 3}

@@ -14,8 +14,9 @@ public class Tilemanager : MonoBehaviour, Clickable
     bool onTile = false; // タイルが被ったかどうか
     bool walkedNeko = false; // 猫があるいたかどうか
     public EventStatus Event = EventStatus.None;//イベントがあるか否か
-    [SerializeField] PanelStatus panelStatus = PanelStatus.Walkable; // 0:ゲーム内に表示しない 1:表示するけど歩けない 2:普通の道になる
-    
+    PanelStatus panelStatus = PanelStatus.Walkable; // 0:ゲーム内に表示しない 1:表示するけど歩けない 2:普通の道になる
+    [SerializeField] GameObject eventObject;
+
     Eventmanager eventmanager;
 
     public void WalkFlag()
@@ -59,17 +60,26 @@ public class Tilemanager : MonoBehaviour, Clickable
         if (panelStatus == PanelStatus.Nothing)// "無い"の状態のときは表示しない
         {
             GetComponent<MeshRenderer>().enabled = false; // もしかしてNavMeshこわれる？？
-        }else if (Event == EventStatus.Juel)
+        }
+        else if (Event == EventStatus.Juel)
         {
             GameObject tmp = (GameObject)Resources.Load("Item");
-            Instantiate(tmp, new Vector3(this.transform.position.x,transform.position.y + 0.4f,transform.position.z)
-                ,Quaternion.Euler(45,0,0),this.gameObject.transform);
+            tmp.GetComponent<ItemSprite>().SetEventSta(Event);
+            eventObject = Instantiate(tmp, new Vector3(this.transform.position.x,transform.position.y + 0.1f,transform.position.z)
+                ,Quaternion.Euler(80,0,0),this.gameObject.transform);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (eventObject != null)
+        {
+            // 毎フレームイベント更新
+            eventObject.GetComponent<ItemSprite>().SetEventSta(Event);
+        }
+
         if (panelStatus != PanelStatus.CantWalk) 
         {
 
