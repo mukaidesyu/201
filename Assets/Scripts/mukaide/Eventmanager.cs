@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Eventmanager : MonoBehaviour
 {
+    public GameObject[] MemoUI;
     TreasureCount treasure;
 
     //猫ちゃんに呼んでほしい関数(タイルのイベントフラグが立ってたのをとったら)
@@ -13,12 +14,43 @@ public class Eventmanager : MonoBehaviour
         Tilemanager script = eventTile.GetComponent<Tilemanager>();
         switch (script.GetEvent())// イベント内容をスイッチしそう
         {
-            case EventStatus.Juel:
-            treasure.TreasurePlus();
-            // ここに演出的な処理入れる、、、？
+            case EventStatus.Kinoko:
+                // ここに演出的な処理
 
-            script.SetEvent(EventStatus.Juel_Got);
+                // 取得状態に変更
+                MemoUI[0].GetComponent<Memo_UI>().SetIsGet(true);
+                script.SetEvent(EventStatus.Kinoko_Got);
                 break;
+
+            case EventStatus.Sakana:
+                // ここに演出的な処理
+
+
+                MemoUI[1].GetComponent<Memo_UI>().SetIsGet(true);
+                script.SetEvent(EventStatus.Sakana_Got);
+                break;
+            case EventStatus.Kari1:
+                treasure.TreasurePlus();
+                // ここに演出的な処理
+
+                MemoUI[2].GetComponent<Memo_UI>().SetIsGet(true);
+                script.SetEvent(EventStatus.Kari1_Got);
+                break;
+
+            case EventStatus.Kari2:
+                // ここに演出的な処理
+
+                MemoUI[3].GetComponent<Memo_UI>().SetIsGet(true);
+                script.SetEvent(EventStatus.Kari2_Got);
+                break;
+            case EventStatus.Kari3:
+                // ここに演出的な処理
+
+                MemoUI[4].GetComponent<Memo_UI>().SetIsGet(true);
+                script.SetEvent(EventStatus.Kari3_Got);
+                break;
+
+                // どんどこどんどんここにアイテムの処理追加
         }
     }
 

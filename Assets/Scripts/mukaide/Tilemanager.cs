@@ -61,7 +61,8 @@ public class Tilemanager : MonoBehaviour, Clickable
         {
             GetComponent<MeshRenderer>().enabled = false; // ‚à‚µ‚©‚µ‚ÄNavMesh‚±‚í‚ê‚éHH
         }
-        else if (Event == EventStatus.Juel)
+        else if (Event == EventStatus.Kinoko || Event == EventStatus.Sakana || Event == EventStatus.Kari1
+            || Event == EventStatus.Kari2 || Event == EventStatus.Kari3)
         {
             GameObject tmp = (GameObject)Resources.Load("Item");
             tmp.GetComponent<ItemSprite>().SetEventSta(Event);
