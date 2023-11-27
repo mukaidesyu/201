@@ -1723,7 +1723,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   putflag: 1
-  Rtspeed: 1
   feald: 0
   putNo: 0
   Unpossible: 0
