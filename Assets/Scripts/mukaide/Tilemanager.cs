@@ -69,6 +69,11 @@ public class Tilemanager : MonoBehaviour, Clickable
             eventObject = Instantiate(tmp, new Vector3(this.transform.position.x,transform.position.y + 0.1f,transform.position.z)
                 ,Quaternion.Euler(80,0,0),this.gameObject.transform);
         }
+        else if (Event == EventStatus.Ike)
+        {
+            GameObject tmp = (GameObject)Resources.Load("Item");
+            tmp.GetComponent<ItemSprite>().SetEventSta(Event);
+        }
 
     }
 

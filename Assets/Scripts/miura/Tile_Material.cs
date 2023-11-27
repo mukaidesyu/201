@@ -23,6 +23,7 @@ public class Tile_Material : MonoBehaviour
         TLeft,
         TDown,
         Cross,
+        Ike,
     };
 
     Material[] tmp;
@@ -163,7 +164,16 @@ public class Tile_Material : MonoBehaviour
         }
         else
         {
-            status = TileStatus.Grass;
+            EventStatus eventSta = this.GetComponent<Tilemanager>().GetEvent();
+            PanelStatus panelSta = this.GetComponent<Tilemanager>().GetPanelStatus();
+            if (eventSta == EventStatus.Ike)
+            {
+                status = TileStatus.Ike;
+            }
+            else
+            {
+                status = TileStatus.Grass;
+            }
         }
 
         
