@@ -16,6 +16,7 @@ public enum EventStatus // イベントの種類
     Kari3,
     Kari3_Got,
     Rock,
+    Ike,
     // 追加した場合,Itemプレハブのスプライトも追加しないとNuる。
 
     EventMax

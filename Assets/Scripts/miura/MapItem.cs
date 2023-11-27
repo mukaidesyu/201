@@ -7,10 +7,11 @@ public class MapItem : MonoBehaviour
     bool downFlag = false;
     public float DownTime;
     public float UpTime;
+    public float TargetPosY;
     RectTransform rectTransform;
     Vector3 startPos;
     float startMove;
-    public Vector3 targetPos;
+    Vector3 targetPos;
     float targetMove;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class MapItem : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         startPos = rectTransform.position;
         startMove = (targetPos.y - startPos.y) / DownTime;
+        targetPos = new Vector3(startPos.x, TargetPosY ,0);
         targetMove = (startPos.y - targetPos.y) / UpTime;
         downFlag = false;
     }
