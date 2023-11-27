@@ -40,7 +40,6 @@ public class MapItem : MonoBehaviour
         {
             rectTransform.position -= new Vector3(0,targetMove,0);
 
-            Debug.Log(rectTransform.position);
             if (rectTransform.position.y <= targetPos.y)
             {
                 rectTransform.position = targetPos;
