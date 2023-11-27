@@ -62,13 +62,14 @@ public class Tilemanager : MonoBehaviour, Clickable
             GetComponent<MeshRenderer>().enabled = false; // もしかしてNavMeshこわれる？？
         }
         else if (Event == EventStatus.Kinoko || Event == EventStatus.Sakana || Event == EventStatus.Kari1
-            || Event == EventStatus.Kari2 || Event == EventStatus.Kari3)
+            || Event == EventStatus.Kari2 || Event == EventStatus.Kari3 || Event == EventStatus.Rock)
         {
             GameObject tmp = (GameObject)Resources.Load("Item");
             tmp.GetComponent<ItemSprite>().SetEventSta(Event);
             eventObject = Instantiate(tmp, new Vector3(this.transform.position.x,transform.position.y + 0.1f,transform.position.z)
                 ,Quaternion.Euler(80,0,0),this.gameObject.transform);
         }
+
     }
 
     // Update is called once per frame
@@ -81,11 +82,8 @@ public class Tilemanager : MonoBehaviour, Clickable
             eventObject.GetComponent<ItemSprite>().SetEventSta(Event);
         }
 
-        if (panelStatus != PanelStatus.CantWalk) 
+        if (panelStatus != PanelStatus.CantWalk) // CantWalkじゃなければ変更できる
         {
-
-            // パネルの状態によって色が変わる
-            // タイルのタグも変わる
             switch (walkflag)
             {
                 case true:
@@ -96,7 +94,7 @@ public class Tilemanager : MonoBehaviour, Clickable
                     break;
             }
         }
-        else// パネルの状況がCantWalkだと絶対に歩けるようにならない
+        else// パネルの状況がCantWalkだと歩けるようにならない
         {
             this.gameObject.layer = 7; // 7はNotWalk
         }
