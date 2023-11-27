@@ -27,7 +27,7 @@ public class tile : MonoBehaviour
                 _tile.GetComponent<Tilemanager>().SetTileNo(i);
 
                 //ƒpƒlƒ‹‚Ì¶¬
-                Instantiate(_tile, new Vector3(row,0, col),
+                Instantiate(_tile, new Vector3(row*2,0, col*2),
                     Quaternion.Euler(90, 0, 0), transform);
                 i++;
             }
