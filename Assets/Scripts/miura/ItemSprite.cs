@@ -66,6 +66,9 @@ public class ItemSprite : MonoBehaviour
                 case EventStatus.Kari3_Got:
                     spriteRenderer.sprite = now;
                     break;
+                case EventStatus.Rock:
+                    spriteRenderer.sprite = now;
+                    break;
             }
         }
     }
