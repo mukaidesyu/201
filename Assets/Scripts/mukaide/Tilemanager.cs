@@ -15,7 +15,8 @@ public class Tilemanager : MonoBehaviour, Clickable
     bool walkedNeko = false; // 猫があるいたかどうか
     public EventStatus Event = EventStatus.None;//イベントがあるか否か
     PanelStatus panelStatus = PanelStatus.Walkable; // 0:ゲーム内に表示しない 1:表示するけど歩けない 2:普通の道になる
-    [SerializeField] GameObject eventObject;
+    GameObject eventObject;
+    [SerializeField] GameObject terrein;
 
     Eventmanager eventmanager;
 
