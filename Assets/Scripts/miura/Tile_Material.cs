@@ -37,6 +37,7 @@ public class Tile_Material : MonoBehaviour
     [SerializeField]  private int id;
 
     public Material[] Materials;
+    public GameObject nowTerrain;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +45,16 @@ public class Tile_Material : MonoBehaviour
         status = TileStatus.Grass;
         //タイルのid取得
         id = this.gameObject.GetComponent<Tilemanager>().GetTileNo();
+
+        // テレイン作成
+        EventStatus eve = GetComponent<Tilemanager>().GetEvent();
+        PanelStatus paneSta = GetComponent<Tilemanager>().GetPanelStatus();
+        if (paneSta != PanelStatus.Nothing)
+        {
+            GameObject temp = (GameObject)Resources.Load("Terrein/Prefabs/Terrain02");
+            nowTerrain = Instantiate(temp, new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z)
+                , Quaternion.Euler(0, 0, 0));
+        }
     }
 
     // Update is called once per frame
