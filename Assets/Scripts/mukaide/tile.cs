@@ -18,9 +18,9 @@ public class tile : MonoBehaviour
     private void Awake()
     {
         // タイル生成
-        for (int row = -5; row < _rows -5; row++)
+        for (int row = -5; row < _rows - 5; row++)
         {
-            for (int col = -5; col < _cols -5; col++)
+            for (int col = -5; col < _cols - 5; col++)
             {
                 _tile.name = "panel" + i;
                 // タイルにIDを設定する

@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    [SerializeField] private float _speed = 5.0f;
+    [SerializeField] private float _speed = 7.0f;
     private float distance = 1.0f;
-    private float move = 5.0f;
+    public int move = 2;
     public bool putflag = true;
+
+    private Vector3 targetPos;
+    private Vector3 oldPos;
 
     bool rot = true;
 
@@ -50,30 +53,38 @@ public class Move : MonoBehaviour
         tilemanager3 = GameObject.Find("judgment4").GetComponent<judgment3>(); // 左
 
         se = GameObject.Find("playerSE").GetComponent<SEenter>();
+
+        targetPos = transform.position;
+        oldPos = transform.position;
     }
 
     void Update()
     {
+
         //移動
-        if (Input.GetKey(KeyCode.W)||Input.GetAxis("Vertical") >= 1.0f)
+        if (Input.GetAxis("Vertical") >= 0.3f && transform.position == targetPos)
         {
-
-            this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
+            oldPos = transform.position;
+            targetPos += new Vector3(0, 0, move) * distance;
+            //this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.S) || Input.GetAxis("Vertical") <= -1.0f)
+        else if (Input.GetAxis("Vertical") <= -0.3f && transform.position == targetPos)
         {
-
-            this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
+            oldPos = transform.position;
+            targetPos += new Vector3(0, 0, -move) * distance;
+            //this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.A) || Input.GetAxis("Horizontal") <= -1.0f)
+        else if (Input.GetAxis("Horizontal") <= -0.3f && transform.position == targetPos)
         {
-
-            this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
+            oldPos = transform.position;
+            targetPos += new Vector3(-move, 0, 0) * distance;
+            // this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
         }
-        else if (Input.GetKey(KeyCode.D) || Input.GetAxis("Horizontal") >= 1.0f)
+        else if (Input.GetAxis("Horizontal") >= 0.3f && transform.position == targetPos)
         {
-
-            this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
+            oldPos = transform.position;
+            targetPos += new Vector3(move, 0, 0) * distance;
+            //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
         }
 
         //回転
@@ -122,18 +133,48 @@ public class Move : MonoBehaviour
                         tileScript.EndNowPut();
 
                         //操作不能時間のフラグ
-                        Unpossible = false; 
+                        Unpossible = false;
                         UnpossibleTimer = 1.0f;
                     }
                 }
             }
         }
 
-        if(Unpossible == false)
+       //if (tilemanager.PutFlag() == false || tilemanager1.PutFlag1() == false || tilemanager2.PutFlag2() == false || tilemanager3.PutFlag3() == false&& transform.position == targetPos)
+       //{
+       //    targetPos = oldPos * distance;
+       //}
+     
+        if (tilemanager.PutFlag() == false)
+        {
+            targetPos -= new Vector3(-move, 0, 0) * distance;
+            //this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
+        }
+        if (tilemanager1.PutFlag1() == false)
+        {
+            oldPos = transform.position;
+            targetPos -= new Vector3(0, 0, move) * distance;
+            //this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
+        }
+        if (tilemanager2.PutFlag2() == false)
+        {
+            oldPos = transform.position;
+            targetPos -= new Vector3(0, 0, -move) * distance;
+            // this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
+        }
+        if (tilemanager3.PutFlag3() == false)
+        {
+            targetPos -= new Vector3(move, 0, 0) * distance;
+            //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
+        }
+
+        MovePlyer(targetPos);
+
+        if (Unpossible == false)
         {
             UnpossibleTimerCount();
         }
-  
+
     }
 
 
