@@ -61,4 +61,9 @@ public class Terrain : MonoBehaviour
             }
         }
     }
+
+    public bool GetMagick()
+    {
+        return KeyDown;
+    }
 }
