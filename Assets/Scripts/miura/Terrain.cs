@@ -11,10 +11,10 @@ public class Terrain : MonoBehaviour
     public float returnTime;
     void Start()
     {
-        wood = (Material)Resources.Load("Terrein/bark01_bottom");
-        grass = (Material)Resources.Load("Terrein/Grass");
-        wood.color = new Color(1, 1, 1, 1);
-        grass.color = new Color(1, 1, 1, 1);
+        wood = (Material)Resources.Load("Terrein/Prefabs/Default");
+        grass = (Material)Resources.Load("Terrein/Prefabs/branch_tex");
+        wood.color = new Color(0.7f, 0.5f, 0.3f, 1);
+       
         KeyDown = false;
     }
 
@@ -34,8 +34,8 @@ public class Terrain : MonoBehaviour
 
         if (KeyDown)
         {
-            wood.color = new Color(1, 1, 1, 0.5f);
-            grass.color = new Color(1, 1, 1, 0.2f);
+            wood.color = new Color(0.7f, 0.5f, 0.3f, 0.3f);
+            grass.color = new Color(1, 1, 1, 0.5f);
         }
         else
         {
@@ -44,7 +44,7 @@ public class Terrain : MonoBehaviour
 
             if (wood.color.a >= 1.0)
             {
-                wood.color = new Color(1, 1, 1, 1);
+                wood.color = new Color(0.7f, 0.5f, 0.3f, 1);
             }
             if (grass.color.a >= 1.0)
             {
