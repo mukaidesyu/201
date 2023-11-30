@@ -55,7 +55,6 @@ public class PieceRay : MonoBehaviour
                     {
                         if (piece.flagp() == true)
                         {
-                            Debug.Log("êÑÇ∑");
                             c.WalkFlag();
                             c.PutNo();
                             c.SetNowPut(true);
