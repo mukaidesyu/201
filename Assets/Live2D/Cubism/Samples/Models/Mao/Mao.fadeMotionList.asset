@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403ae2dd693bb1d4b924f6b8d206b053, type: 3}
   m_Name: Mao.fadeMotionList
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   MotionInstanceIds: 4c89000082890000348d00006c8d0000e2870000828b00008a8b000050890000
+=======
+  MotionInstanceIds: f46100001c6200002c6400005c640000266100001e63000026630000f8610000
+>>>>>>> feature/okajima
   CubismFadeMotionObjects:
   - {fileID: 11400000, guid: c6a5276089e6b2c4bb2f78cca94c4ded, type: 2}
   - {fileID: 11400000, guid: a0145e27134640343b894f03870256bc, type: 2}

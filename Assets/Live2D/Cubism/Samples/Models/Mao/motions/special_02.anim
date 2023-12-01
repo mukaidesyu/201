@@ -16472,5 +16472,9 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
+<<<<<<< HEAD
     intParameter: 35148
+=======
+    intParameter: 25076
+>>>>>>> feature/okajima
     messageOptions: 1
