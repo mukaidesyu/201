@@ -1,0 +1,452 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "",
+			"Name": "角度 X"
+		},
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "",
+			"Name": "角度 Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "",
+			"Name": "角度 Z"
+		},
+		{
+			"Id": "ParamEyeLOpen",
+			"GroupId": "",
+			"Name": "左目　開閉"
+		},
+		{
+			"Id": "ParamEyeLSmile",
+			"GroupId": "",
+			"Name": "左目　笑顔"
+		},
+		{
+			"Id": "ParamEyeROpen",
+			"GroupId": "",
+			"Name": "右目　開閉"
+		},
+		{
+			"Id": "ParamEyeRSmile",
+			"GroupId": "",
+			"Name": "右目　笑顔"
+		},
+		{
+			"Id": "ParamEyeBallX",
+			"GroupId": "",
+			"Name": "目玉 X"
+		},
+		{
+			"Id": "ParamEyeBallY",
+			"GroupId": "",
+			"Name": "目玉 Y"
+		},
+		{
+			"Id": "ParamBrowLY",
+			"GroupId": "",
+			"Name": "左眉　上下"
+		},
+		{
+			"Id": "ParamBrowRY",
+			"GroupId": "",
+			"Name": "右眉　上下"
+		},
+		{
+			"Id": "ParamBrowLX",
+			"GroupId": "",
+			"Name": "左眉　左右"
+		},
+		{
+			"Id": "ParamBrowRX",
+			"GroupId": "",
+			"Name": "右眉　左右"
+		},
+		{
+			"Id": "ParamBrowLAngle",
+			"GroupId": "",
+			"Name": "左眉　角度"
+		},
+		{
+			"Id": "ParamBrowRAngle",
+			"GroupId": "",
+			"Name": "右眉　角度"
+		},
+		{
+			"Id": "ParamBrowLForm",
+			"GroupId": "",
+			"Name": "左眉　変形"
+		},
+		{
+			"Id": "ParamBrowRForm",
+			"GroupId": "",
+			"Name": "右眉　変形"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "",
+			"Name": "口　変形"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "",
+			"Name": "口　開閉"
+		},
+		{
+			"Id": "ParamCheek",
+			"GroupId": "",
+			"Name": "照れ"
+		},
+		{
+			"Id": "ParamBodyAngleX",
+			"GroupId": "",
+			"Name": "体の回転　X"
+		},
+		{
+			"Id": "ParamBodyAngleY",
+			"GroupId": "",
+			"Name": "体の回転　Y"
+		},
+		{
+			"Id": "ParamBodyAngleZ",
+			"GroupId": "",
+			"Name": "体の回転　Z"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "",
+			"Name": "呼吸"
+		},
+		{
+			"Id": "ParamHairFront2",
+			"GroupId": "",
+			"Name": "髪揺れ　前"
+		},
+		{
+			"Id": "ParamHairSide",
+			"GroupId": "",
+			"Name": "髪揺れ　横"
+		},
+		{
+			"Id": "ParamHairBack",
+			"GroupId": "",
+			"Name": "髪揺れ　後左"
+		},
+		{
+			"Id": "ParamHairBack2",
+			"GroupId": "",
+			"Name": "髪揺れ　後"
+		}
+	],
+	"ParameterGroups": [],
+	"Parts": [
+		{
+			"Id": "Part",
+			"Name": "前帽子"
+		},
+		{
+			"Id": "Part9",
+			"Name": "左眉"
+		},
+		{
+			"Id": "Part10",
+			"Name": "右眉"
+		},
+		{
+			"Id": "Part11",
+			"Name": "左目"
+		},
+		{
+			"Id": "Part22",
+			"Name": "右目"
+		},
+		{
+			"Id": "Part33",
+			"Name": "鼻"
+		},
+		{
+			"Id": "Part34",
+			"Name": "口"
+		},
+		{
+			"Id": "Part35",
+			"Name": "髪"
+		},
+		{
+			"Id": "Part47",
+			"Name": "顔"
+		},
+		{
+			"Id": "Part48",
+			"Name": "後帽子"
+		},
+		{
+			"Id": "Part49",
+			"Name": "リボン"
+		},
+		{
+			"Id": "Part54",
+			"Name": "左ひらひら"
+		},
+		{
+			"Id": "Part55",
+			"Name": "右ひらひら"
+		},
+		{
+			"Id": "Part56",
+			"Name": "胸"
+		},
+		{
+			"Id": "Part57",
+			"Name": "左肩紐"
+		},
+		{
+			"Id": "Part58",
+			"Name": "右肩紐"
+		},
+		{
+			"Id": "Part59",
+			"Name": "首"
+		},
+		{
+			"Id": "Part60",
+			"Name": "首周り"
+		},
+		{
+			"Id": "Part61",
+			"Name": "左肩フリル前"
+		},
+		{
+			"Id": "Part62",
+			"Name": "左腕"
+		},
+		{
+			"Id": "Part65",
+			"Name": "左肩フリル後"
+		},
+		{
+			"Id": "Part66",
+			"Name": "右肩フリル"
+		},
+		{
+			"Id": "Part67",
+			"Name": "左腕"
+		},
+		{
+			"Id": "Part70",
+			"Name": "お腹ボタン"
+		},
+		{
+			"Id": "Part73",
+			"Name": "お腹"
+		},
+		{
+			"Id": "Part74",
+			"Name": "うしろ髪"
+		},
+		{
+			"Id": "Part2",
+			"Name": "フォルダー 54"
+		},
+		{
+			"Id": "Part8",
+			"Name": "フォルダー 51"
+		},
+		{
+			"Id": "Part12",
+			"Name": "まつ毛"
+		},
+		{
+			"Id": "Part14",
+			"Name": "フォルダー 37 のコピー 2"
+		},
+		{
+			"Id": "Part23",
+			"Name": "まつ毛"
+		},
+		{
+			"Id": "Part25",
+			"Name": "フォルダー 37 のコピー"
+		},
+		{
+			"Id": "Part36",
+			"Name": "跳ね"
+		},
+		{
+			"Id": "Part37",
+			"Name": "左中"
+		},
+		{
+			"Id": "Part39",
+			"Name": "左前"
+		},
+		{
+			"Id": "Part41",
+			"Name": "中前"
+		},
+		{
+			"Id": "Part43",
+			"Name": "右前"
+		},
+		{
+			"Id": "Part45",
+			"Name": "左中"
+		},
+		{
+			"Id": "Part46",
+			"Name": "後"
+		},
+		{
+			"Id": "Part50",
+			"Name": "猫"
+		},
+		{
+			"Id": "Part51",
+			"Name": "フォルダー 24"
+		},
+		{
+			"Id": "Part52",
+			"Name": "フォルダー 25"
+		},
+		{
+			"Id": "Part53",
+			"Name": "フォルダー 26"
+		},
+		{
+			"Id": "Part63",
+			"Name": "フォルダー 13"
+		},
+		{
+			"Id": "Part64",
+			"Name": "フォルダー 4"
+		},
+		{
+			"Id": "Part68",
+			"Name": "フォルダー 16"
+		},
+		{
+			"Id": "Part69",
+			"Name": "フォルダー 15"
+		},
+		{
+			"Id": "Part71",
+			"Name": "フォルダー 53 のコピー 2"
+		},
+		{
+			"Id": "Part72",
+			"Name": "フォルダー 53"
+		},
+		{
+			"Id": "Part75",
+			"Name": "左"
+		},
+		{
+			"Id": "Part76",
+			"Name": "右"
+		},
+		{
+			"Id": "Part3",
+			"Name": "フォルダー 57 のコピー"
+		},
+		{
+			"Id": "Part5",
+			"Name": "フォルダー 57"
+		},
+		{
+			"Id": "Part6",
+			"Name": "フォルダー 56"
+		},
+		{
+			"Id": "Part7",
+			"Name": "フォルダー 55"
+		},
+		{
+			"Id": "Part13",
+			"Name": "フォルダー 43 のコピー"
+		},
+		{
+			"Id": "Part15",
+			"Name": "瞳"
+		},
+		{
+			"Id": "Part21",
+			"Name": "白目"
+		},
+		{
+			"Id": "Part24",
+			"Name": "フォルダー 43"
+		},
+		{
+			"Id": "Part26",
+			"Name": "瞳"
+		},
+		{
+			"Id": "Part32",
+			"Name": "白目"
+		},
+		{
+			"Id": "Part38",
+			"Name": "フォルダー 14 のコピー 4"
+		},
+		{
+			"Id": "Part40",
+			"Name": "フォルダー 14 のコピー 2"
+		},
+		{
+			"Id": "Part42",
+			"Name": "フォルダー 14 のコピー"
+		},
+		{
+			"Id": "Part44",
+			"Name": "フォルダー 14 のコピー 3"
+		},
+		{
+			"Id": "Part4",
+			"Name": "フォルダー 58"
+		},
+		{
+			"Id": "Part16",
+			"Name": "フォルダー 38 のコピー 2"
+		},
+		{
+			"Id": "Part19",
+			"Name": "フォルダー 12 のコピー"
+		},
+		{
+			"Id": "Part27",
+			"Name": "フォルダー 38 のコピー"
+		},
+		{
+			"Id": "Part30",
+			"Name": "フォルダー 12"
+		},
+		{
+			"Id": "Part17",
+			"Name": "フォルダー 40 のコピー 2"
+		},
+		{
+			"Id": "Part18",
+			"Name": "フォルダー 41 のコピー 2"
+		},
+		{
+			"Id": "Part20",
+			"Name": "フォルダー 39 のコピー 2"
+		},
+		{
+			"Id": "Part28",
+			"Name": "フォルダー 40 のコピー"
+		},
+		{
+			"Id": "Part29",
+			"Name": "フォルダー 41 のコピー"
+		},
+		{
+			"Id": "Part31",
+			"Name": "フォルダー 39 のコピー"
+		}
+	]
+}
