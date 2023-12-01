@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/miura/miuraDevelop.unity
+    path: Assets/Scenes/miura/miuraNew.unity
     guid: f5d4c9aaeb62be04c953e432a862e250
   - enabled: 1
     path: Assets/Scenes/main/StartScene.unity
