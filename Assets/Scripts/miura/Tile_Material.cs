@@ -37,6 +37,8 @@ public class Tile_Material : MonoBehaviour
     [SerializeField]  private int id;
 
     public Material[] Materials;
+    public GameObject nowTerrain;
+    public GameObject nowGrass;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,26 @@ public class Tile_Material : MonoBehaviour
         status = TileStatus.Grass;
         //タイルのid取得
         id = this.gameObject.GetComponent<Tilemanager>().GetTileNo();
+
+        // テレイン作成
+        EventStatus eveSta = GetComponent<Tilemanager>().GetEvent();
+        PanelStatus paneSta = GetComponent<Tilemanager>().GetPanelStatus();
+        if (paneSta != PanelStatus.Nothing)
+        {
+            GameObject temp = (GameObject)Resources.Load("Terrein/Prefabs/tileDown");
+            nowTerrain = Instantiate(temp, new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z)
+                , Quaternion.Euler(0, 0, 0));
+            nowTerrain.transform.SetParent(this.gameObject.transform, true);
+        }
+
+        // 草作成
+        if (eveSta == EventStatus.Kinoko || eveSta == EventStatus.Sakana || eveSta == EventStatus.Kari1 || eveSta == EventStatus.Kari2 || eveSta == EventStatus.Kari3)
+        {
+            GameObject temp = (GameObject)Resources.Load("Terrein/Prefabs/GrassEvent");
+            nowGrass = Instantiate(temp, new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z)
+                , Quaternion.Euler(0, 0, 0));
+            nowGrass.transform.SetParent(this.gameObject.transform, true);
+        }
     }
 
     // Update is called once per frame

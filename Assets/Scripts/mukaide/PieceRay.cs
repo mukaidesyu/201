@@ -23,6 +23,8 @@ public class PieceRay : MonoBehaviour
 
     Piece piece;
 
+    [SerializeField] ParticleSystem ef;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,14 +51,27 @@ public class PieceRay : MonoBehaviour
                 if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
                 {
                     putflag = c.PutWalkFlag();
-                    if (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown("joystick button 1"))
+                    if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
                     {
                         if (piece.flagp() == true)
                         {
-                            Debug.Log("推す");
                             c.WalkFlag();
                             c.PutNo();
                             c.SetNowPut(true);
+
+                            ParticleSystem newParticle = Instantiate(ef);
+                            ParticleSystem newParticle1 = Instantiate(ef);
+
+                            // パーティクルの発生場所をこのスクリプトをアタッチしているGameObjectの場所にする。
+                            newParticle.transform.position = this.transform.position;
+                            newParticle1.transform.position = this.transform.position;
+                            // パーティクルを発生させる。
+                            newParticle.Play();
+                            newParticle1.Play();
+                            // インスタンス化したパーティクルシステムのGameObjectを削除する。(任意)
+                            Destroy(newParticle.gameObject,1.0f);
+                            Destroy(newParticle1.gameObject, 1.0f);
+
                             if (putflag == true)
                             {
                                 c.SetOnTile(true);

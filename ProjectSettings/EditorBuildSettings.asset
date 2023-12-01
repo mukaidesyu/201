@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/mukaide/mukaide.unity
-    guid: 31ec4170ff9de2e4eaa39b4de65cca49
+    path: Assets/Scenes/miura/miuraNew.unity
+    guid: f5d4c9aaeb62be04c953e432a862e250
   - enabled: 1
     path: Assets/Scenes/main/StartScene.unity
     guid: d2f4ca906445266459133ff117d68d1e
@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/main/Game.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/miura/miuracopy.unity
-    guid: 4bdbba28628ff2e4494c0e035ad9b6f9
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
