@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Neko_NavMesh : MonoBehaviour
 {
-
     [SerializeField] private Transform target;
     [SerializeField]private Transform nextTarget;
     private NavMeshAgent m_Agent;
@@ -31,11 +30,12 @@ public class Neko_NavMesh : MonoBehaviour
         {
             target = goalPanel.transform;
             nextTarget = null;
+
             // ÉSÅ[ÉãîªíË
             if (Vector3.Distance(this.transform.position, target.position) < 0.5)
             {
                 isRun = false;
-                SceneManager.LoadScene("StartScene");
+                GameObject.Find("CanvasManager").GetComponent<CanvasManagerScript>().SetClear(true);
             }
         }
         else if (nextTarget != null && Vector3.Distance(this.transform.position, target.transform.position) < 0.5)

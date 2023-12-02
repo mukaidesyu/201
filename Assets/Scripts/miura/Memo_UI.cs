@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Memo_UI : MonoBehaviour
 {
-    bool isGet;
+    [SerializeField]bool isGet;
     GameObject child;
 
     // Start is called before the first frame update
@@ -28,5 +28,10 @@ public class Memo_UI : MonoBehaviour
     public void SetIsGet(bool set)
     {
         isGet = set;
+    }
+
+    public bool GetIsGet()
+    {
+        return isGet;
     }
 }
