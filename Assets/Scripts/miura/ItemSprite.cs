@@ -69,6 +69,10 @@ public class ItemSprite : MonoBehaviour
                 case EventStatus.Rock:
                     spriteRenderer.sprite = now;
                     break;
+                case EventStatus.Zasso:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
             }
         }
     }
