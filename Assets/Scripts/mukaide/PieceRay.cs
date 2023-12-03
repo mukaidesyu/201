@@ -10,6 +10,8 @@ interface Clickable
 
     void SetNowPut(bool set);
     void SetOnTile(bool set);
+
+    EventStatus GetEvent();
 }
 
 public class PieceRay : MonoBehaviour
@@ -24,6 +26,8 @@ public class PieceRay : MonoBehaviour
     Piece piece;
 
     [SerializeField] ParticleSystem ef;
+
+    EventStatus ev;
 
     // Start is called before the first frame update
     void Start()
@@ -51,9 +55,10 @@ public class PieceRay : MonoBehaviour
                 if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
                 {
                     putflag = c.PutWalkFlag();
+                    ev = c.GetEvent();
                     if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
                     {
-                        if (piece.flagp() == true)
+                        if (piece.flagp() == true && piece.flage() == false)
                         {
                             c.WalkFlag();
                             c.PutNo();
@@ -92,6 +97,10 @@ public class PieceRay : MonoBehaviour
 
     }
 
+    public EventStatus Ev()
+    {
+        return ev;
+    }
 
     public bool pfl()
     {

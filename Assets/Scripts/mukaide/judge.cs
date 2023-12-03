@@ -9,6 +9,10 @@ public class judge : MonoBehaviour, Clickable
 
     }
 
+    public EventStatus GetEvent()
+    {
+        return 0;
+    }
     public int PutNo()
     {
         return 0;
