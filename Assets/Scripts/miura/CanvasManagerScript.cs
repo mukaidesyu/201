@@ -38,10 +38,14 @@ public class CanvasManagerScript : MonoBehaviour
 
     public void DrawClearCanvas()
     {
-        //gameCanvas.SetActive(false);
         clearCanvas.SetActive(true);
         GameObject.Find("getitem").GetComponent<GetItemClear>().ClearStart();
         int tmp = GameObject.Find("TurnNumber").GetComponent<TurnScript>().GetTurn();
         GameObject.Find("ClearTurnNumber").GetComponent<ClearTurnScript>().SetTurn(tmp);
+
+        // 下は各種変数をクリア画面に渡したあと
+        gameCanvas.SetActive(false);// ゲームキャンバスを消す
+        GameObject.Find("Neko").GetComponent<NekoOff>().NekoStop();
+        GameObject.Find("GameObject").SetActive(false); // ゲームオブジェクトを消す
     }
 }
