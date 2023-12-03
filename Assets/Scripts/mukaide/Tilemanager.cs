@@ -65,7 +65,7 @@ public class Tilemanager : MonoBehaviour, Clickable
         else if (Goalflag == true)
         {
             GameObject tmp = (GameObject)Resources.Load("Home");
-            Instantiate(tmp, new Vector3(this.transform.position.x, transform.position.y + 0.1f, transform.position.z)
+            Instantiate(tmp, new Vector3(this.transform.position.x, transform.position.y + 0.1f, transform.position.z + 0.3f)
                 , Quaternion.Euler(80, 0, 0), this.gameObject.transform);
 
         }
