@@ -32,7 +32,7 @@ public class Piece : MonoBehaviour
                 {
                     pflag = true;
                 }
-                if (pc[i].GetComponent<PieceRay>().Ev() == EventStatus.Ike || pc[i].GetComponent<PieceRay>().Ev() == EventStatus.Rock)
+                if (pc[i].GetComponent<PieceRay>().Ev() == EventStatus.Ike || pc[i].GetComponent<PieceRay>().Ev() == EventStatus.Rock || pc[i].GetComponent<PieceRay>().Ps() == PanelStatus.Nothing)
                 {
                     eflag = true;
                 }

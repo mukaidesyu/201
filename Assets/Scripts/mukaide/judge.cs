@@ -32,6 +32,11 @@ public class judge : MonoBehaviour, Clickable
 
     }
 
+    public PanelStatus GetPanelStatus()
+    {
+        return 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
