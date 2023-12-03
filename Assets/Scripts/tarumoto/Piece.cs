@@ -6,6 +6,7 @@ public class Piece : MonoBehaviour
 {
     List<GameObject> pc = new List<GameObject>();
     public bool pflag = false;
+    public bool eflag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,18 +25,19 @@ public class Piece : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
         {
             int i = 0;
+            eflag = false;
             for (i = 0; i < this.transform.childCount; i++)
             {
                 if (pc[i].GetComponent<PieceRay>().pfl() == true)
                 {
                     pflag = true;
                 }
+                if (pc[i].GetComponent<PieceRay>().Ev() == EventStatus.Ike || pc[i].GetComponent<PieceRay>().Ev() == EventStatus.Rock)
+                {
+                    eflag = true;
+                }
             }
 
-            if (i >= this.transform.childCount)
-            {
-
-            }
         }
 
     }
@@ -43,6 +45,11 @@ public class Piece : MonoBehaviour
     public bool flagp()
     {
         return pflag;
+    }
+
+    public bool flage()
+    {
+        return eflag;
     }
 
     private void FixedUpdate()

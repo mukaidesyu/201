@@ -11,7 +11,6 @@ public class Move : MonoBehaviour
     public bool putflag = true;
 
     private Vector3 targetPos;
-    private Vector3 oldPos;
 
     bool rot = true;
 
@@ -34,6 +33,9 @@ public class Move : MonoBehaviour
     public bool Unpossible = true;//操作不能フラグ
     public float UnpossibleTimer = 0;//操作不能タイマー
 
+    public bool Hit = true;//操作不能フラグ
+    public float HitsTimer = 0;//操作不能タイマー
+
     //SE
     SEenter se;
 
@@ -55,7 +57,6 @@ public class Move : MonoBehaviour
         se = GameObject.Find("playerSE").GetComponent<SEenter>();
 
         targetPos = transform.position;
-        oldPos = transform.position;
 
         turnScript = GameObject.Find("TurnNumber").GetComponent<TurnScript>();
     }
@@ -66,25 +67,21 @@ public class Move : MonoBehaviour
         //移動
         if (Input.GetAxis("Vertical") >= 0.3f && transform.position == targetPos)
         {
-            oldPos = transform.position;
             targetPos += new Vector3(0, 0, move) * distance;
             //this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
         }
         else if (Input.GetAxis("Vertical") <= -0.3f && transform.position == targetPos)
         {
-            oldPos = transform.position;
             targetPos += new Vector3(0, 0, -move) * distance;
             //this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
         }
         else if (Input.GetAxis("Horizontal") <= -0.3f && transform.position == targetPos)
         {
-            oldPos = transform.position;
             targetPos += new Vector3(-move, 0, 0) * distance;
             // this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
         }
         else if (Input.GetAxis("Horizontal") >= 0.3f && transform.position == targetPos)
         {
-            oldPos = transform.position;
             targetPos += new Vector3(move, 0, 0) * distance;
             //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
         }
@@ -110,7 +107,7 @@ public class Move : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
                 {
                     // ピースを置くとここに入る
-                    if (Pice.GetComponent<Piece>().flagp() == true) // 現状Pフラグが立ってない
+                    if (Pice.GetComponent<Piece>().flagp() == true && Pice.GetComponent<Piece>().flage() == false) // 現状Pフラグが立ってない
                     {
                         se.EnterSE();
 
@@ -144,41 +141,12 @@ public class Move : MonoBehaviour
             }
         }
 
-       //if (tilemanager.PutFlag() == false || tilemanager1.PutFlag1() == false || tilemanager2.PutFlag2() == false || tilemanager3.PutFlag3() == false&& transform.position == targetPos)
-       //{
-       //    targetPos = oldPos * distance;
-       //}
-     
-        if (tilemanager.PutFlag() == false)
-        {
-            targetPos -= new Vector3(-move, 0, 0) * distance;
-            //this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
-        }
-        if (tilemanager1.PutFlag1() == false)
-        {
-            oldPos = transform.position;
-            targetPos -= new Vector3(0, 0, move) * distance;
-            //this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
-        }
-        if (tilemanager2.PutFlag2() == false)
-        {
-            oldPos = transform.position;
-            targetPos -= new Vector3(0, 0, -move) * distance;
-            // this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
-        }
-        if (tilemanager3.PutFlag3() == false)
-        {
-            targetPos -= new Vector3(move, 0, 0) * distance;
-            //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
-        }
-
         MovePlyer(targetPos);
 
         if (Unpossible == false)
         {
             UnpossibleTimerCount();
         }
-
     }
 
 
@@ -192,6 +160,28 @@ public class Move : MonoBehaviour
     {
         //ベイク
         GameObject.Find("NavMeshSurface").GetComponent<NavMesh_Surface>().Bake();
+
+        //画面外判定
+        if (tilemanager.PutFlag() == false)
+        {
+            targetPos -= new Vector3(-move, 0, 0) * distance;
+            //this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
+        }
+        if (tilemanager1.PutFlag1() == false)
+        {
+            targetPos -= new Vector3(0, 0, move) * distance;
+            //this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
+        }
+        if (tilemanager2.PutFlag2() == false)
+        {
+            targetPos -= new Vector3(0, 0, -move) * distance;
+            // this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
+        }
+        if (tilemanager3.PutFlag3() == false)
+        {
+            targetPos -= new Vector3(move, 0, 0) * distance;
+            //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
+        }
     }
 
     public void UnpossibleTimerCount()
