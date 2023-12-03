@@ -24,12 +24,12 @@ public class Terrain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown("joystick button 0"))
         {
             KeyDown = true;
 
         }
-        if (Input.GetKeyUp(KeyCode.C))
+        if (Input.GetKeyUp(KeyCode.C )|| Input.GetKeyUp("joystick button 0"))
         {
             KeyDown = false;
         }

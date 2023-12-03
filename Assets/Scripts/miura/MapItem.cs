@@ -28,11 +28,11 @@ public class MapItem : MonoBehaviour
     void Update()
     {
         // ÉLÅ[ÇÃîªíË
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || (Input.GetKeyDown("joystick button 6") && Input.GetKeyDown("joystick button 7")))
         {
             downFlag = true;
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) || (Input.GetKeyDown("joystick button 6") && Input.GetKeyDown("joystick button 7")))
         {
             downFlag = false;
         }
