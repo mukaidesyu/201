@@ -21,13 +21,6 @@ public class GetItemClear : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject getItems = GameObject.Find("GetItems");
-        kinokoGet = getItems.transform.GetChild(0).GetComponent<Memo_UI>().GetIsGet();
-        sakanaGet = getItems.transform.GetChild(1).GetComponent<Memo_UI>().GetIsGet();
-        kari1Get = getItems.transform.GetChild(2).GetComponent<Memo_UI>().GetIsGet();
-        kari2Get = getItems.transform.GetChild(3).GetComponent<Memo_UI>().GetIsGet();
-        kari3Get = getItems.transform.GetChild(4).GetComponent<Memo_UI>().GetIsGet();
-
         kinoko = this.transform.GetChild(0).GetComponent<Image>();
         sakana = this.transform.GetChild(1).GetComponent<Image>();
         kari1 = this.transform.GetChild(2).GetComponent<Image>();
@@ -41,7 +34,6 @@ public class GetItemClear : MonoBehaviour
         if (kinokoGet == true)// •Ï‰»ˆ—
         {
             kinoko.color += new Color (0.1f, 0.1f, 0.1f, 0.1f);
-            Debug.Log("‚«‚Ì‚±ƒvƒ‰ƒX");
             if (kinoko.color.a >= 1.0f)
             {
                 kinoko.color = new Color(1, 1, 1, 1);
