@@ -62,6 +62,13 @@ public class Tilemanager : MonoBehaviour, Clickable
         {
             GetComponent<MeshRenderer>().enabled = false; // Ç‡ÇµÇ©ÇµÇƒNavMeshÇ±ÇÌÇÍÇÈÅHÅH
         }
+        else if (Goalflag == true)
+        {
+            GameObject tmp = (GameObject)Resources.Load("Home");
+            Instantiate(tmp, new Vector3(this.transform.position.x, transform.position.y + 0.1f, transform.position.z)
+                , Quaternion.Euler(80, 0, 0), this.gameObject.transform);
+
+        }
         else if (Event == EventStatus.Kinoko || Event == EventStatus.Sakana || Event == EventStatus.Kari1
             || Event == EventStatus.Kari2 || Event == EventStatus.Kari3 || Event == EventStatus.Rock)
         {
