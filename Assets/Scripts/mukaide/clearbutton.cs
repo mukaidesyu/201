@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class clearbutton : MonoBehaviour
 {
-    Button button;
+   [SerializeField] Button button;
 
     // Start is called before the first frame update
     void Start()
     {
-        button = GameObject.Find("button1").GetComponent<Button>();
+        Debug.Log("‚ ‚ ‚ ‚ ‚ ");
+        button = GameObject.Find("nextbutton").GetComponent<Button>();
         //ƒ{ƒ^ƒ“‚ª‘I‘ğ‚³‚ê‚½ó‘Ô‚É‚È‚é
         button.Select();
     }
