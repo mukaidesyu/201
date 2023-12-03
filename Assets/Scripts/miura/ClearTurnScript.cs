@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TurnScript : MonoBehaviour
+public class ClearTurnScript : MonoBehaviour
 {
     // åoâﬂÉ^Å[Éì
-    int turn = 0;
+    int turn;
     TextMeshProUGUI tmp;
 
     // Start is called before the first frame update
     void Start()
     {
-        int turn = 0;
         tmp = this.GetComponent<TextMeshProUGUI>();
     }
 
