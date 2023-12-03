@@ -25,6 +25,7 @@ public class Move : MonoBehaviour
     judgment1 tilemanager1;
     judgment2 tilemanager2;
     judgment3 tilemanager3;
+    TurnScript turnScript;
 
     public int feald = 0;
 
@@ -38,7 +39,6 @@ public class Move : MonoBehaviour
 
     private void Start()
     {
-
         // スポナーオブジェクトをスポナー変数に格納する
         spawner = GameObject.FindObjectOfType<Spawner>();
         if (!activePiece)
@@ -56,6 +56,8 @@ public class Move : MonoBehaviour
 
         targetPos = transform.position;
         oldPos = transform.position;
+
+        turnScript = GameObject.Find("TurnNumber").GetComponent<TurnScript>();
     }
 
     void Update()
@@ -128,6 +130,8 @@ public class Move : MonoBehaviour
                         nekoScript.SetTarget(onTile);
                         nekoScript.SetNextTarget(farTile);
 
+                        // ターンを1ターン経過させる
+                        turnScript.TurnPlus();
 
                         // 全フラグ下げる
                         tileScript.EndNowPut();
