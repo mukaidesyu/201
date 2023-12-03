@@ -21,7 +21,6 @@ public class CanvasManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (isClear)
         {
             if (canvasSet == false)
@@ -42,5 +41,7 @@ public class CanvasManagerScript : MonoBehaviour
         //gameCanvas.SetActive(false);
         clearCanvas.SetActive(true);
         GameObject.Find("getitem").GetComponent<GetItemClear>().ClearStart();
+        int tmp = GameObject.Find("TurnNumber").GetComponent<TurnScript>().GetTurn();
+        GameObject.Find("ClearTurnNumber").GetComponent<ClearTurnScript>().SetTurn(tmp);
     }
 }
