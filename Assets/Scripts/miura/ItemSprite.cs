@@ -73,6 +73,10 @@ public class ItemSprite : MonoBehaviour
                     grass.enabled = true;
                     spriteRenderer.sprite = now;
                     break;
+                case EventStatus.Zasso_Got:
+                    grass.enabled = false;
+                    spriteRenderer.sprite = now;
+                    break;
             }
         }
     }

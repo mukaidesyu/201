@@ -5,11 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Panel
+  - tile
+  - Fade
+  - judgment
+  - Piece
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Neko
   - Water
   - UI
   - Walkable
