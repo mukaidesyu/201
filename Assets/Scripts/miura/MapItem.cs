@@ -28,11 +28,19 @@ public class MapItem : MonoBehaviour
     void Update()
     {
         // ƒL[‚Ì”»’è
+<<<<<<< HEAD
         if (Input.GetKeyDown(KeyCode.Space) || (Input.GetAxis("TriggerLR") < 0)) //|| (Input.GetKeyDown("joystick button 6") && Input.GetKeyDown("joystick button 7"))) // ‚¢‚¶‚é‘O
         {
             downFlag = true;
         }
         if (Input.GetKeyUp(KeyCode.Space) || (Input.GetAxis("TriggerLR") >= 0))
+=======
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 2"))
+        {
+            downFlag = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp("joystick button 2"))
+>>>>>>> feature/mukaide
         {
             downFlag = false;
         }

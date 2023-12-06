@@ -59,7 +59,7 @@ public class PieceRay : MonoBehaviour
                     putflag = c.PutWalkFlag();
                     ev = c.GetEvent();
                     panelstatus = c.GetPanelStatus();
-                    if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
+                    if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
                     {
                         if (piece.flagp() == true && piece.flage() == false)
                         {

@@ -22,7 +22,7 @@ public class Piece : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
+        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
         {
             int i = 0;
             eflag = false;
