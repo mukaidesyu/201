@@ -50,6 +50,11 @@ public class Eventmanager : MonoBehaviour
                 script.SetEvent(EventStatus.Kari3_Got);
                 break;
 
+            case EventStatus.Zasso:
+                // ここに演出的な処理
+
+                script.SetEvent(EventStatus.Zasso_Got); // 雑草を消す
+                break;
                 // どんどこどんどんここにアイテムの処理追加
         }
     }
