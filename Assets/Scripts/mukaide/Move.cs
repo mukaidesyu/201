@@ -86,6 +86,8 @@ public class Move : MonoBehaviour
             //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
         }
 
+        MovePlyer(targetPos);
+
         //回転
         if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 4"))
         {
@@ -96,6 +98,28 @@ public class Move : MonoBehaviour
         {
             rot = false;
             StartCoroutine(rt2());
+        }
+
+        //画面外判定
+        if (tilemanager.PutFlag() == false && transform.position == targetPos)
+        {
+            targetPos -= new Vector3(-move, 0, 0) * distance;
+            //this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
+        }
+        if (tilemanager1.PutFlag1() == false && transform.position == targetPos)
+        {
+            targetPos -= new Vector3(0, 0, move) * distance;
+            //this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
+        }
+        if (tilemanager2.PutFlag2() == false && transform.position == targetPos)
+        {
+            targetPos -= new Vector3(0, 0, -move) * distance;
+            // this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
+        }
+        if (tilemanager3.PutFlag3() == false && transform.position == targetPos)
+        {
+            targetPos -= new Vector3(move, 0, 0) * distance;
+            //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
         }
 
         //操作可能か判断
@@ -141,7 +165,7 @@ public class Move : MonoBehaviour
             }
         }
 
-        MovePlyer(targetPos);
+
 
         if (Unpossible == false)
         {
@@ -161,27 +185,7 @@ public class Move : MonoBehaviour
         //ベイク
         GameObject.Find("NavMeshSurface").GetComponent<NavMesh_Surface>().Bake();
 
-        //画面外判定
-        if (tilemanager.PutFlag() == false)
-        {
-            targetPos -= new Vector3(-move, 0, 0) * distance;
-            //this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
-        }
-        if (tilemanager1.PutFlag1() == false)
-        {
-            targetPos -= new Vector3(0, 0, move) * distance;
-            //this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
-        }
-        if (tilemanager2.PutFlag2() == false)
-        {
-            targetPos -= new Vector3(0, 0, -move) * distance;
-            // this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
-        }
-        if (tilemanager3.PutFlag3() == false)
-        {
-            targetPos -= new Vector3(move, 0, 0) * distance;
-            //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
-        }
+  
     }
 
     public void UnpossibleTimerCount()
