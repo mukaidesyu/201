@@ -28,7 +28,6 @@ public class SceneController : MonoBehaviour
     {
         fadeCanvas.GetComponent<FadeManager>().fadeOut();//フェードアウトフラグを立てる
         await Task.Delay(200);//暗転するまで待つ
-        //SceneManager.LoadScene("mukaide");もどした
         SceneManager.LoadScene(sceneName);//シーンチェンジ
     }
 
