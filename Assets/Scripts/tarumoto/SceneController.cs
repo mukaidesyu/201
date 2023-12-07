@@ -26,6 +26,7 @@ public class SceneController : MonoBehaviour
 
     public async void sceneChange(string sceneName)//ボタン操作などで呼び出す
     {
+        Time.timeScale = 1;
         fadeCanvas.GetComponent<FadeManager>().fadeOut();//フェードアウトフラグを立てる
         await Task.Delay(200);//暗転するまで待つ
         SceneManager.LoadScene(sceneName);//シーンチェンジ
