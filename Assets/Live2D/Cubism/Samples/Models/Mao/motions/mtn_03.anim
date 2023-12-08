@@ -10406,5 +10406,9 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
+<<<<<<< HEAD
     intParameter: -1942
+=======
+    intParameter: 25106
+>>>>>>> feature/tarumoto
     messageOptions: 1
