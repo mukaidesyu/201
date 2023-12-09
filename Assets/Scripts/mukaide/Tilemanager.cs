@@ -25,7 +25,6 @@ public class Tilemanager : MonoBehaviour, Clickable
         // 表示してない状態は処理しない
         if (panelStatus == PanelStatus.CantWalk) return;
 
-        // クリックした時の処理
         walkflag = true;
     }
 
@@ -56,7 +55,6 @@ public class Tilemanager : MonoBehaviour, Clickable
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<Renderer>().material.color = Color.red;
 
         if (panelStatus == PanelStatus.Nothing)// "無い"の状態のときは表示しない
         {

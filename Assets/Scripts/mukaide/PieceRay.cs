@@ -31,6 +31,8 @@ public class PieceRay : MonoBehaviour
     EventStatus ev;
     PanelStatus panelstatus;
 
+    Move move;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,8 @@ public class PieceRay : MonoBehaviour
         tilemanager1 = GameObject.Find("judgment2").GetComponent<judgment1>();
         tilemanager2 = GameObject.Find("judgment3").GetComponent<judgment2>();
         tilemanager3 = GameObject.Find("judgment4").GetComponent<judgment3>();
+
+        move = GameObject.Find("player").GetComponent<Move>();
 
         piece = gameObject.transform.parent.gameObject.GetComponent<Piece>();
     }
@@ -54,15 +58,25 @@ public class PieceRay : MonoBehaviour
             {
 
                 Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
+               
                 if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
                 {
                     putflag = c.PutWalkFlag();
                     ev = c.GetEvent();
                     panelstatus = c.GetPanelStatus();
+                    if (ev == EventStatus.Ike || ev == EventStatus.Rock)
+                    {
+                       gameObject.GetComponent<Renderer>().material.color = Color.red;
+                    }
+                    else
+                    {
+                        gameObject.GetComponent<Renderer>().material.color = Color.white;
+                    }
                     if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
                     {
-                        if (piece.flagp() == true && piece.flage() == false)
+                        if (piece.flagp() == true && piece.flage() == false )
                         {
+
                             c.WalkFlag();
                             c.PutNo();
                             c.SetNowPut(true);
@@ -77,7 +91,7 @@ public class PieceRay : MonoBehaviour
                             newParticle.Play();
                             newParticle1.Play();
                             // インスタンス化したパーティクルシステムのGameObjectを削除する。(任意)
-                            Destroy(newParticle.gameObject,1.0f);
+                            Destroy(newParticle.gameObject, 1.0f);
                             Destroy(newParticle1.gameObject, 1.0f);
 
                             if (putflag == true)
@@ -88,11 +102,6 @@ public class PieceRay : MonoBehaviour
 
                     }
 
-                }
-                if (hit.collider.CompareTag("tile"))
-                {
-                    // 緑色に変更する
-                    hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.green;
                 }
             }
 
