@@ -32,7 +32,7 @@ public class Neko_NavMesh : MonoBehaviour
             nextTarget = null;
 
             // ゴール判定
-            if (Vector3.Distance(this.transform.position, target.position) < 0.5)
+            if ( Vector3.Distance(this.transform.position, target.position) < 0.5)
             {
                 isRun = false;
                 GameObject.Find("CanvasManager").GetComponent<CanvasManagerScript>().SetClear(true);
@@ -52,7 +52,11 @@ public class Neko_NavMesh : MonoBehaviour
 
         animator.SetBool("IsRun", isRun); // アニメーション処理
 
-
+        // デバッグ用ゴールモード****************************************
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GameObject.Find("CanvasManager").GetComponent<CanvasManagerScript>().SetClear(true);
+        }
     }
 
     // ターゲットセット
