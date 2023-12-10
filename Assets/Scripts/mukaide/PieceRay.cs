@@ -64,14 +64,16 @@ public class PieceRay : MonoBehaviour
                     putflag = c.PutWalkFlag();
                     ev = c.GetEvent();
                     panelstatus = c.GetPanelStatus();
-                    if (ev == EventStatus.Ike || ev == EventStatus.Rock)
+
+                    if(piece.flage() == true)
                     {
-                       gameObject.GetComponent<Renderer>().material.color = Color.red;
+                        this.GetComponent<Renderer>().material.color = new Color(1,0,0,1);
                     }
                     else
                     {
-                        gameObject.GetComponent<Renderer>().material.color = Color.white;
+                        this.GetComponent<Renderer>().material.color = Color.white;
                     }
+
                     if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
                     {
                         if (piece.flagp() == true && piece.flage() == false )
