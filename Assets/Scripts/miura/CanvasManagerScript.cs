@@ -8,6 +8,7 @@ public class CanvasManagerScript : MonoBehaviour
     bool canvasSet;
     GameObject gameCanvas;
     GameObject clearCanvas;
+    GameObject nikukyuuCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class CanvasManagerScript : MonoBehaviour
         canvasSet = false;
         gameCanvas = this.transform.GetChild(0).gameObject;
         clearCanvas = this.transform.GetChild(1).gameObject;
+        nikukyuuCanvas = this.transform.GetChild(2).gameObject;
         clearCanvas.SetActive(false);
     }
 
@@ -25,15 +27,21 @@ public class CanvasManagerScript : MonoBehaviour
         {
             if (canvasSet == false)
             {
-                canvasSet = true;
-                DrawClearCanvas();
+                if (nikukyuuCanvas.GetComponent<NikukyuuManager>().GetNikuFadeState() == NikukyuuState.vanish)
+                {
+                    canvasSet = true;
+                    DrawClearCanvas();
+                }
             }
         }
     }
 
     public void SetClear(bool set)
     {
+        if (isClear == true) return;
+
         isClear = set;
+        nikukyuuCanvas.GetComponent<NikukyuuManager>().NikukyuuFadeStart();
     }
 
     public void DrawClearCanvas()

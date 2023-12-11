@@ -24,7 +24,7 @@ public class FadeNikukyuu : MonoBehaviour
         GetComponent<RectTransform>().anchoredPosition = new Vector3(x,y,0);
         float angle = Random.RandomRange(-60, 60);
         GetComponent<RectTransform>().rotation = Quaternion.Euler(0,0,angle);
-        float scale = Random.RandomRange(3.0f,8.0f);
+        float scale = Random.RandomRange(4.0f,10.0f);
         GetComponent<RectTransform>().localScale = new Vector3(scale, scale,0);
     }
 

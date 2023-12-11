@@ -451,5 +451,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9207eac870312441a167f38ff1a4915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interval: 0.01
-  NikukyuuMax: 100
+  Interval: 0.03
+  NikukyuuMax: 50
