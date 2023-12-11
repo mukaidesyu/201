@@ -128,13 +128,13 @@ public class Move : MonoBehaviour
             //場所を選ぶ
             if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
-
-
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
+                // ピースを置くとここに入る
+                if (Pice.GetComponent<Piece>().flagp() == true && Pice.GetComponent<Piece>().flage() == false) // 現状Pフラグが立ってない
                 {
-                    // ピースを置くとここに入る
-                    if (Pice.GetComponent<Piece>().flagp() == true && Pice.GetComponent<Piece>().flage() == false) // 現状Pフラグが立ってない
-                    {
+                    if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
+                {
+
+                        Debug.Log("ムーブ");
 
                         se.EnterSE();
 
