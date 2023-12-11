@@ -74,11 +74,12 @@ public class PieceRay : MonoBehaviour
                         this.GetComponent<Renderer>().material.color = Color.white;
                     }
 
-                    if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
+                    if (piece.flagp() == true && piece.flage() == false)
                     {
-                        if (piece.flagp() == true && piece.flage() == false )
-                        {
+                        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
+                    {
 
+                            Debug.Log("ピースレイ");
                             c.WalkFlag();
                             c.PutNo();
                             c.SetNowPut(true);
