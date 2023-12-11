@@ -24,6 +24,7 @@ public class Piece : MonoBehaviour
     {
         int i = 0;
         eflag = false;
+        pflag = false;
         for (i = 0; i < this.transform.childCount; i++)
         {
             if (pc[i].GetComponent<PieceRay>().pfl() == true)
