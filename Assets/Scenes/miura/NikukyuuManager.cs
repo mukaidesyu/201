@@ -1,26 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum NikukyuuState
+{
+    appear = 0,
+    vanish,
+
+    finish
+}
 
 public class NikukyuuManager : MonoBehaviour
 {
-    enum NikukyuuState
-    {
-        appear = 0,
-        vanish,
-
-        finish
-    }
-
     public float Interval = 0.5f;
     float interval;
     int FinishId;
     GameObject nikukyuu;
     public int NikukyuuMax = 50;
     List<GameObject> nikukyuus = new List<GameObject>();
+    bool start;
     NikukyuuState state;
     void Start()
     {
+        start = false;
         state = NikukyuuState.appear;
         FinishId = 0;
         nikukyuu = (GameObject)Resources.Load("Nikukyuu");
@@ -32,22 +33,22 @@ public class NikukyuuManager : MonoBehaviour
             nikukyuus.Add(tmp);
         }
 
-        // Å‰‚ÉÅ‰‚Ì“÷‹…‚ğ•\¦‚·‚é
-        nikukyuus[0].GetComponent<FadeNikukyuu>().Appear();
-        FinishId++;
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if (start == false) return;
+
         if (state == NikukyuuState.appear)
         {
             // ˆê’èŠÔ‚²‚Æ‚É•\¦‚³‚¹‚é
             Interval -= Time.deltaTime;
             if (Interval <= 0)
             {
+                Debug.Log(FinishId);
                 nikukyuus[FinishId].GetComponent<FadeNikukyuu>().Appear();
-                FinishId++;
+                FinishId++;   
                 Interval = interval;
             }
 
@@ -64,11 +65,32 @@ public class NikukyuuManager : MonoBehaviour
                 Interval = interval;
             }
 
-            if (FinishId < 0) state = NikukyuuState.finish;
+            if (FinishId < 0)
+            {
+                state = NikukyuuState.finish;
+                start = false;
+            }
         }
         else if (state == NikukyuuState.finish)
         {
            return;
         }
+
+    }
+
+    public void NikukyuuFadeStart()
+    {
+        state = NikukyuuState.appear;
+        start = true;
+
+        // Å‰‚ÉÅ‰‚Ì“÷‹…‚ğ•\¦‚·‚é
+        Debug.Log(FinishId);
+        nikukyuus[0].GetComponent<FadeNikukyuu>().Appear();
+        FinishId++;
+    }
+
+    public NikukyuuState GetNikuFadeState()
+    {
+        return state;
     }
 }
