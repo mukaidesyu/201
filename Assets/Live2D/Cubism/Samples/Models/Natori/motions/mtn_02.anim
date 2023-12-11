@@ -8526,8 +8526,12 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     intParameter: -1952
 =======
     intParameter: 24970
 >>>>>>> feature/tarumoto
+=======
+    intParameter: 35048
+>>>>>>> feature/rukia
     messageOptions: 1

@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Natori.fadeMotionList
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
   MotionInstanceIds: 78f8ffff60f8ffff4cf8ffff42f8ffff6c8effff368dffff2c8dffff0c70ffff0870ffff
 =======
   MotionInstanceIds: f2620000b86100006a62000018630000166400008a6100005664000018610000c2630000
 >>>>>>> feature/tarumoto
+=======
+  MotionInstanceIds: bc8d0000e88800007a8b000020880000ce8b00006e8d00003c890000728a0000d68c0000
+>>>>>>> feature/rukia
   CubismFadeMotionObjects:
   - {fileID: 11400000, guid: 5e1fd12e78197be4c9ce4a13659fa2f4, type: 2}
   - {fileID: 11400000, guid: 1ffd90dc3b646144697fcde104b90b22, type: 2}

@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Mao.fadeMotionList
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
   MotionInstanceIds: a0f8ffff90f8ffff84f8ffff6af8ffff56f8ffff32ccffff2eccffff2accffff
 =======
   MotionInstanceIds: ea6100001262000022640000526400001c610000146300001c630000ee610000
 >>>>>>> feature/tarumoto
+=======
+  MotionInstanceIds: 8e890000808d0000ca8b0000c489000024880000d28b000092890000b88d0000
+>>>>>>> feature/rukia
   CubismFadeMotionObjects:
   - {fileID: 11400000, guid: c6a5276089e6b2c4bb2f78cca94c4ded, type: 2}
   - {fileID: 11400000, guid: 1087fe497bde9c041a011b91e8351197, type: 2}
