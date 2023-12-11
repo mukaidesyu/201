@@ -134,7 +134,7 @@ public class Move : MonoBehaviour
                     // ピースを置くとここに入る
                     if (Pice.GetComponent<Piece>().flagp() == true && Pice.GetComponent<Piece>().flage() == false) // 現状Pフラグが立ってない
                     {
-                        Debug.Log("ムーブ");
+                        //Debug.Log("ムーブ");
 
                         se.EnterSE();
 

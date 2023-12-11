@@ -27,11 +27,29 @@ public class CanvasManagerScript : MonoBehaviour
         {
             if (canvasSet == false)
             {
-                if (nikukyuuCanvas.GetComponent<NikukyuuManager>().GetNikuFadeState() == NikukyuuState.vanish)
-                {
-                    canvasSet = true;
-                    DrawClearCanvas();
-                }
+                DrawClearCanvas();
+                GameObject.Find("getitem").GetComponent<GetItemClear>().ClearStart(); // クリア演出開始
+                // 下は各種変数をクリア画面に渡したあと
+                gameCanvas.SetActive(false);// ゲームキャンバスを消す
+                GameObject.Find("Neko").GetComponent<NekoOff>().NekoStop();
+                GameObject.Find("GameObject").SetActive(false); // ゲームオブジェクトを消す
+                canvasSet = true;
+
+                //NikukyuuState sta = nikukyuuCanvas.GetComponent<NikukyuuManager>().GetNikuFadeState();
+                //if (sta == NikukyuuState.vanish)
+                //{
+                //    DrawClearCanvas();
+                //}
+                //else if (sta == NikukyuuState.finish)
+                //{
+                //    Debug.Log("演出開始");
+                //    GameObject.Find("getitem").GetComponent<GetItemClear>().ClearStart(); // クリア演出開始
+                //    // 下は各種変数をクリア画面に渡したあと
+                //    gameCanvas.SetActive(false);// ゲームキャンバスを消す
+                //    GameObject.Find("Neko").GetComponent<NekoOff>().NekoStop();
+                //    GameObject.Find("GameObject").SetActive(false); // ゲームオブジェクトを消す
+                //    canvasSet = true;
+                //}
             }
         }
     }
@@ -41,19 +59,14 @@ public class CanvasManagerScript : MonoBehaviour
         if (isClear == true) return;
 
         isClear = set;
-        nikukyuuCanvas.GetComponent<NikukyuuManager>().NikukyuuFadeStart();
+        //nikukyuuCanvas.GetComponent<NikukyuuManager>().NikukyuuFadeStart();
     }
 
     public void DrawClearCanvas()
     {
+        // クリアキャンバスを出す
         clearCanvas.SetActive(true);
-        GameObject.Find("getitem").GetComponent<GetItemClear>().ClearStart();
         int tmp = GameObject.Find("TurnNumber").GetComponent<TurnScript>().GetTurn();
         GameObject.Find("ClearTurnNumber").GetComponent<ClearTurnScript>().SetTurn(tmp);
-
-        // 下は各種変数をクリア画面に渡したあと
-        gameCanvas.SetActive(false);// ゲームキャンバスを消す
-        GameObject.Find("Neko").GetComponent<NekoOff>().NekoStop();
-        GameObject.Find("GameObject").SetActive(false); // ゲームオブジェクトを消す
     }
 }

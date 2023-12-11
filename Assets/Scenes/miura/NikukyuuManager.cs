@@ -46,7 +46,6 @@ public class NikukyuuManager : MonoBehaviour
             Interval -= Time.deltaTime;
             if (Interval <= 0)
             {
-                Debug.Log(FinishId);
                 nikukyuus[FinishId].GetComponent<FadeNikukyuu>().Appear();
                 FinishId++;   
                 Interval = interval;
@@ -84,7 +83,6 @@ public class NikukyuuManager : MonoBehaviour
         start = true;
 
         // Å‰‚ÉÅ‰‚Ì“÷‹…‚ğ•\¦‚·‚é
-        Debug.Log(FinishId);
         nikukyuus[0].GetComponent<FadeNikukyuu>().Appear();
         FinishId++;
     }
