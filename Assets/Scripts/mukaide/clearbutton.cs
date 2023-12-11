@@ -10,7 +10,6 @@ public class clearbutton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("‚ ‚ ‚ ‚ ‚ ");
         button = GameObject.Find("nextbutton").GetComponent<Button>();
         //ƒ{ƒ^ƒ“‚ª‘I‘ğ‚³‚ê‚½ó‘Ô‚É‚È‚é
         button.Select();
