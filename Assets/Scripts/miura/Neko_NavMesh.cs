@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 public class Neko_NavMesh : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    [SerializeField]private Transform nextTarget;
+    [SerializeField] private Transform nextTarget;
     private NavMeshAgent m_Agent;
     private GameObject goalPanel;
     Animator animator;
     bool isRun;
+    public float FastSpeed;
+    float speed;
 
     void Start()
     {
@@ -20,6 +22,7 @@ public class Neko_NavMesh : MonoBehaviour
         m_Agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         isRun = false;
+        speed = 1.0f;
     }
 
     void Update()
@@ -46,6 +49,14 @@ public class Neko_NavMesh : MonoBehaviour
         else if(nextTarget == null && Vector3.Distance(this.transform.position, target.transform.position) < 0.5)
         {
             isRun = false;
+        }
+
+
+        m_Agent.speed = speed;
+        // ëÅëóÇËÉ{É^Éì
+        if (Input.GetKey(KeyCode.F) || (Input.GetAxis("TriggerLR") > 0))
+        {
+            m_Agent.speed = FastSpeed;
         }
 
         m_Agent.SetDestination(target.position); // à⁄ìÆèàóù
