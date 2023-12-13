@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
     bool isPauce;
     GameObject pausePanel;
+
+    [SerializeField] Button button;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,9 @@ public class Pause : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SwitchPause();
+            button = GameObject.Find("ToSelect").GetComponent<Button>();
+            //ボタンが選択された状態になる
+            button.Select();
         }
 
         // このへんに記述すれば多分動く

@@ -189,8 +189,6 @@ public class Move : MonoBehaviour
     {
         //ÉxÉCÉN
         GameObject.Find("NavMeshSurface").GetComponent<NavMesh_Surface>().Bake();
-
-  
     }
 
     public void UnpossibleTimerCount()
