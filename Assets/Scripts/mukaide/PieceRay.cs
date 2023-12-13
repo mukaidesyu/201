@@ -77,7 +77,7 @@ public class PieceRay : MonoBehaviour
 
                     if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
                     {
-                        if (piece.flagp() == true && piece.flage() == false)
+                        if (piece.flagp() == true && piece.flage() == false && move.Rotflag() == true)
                         {
                             //Debug.Log("ピースレイ");
                             c.WalkFlag();

@@ -12,7 +12,7 @@ public class Move : MonoBehaviour
 
     private Vector3 targetPos;
 
-    bool rot = true;
+    public bool rot = true;
 
     public float Rtspeed = 3.0f;
 
@@ -122,6 +122,7 @@ public class Move : MonoBehaviour
             //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
         }
 
+
         //操作可能か判断
         if (Unpossible == true)
         {
@@ -132,7 +133,7 @@ public class Move : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0") && rot == false)
                 {
                     // ピースを置くとここに入る
-                    if (Pice.GetComponent<Piece>().flagp() == true && Pice.GetComponent<Piece>().flage() == false) // 現状Pフラグが立ってない
+                    if (Pice.GetComponent<Piece>().flagp() == true && Pice.GetComponent<Piece>().flage() == false && rot == true) // 現状Pフラグが立ってない
                     {
                         //Debug.Log("ムーブ");
 
@@ -167,10 +168,6 @@ public class Move : MonoBehaviour
                 }
             }
         }
-
-
-
-
 
         if (Unpossible == false)
         {
@@ -227,6 +224,11 @@ public class Move : MonoBehaviour
             yield return null;
         }
         rot = true;
+    }
+
+    public bool Rotflag()
+    {
+        return rot;
     }
 
 }
