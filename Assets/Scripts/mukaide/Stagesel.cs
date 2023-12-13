@@ -14,6 +14,10 @@ public class Stagesel : MonoBehaviour
 
    [SerializeField] EventSystem eventsistem;
 
+    GameObject focus;
+
+    AudioSource audio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +26,10 @@ public class Stagesel : MonoBehaviour
         button.Select();
         //テキストの変更
         tmp = GameObject.Find("stageno").GetComponent<TextMeshProUGUI>();
+
+        audio = GetComponent<AudioSource>();
+
+        focus = EventSystem.current.currentSelectedGameObject;
     }
 
     // Update is called once per frame
@@ -29,5 +37,11 @@ public class Stagesel : MonoBehaviour
     {
         
         tmp.text = eventsistem.currentSelectedGameObject.name;
+
+        if (focus != EventSystem.current.currentSelectedGameObject)
+        {
+            audio.PlayOneShot(audio.clip);
+            focus = EventSystem.current.currentSelectedGameObject;
+        }
     }
 }
