@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum VOICE
+public enum nekoSE
 {
     Nyan1 = 0,
     Nyan2,
-
-    VOICE_MAX
 }
 
 public class Neko_SE : MonoBehaviour
@@ -25,9 +23,19 @@ public class Neko_SE : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+
+    }
+
+    public void PlaySE(nekoSE se)
+    {
+        switch (se)
         {
-            audio.PlayOneShot(nyan1);
+            case nekoSE.Nyan1:
+                audio.PlayOneShot(nyan1);
+                break;
+            case nekoSE.Nyan2:
+                audio.PlayOneShot(nyan2);
+                break;
         }
     }
 }
