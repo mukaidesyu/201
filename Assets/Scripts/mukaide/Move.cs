@@ -12,7 +12,7 @@ public class Move : MonoBehaviour
 
     private Vector3 targetPos;
 
-    public bool rot = true;
+    public  bool rot = true;
 
     public float Rtspeed = 3.0f;
 
@@ -37,7 +37,7 @@ public class Move : MonoBehaviour
     public float HitsTimer = 0;//操作不能タイマー
 
     //SE
-    SEenter se;
+    AudioSource audio;
 
     private void Start()
     {
@@ -54,9 +54,9 @@ public class Move : MonoBehaviour
         tilemanager2 = GameObject.Find("judgment3").GetComponent<judgment2>(); // 下
         tilemanager3 = GameObject.Find("judgment4").GetComponent<judgment3>(); // 左
 
-        se = GameObject.Find("playerSE").GetComponent<SEenter>();
-
         targetPos = transform.position;
+
+        audio = GetComponent<AudioSource>();
 
         turnScript = GameObject.Find("TurnNumber").GetComponent<TurnScript>();
     }
@@ -130,15 +130,13 @@ public class Move : MonoBehaviour
             if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
 
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0") && rot == false)
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
                 {
                     // ピースを置くとここに入る
                     if (Pice.GetComponent<Piece>().flagp() == true && Pice.GetComponent<Piece>().flage() == false && rot == true) // 現状Pフラグが立ってない
                     {
                         //Debug.Log("ムーブ");
-
-                        se.EnterSE();
-
+                        audio.PlayOneShot(audio.clip);
                         Destroy(Pice);
                         //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
                         activePiece = spawner.SpawnPiece(this.gameObject);
