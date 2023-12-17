@@ -141,4 +141,8 @@ public class GetItemClear : MonoBehaviour
         this.transform.GetChild(0).GetComponent<ItemBigToSmall>().StartEffect();
     }
 
+    public bool EfFinish()
+    {
+        return effectFinish;
+    }
 }
