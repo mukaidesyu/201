@@ -154,6 +154,7 @@ public class Move : MonoBehaviour
                         Neko_NavMesh nekoScript = GameObject.Find("Neko").GetComponent<Neko_NavMesh>();
                         nekoScript.SetTarget(onTile);
                         nekoScript.SetNextTarget(farTile);
+                        nekoScript.SetNyanFlag(false);
 
                         // ターンを1ターン経過させる
                         turnScript.TurnPlus();
