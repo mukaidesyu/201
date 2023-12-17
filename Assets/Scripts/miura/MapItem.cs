@@ -30,6 +30,7 @@ public class MapItem : MonoBehaviour
         // ÉLÅ[ÇÃîªíË
         if (Input.GetKeyDown(KeyCode.Space) || (Input.GetAxis("TriggerLR") < 0)) //|| (Input.GetKeyDown("joystick button 6") && Input.GetKeyDown("joystick button 7"))) // Ç¢Ç∂ÇÈëO
         {
+            Debug.Log("Ç†Ç†Ç†Ç†Ç†Ç†");
             downFlag = true;
         }
         if (Input.GetKeyUp(KeyCode.Space) || (Input.GetAxis("TriggerLR") >= 0))
