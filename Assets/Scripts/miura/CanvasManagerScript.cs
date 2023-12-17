@@ -9,9 +9,11 @@ public class CanvasManagerScript : MonoBehaviour
     GameObject gameCanvas;
     GameObject clearCanvas;
     GameObject nikukyuuCanvas;
+    GameBGMManager bgm;
     // Start is called before the first frame update
     void Start()
     {
+        bgm = GameObject.Find("Main Camera").GetComponent<GameBGMManager>();
         isClear = false;
         canvasSet = false;
         gameCanvas = this.transform.GetChild(0).gameObject;
@@ -68,5 +70,8 @@ public class CanvasManagerScript : MonoBehaviour
         clearCanvas.SetActive(true);
         int tmp = GameObject.Find("TurnNumber").GetComponent<TurnScript>().GetTurn();
         GameObject.Find("ClearTurnNumber").GetComponent<ClearTurnScript>().SetTurn(tmp);
+
+        // ‚Â‚¢‚Å‚É‰¹•Ï‚¦‚é
+        bgm.StartBGM();
     }
 }
