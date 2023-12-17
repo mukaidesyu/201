@@ -168,8 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9207eac870312441a167f38ff1a4915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interval: 0.01
-  NikukyuuMax: 40
+  Interval: 0.005
+  NikukyuuMax: 30
 --- !u!1 &7789991929519642178
 GameObject:
   m_ObjectHideFlags: 0
