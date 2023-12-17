@@ -14,6 +14,8 @@ public class Neko_NavMesh : MonoBehaviour
     bool isRun;
     public float FastSpeed;
     float speed;
+    bool nyanFlag; // ”L‚ª–Â‚¢‚½‚©‚Ç‚¤‚©
+    Neko_SE nyan;
 
     void Start()
     {
@@ -23,6 +25,8 @@ public class Neko_NavMesh : MonoBehaviour
         animator = GetComponent<Animator>();
         isRun = false;
         speed = 1.0f;
+        nyan = GetComponent<Neko_SE>();
+        nyanFlag = false;
     }
 
     void Update()
@@ -43,11 +47,17 @@ public class Neko_NavMesh : MonoBehaviour
         }
         else if (nextTarget != null && Vector3.Distance(this.transform.position, target.transform.position) < 0.5)
         {
+            GetComponent<Neko_SE>().PlaySE(nekoSE.Nyan1);
             target = nextTarget;
             nextTarget = null;
         }
         else if(nextTarget == null && Vector3.Distance(this.transform.position, target.transform.position) < 0.5)
         {
+            if (nyanFlag == false)
+            {
+                nyanFlag = true;
+                GetComponent<Neko_SE>().PlaySE(nekoSE.Nyan2);
+            }
             isRun = false;
         }
 
@@ -83,5 +93,10 @@ public class Neko_NavMesh : MonoBehaviour
     public void SetGoal(GameObject _goal)
     {
         goalPanel = _goal;
+    }
+
+    public void SetNyanFlag(bool set)
+    {
+        nyanFlag = set;
     }
 }
