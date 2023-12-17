@@ -79,7 +79,7 @@ public class PieceRay : MonoBehaviour
                     {
                         if (piece.flagp() == true && piece.flage() == false && move.Rotflag() == true)
                         {
-                            //Debug.Log("ピースレイ");
+                           // Debug.Log("ピースレイ");
                             c.WalkFlag();
                             c.PutNo();
                             c.SetNowPut(true);
