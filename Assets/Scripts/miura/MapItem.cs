@@ -28,12 +28,12 @@ public class MapItem : MonoBehaviour
     void Update()
     {
         // キーの判定
-        if (Input.GetKeyDown(KeyCode.Space) || (Input.GetAxis("TriggerLR") < 0)) //|| (Input.GetKeyDown("joystick button 6") && Input.GetKeyDown("joystick button 7"))) // いじる前
+        if (Input.GetKeyDown(KeyCode.Space))//|| (Input.GetAxis("TriggerLR") < 0)) //|| (Input.GetKeyDown("joystick button 6") && Input.GetKeyDown("joystick button 7"))) // いじる前
         {
             Debug.Log("ああああああ");
             downFlag = true;
         }
-        if (Input.GetKeyUp(KeyCode.Space) || (Input.GetAxis("TriggerLR") >= 0))
+        if (Input.GetKeyUp(KeyCode.Space)) //|| (Input.GetAxis("TriggerLR") >= 0))
         {
             downFlag = false;
         }
