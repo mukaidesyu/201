@@ -2,41 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ClearItemState
-{
-    None = 0,
-    ToBig,
-    ToSmall,
-    Finish
-}
-
-public class ItemBigToSmall : MonoBehaviour
+public class FoodBigToSmall : MonoBehaviour
 {
     RectTransform rect;
-    [SerializeField]bool start = false;
-    [SerializeField]ClearItemState state;
-    int itemNo;
+    bool start = false;
+    ClearItemState state;
     float time;
     public float TimeMax = 1.0f;
     public float Big = 1.1f;
     public float Small = 1.005f;
-    bool isGet;
     AudioSource audio;
 
-    // Start is called before the first frame update
     void Start()
     {
         state = ClearItemState.None;
         rect = this.GetComponent<RectTransform>();
         time = TimeMax;
         audio = GetComponent<AudioSource>();
+        rect.localScale = new Vector3(0.045f, 0.045f, 0.045f);
     }
 
     private void FixedUpdate()
     {
         if (start == false) return;
         if (state == ClearItemState.Finish) return;
-        if (isGet == false) state = ClearItemState.Finish;
 
         switch (state)
         {
@@ -48,7 +37,7 @@ public class ItemBigToSmall : MonoBehaviour
             case ClearItemState.ToBig:
                 time -= Time.deltaTime;
                 rect.localScale *= Big;
-                if(time < 0)
+                if (time < 0)
                 {
                     state = ClearItemState.ToSmall;
                     time = TimeMax;
@@ -71,15 +60,5 @@ public class ItemBigToSmall : MonoBehaviour
     public void StartEffect()
     {
         start = true;
-    }
-
-    public ClearItemState GetState()
-    {
-        return state;
-    }
-
-    public void SetIsGet(bool set)
-    {
-        isGet = set;
     }
 }
