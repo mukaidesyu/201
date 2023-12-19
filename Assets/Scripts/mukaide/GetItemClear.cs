@@ -42,50 +42,7 @@ public class GetItemClear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (kinokoGet == true)// •Ï‰»ˆ—
-        {
-            kinoko.color += new Color (0.1f, 0.1f, 0.1f, 0.1f);
-            if (kinoko.color.a >= 1.0f)
-            {
-                kinoko.color = new Color(1, 1, 1, 1);
-            }
-        }
-
-        if (sakanaGet == true)
-        {
-            sakana.color += new Color(0.01f, 0.01f, 0.01f, 0.01f);
-            if (sakana.color.a >= 1.0f)
-            {
-                sakana.color = new Color(1, 1, 1, 1);
-            }
-        }
-
-        if (kari1Get == true)
-        {
-            kari1.color += new Color(0.01f, 0.01f, 0.01f, 0.01f);
-            if (kari1.color.a >= 1.0f)
-            {
-                kari1.color = new Color(1, 1, 1, 1);
-            }
-        }
-
-        if (kari2Get == true)
-        {
-            kari2.color += new Color(0.01f, 0.01f, 0.01f, 0.01f);
-            if (kari2.color.a >= 1.0f)
-            {
-                kari2.color = new Color(1, 1, 1, 1);
-            }
-        }
-
-        if (kari3Get == true)
-        {
-            kari3.color += new Color(0.01f, 0.01f, 0.01f, 0.01f);
-            if (kari3.color.a >= 1.0f)
-            {
-                kari3.color = new Color(1, 1, 1, 1);
-            }
-        }
+      
     }
 
     private void FixedUpdate()
@@ -125,6 +82,7 @@ public class GetItemClear : MonoBehaviour
             else if (state == ClearItemState.Finish && i >= transform.childCount - 1)
             {
                 effectFinish = true;
+                GameObject.Find("ClearTurnNumber").GetComponent<ClearTurnScript>().EffectStart();
             }
         }
     }
