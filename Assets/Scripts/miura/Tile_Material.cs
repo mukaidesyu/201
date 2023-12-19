@@ -183,11 +183,16 @@ public class Tile_Material : MonoBehaviour
                     break;
             }
 
+            EventStatus eveSta = this.GetComponent<Tilemanager>().GetEvent();
+            if (eveSta == EventStatus.Kinoko_Got || eveSta == EventStatus.Sakana_Got || eveSta == EventStatus.Kari1_Got || eveSta == EventStatus.Kari2_Got || eveSta == EventStatus.Kari3_Got || eveSta == EventStatus.Zasso_Got)
+            {
+               Destroy(nowGrass,0.0f);
+            }
+
         }
         else
         {
             EventStatus eventSta = this.GetComponent<Tilemanager>().GetEvent();
-            PanelStatus panelSta = this.GetComponent<Tilemanager>().GetPanelStatus();
             if (eventSta == EventStatus.Ike)
             {
                 status = TileStatus.Ike;
@@ -197,8 +202,6 @@ public class Tile_Material : MonoBehaviour
                 status = TileStatus.Grass;
             }
         }
-
-        
 
     }
 }
