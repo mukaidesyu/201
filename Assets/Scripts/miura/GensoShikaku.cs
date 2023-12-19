@@ -28,6 +28,11 @@ public class GensoShikaku : MonoBehaviour
                     blueCircle.Play();
                     redCircle.Stop();
              }
+        else
+        {
+            blueCircle.Stop();
+            redCircle.Stop();
+        }
 
     }
 
