@@ -31744,6 +31744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c294ccc8cefa08a42a320ed58017769a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clearBGM: {fileID: 0}
 --- !u!43 &1272218066
 Mesh:
   m_ObjectHideFlags: 0
