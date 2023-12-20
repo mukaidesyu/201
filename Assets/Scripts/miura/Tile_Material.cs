@@ -37,24 +37,27 @@ public class Tile_Material : MonoBehaviour
     [SerializeField]  private int id;
 
     public Material[] Materials;
+    public GameObject[] Terrain;
     public GameObject nowTerrain;
     public GameObject nowGrass;
+
     // Start is called before the first frame update
     void Start()
     {
         Material[] tmp = gameObject.GetComponent<Renderer>().materials;
         status = TileStatus.Grass;
+
         //タイルのid取得
         id = this.gameObject.GetComponent<Tilemanager>().GetTileNo();
 
         // テレイン作成
         EventStatus eveSta = GetComponent<Tilemanager>().GetEvent();
         PanelStatus paneSta = GetComponent<Tilemanager>().GetPanelStatus();
+
+
         if (paneSta != PanelStatus.Nothing)
         {
-            GameObject temp = (GameObject)Resources.Load("Terrein/Prefabs/tileDown");
-            nowTerrain = Instantiate(temp, new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z)
-                , Quaternion.Euler(0, 0, 0));
+            nowTerrain = GameObject.Instantiate(Terrain[(int)status], new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z), Quaternion.Euler(0, 0, 0));
             nowTerrain.transform.SetParent(this.gameObject.transform, true);
         }
 
@@ -72,6 +75,7 @@ public class Tile_Material : MonoBehaviour
     void Update()
     {
         GetComponent<Renderer>().material = Materials[(int)status];
+
     }
 
     // タイルが変更するたびに呼ぶといいかも
@@ -188,6 +192,7 @@ public class Tile_Material : MonoBehaviour
             {
                Destroy(nowGrass,0.0f);
             }
+            CubeSet();
 
         }
         else
@@ -203,5 +208,11 @@ public class Tile_Material : MonoBehaviour
             }
         }
 
+    }
+    public void CubeSet()
+    {
+        Destroy(nowTerrain);
+        nowTerrain = GameObject.Instantiate(Terrain[(int)status], new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z), Quaternion.Euler(0, 0, 0));
+        nowTerrain.transform.SetParent(this.gameObject.transform, true);
     }
 }
