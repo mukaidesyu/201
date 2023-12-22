@@ -64,7 +64,6 @@ public class ClearTurnScript : MonoBehaviour
                 else
                 {
                     state = TurnState.Finish;
-                    Debug.Log("âΩâÒí Ç¡ÇΩÅH");
                     GameObject.Find("Food").GetComponent<FoodBigToSmall>().StartEffect();
                     effectFinish = true;
                 }
