@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum IrisFade
+{
+    None = 0,
+    FadeIn,
+    FadeOut,
+}
+
 public class CanvasManagerScript : MonoBehaviour
 {
     bool isClear;
@@ -10,6 +18,10 @@ public class CanvasManagerScript : MonoBehaviour
     GameObject clearCanvas;
     GameObject nikukyuuCanvas;
     GameBGMManager bgm;
+
+    GameObject nekoShot;
+    IrisShot2 iris;
+    IrisFade fadeState;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +32,15 @@ public class CanvasManagerScript : MonoBehaviour
         clearCanvas = this.transform.GetChild(1).gameObject;
         nikukyuuCanvas = this.transform.GetChild(2).gameObject;
         clearCanvas.SetActive(false);
+
+        // アリスインフェードを非アクティブに
+        GameObject unmask = GameObject.Find("Unmask");
+        iris = unmask.GetComponent<IrisShot2>();
+        nekoShot = GameObject.Find("NekoShot");
+        nekoShot.SetActive(false);
+
+        // フェードの状態を初期化
+        fadeState = IrisFade.None;
     }
 
     // Update is called once per frame
@@ -29,31 +50,20 @@ public class CanvasManagerScript : MonoBehaviour
         {
             if (canvasSet == false)
             {
+                // 真っ暗になったあとの処理 一回通る
                 DrawClearCanvas();
-                GameObject.Find("getitem").GetComponent<GetItemClear>().ClearStart(); // クリア演出開始
-                // 下は各種変数をクリア画面に渡したあと
-                gameCanvas.SetActive(false);// ゲームキャンバスを消す
-                GameObject.Find("Neko").GetComponent<NekoOff>().NekoStop();
-                GameObject.Find("GameObject").SetActive(false); // ゲームオブジェクトを消す
-                canvasSet = true;
-
-                //NikukyuuState sta = nikukyuuCanvas.GetComponent<NikukyuuManager>().GetNikuFadeState();
-                //if (sta == NikukyuuState.vanish)
-                //{
-                //    DrawClearCanvas();
-                //}
-                //else if (sta == NikukyuuState.finish)
-                //{
-                //    Debug.Log("演出開始");
-                //    GameObject.Find("getitem").GetComponent<GetItemClear>().ClearStart(); // クリア演出開始
-                //    // 下は各種変数をクリア画面に渡したあと
-                //    gameCanvas.SetActive(false);// ゲームキャンバスを消す
-                //    GameObject.Find("Neko").GetComponent<NekoOff>().NekoStop();
-                //    GameObject.Find("GameObject").SetActive(false); // ゲームオブジェクトを消す
-                //    canvasSet = true;
-                //}
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            iris.IrisIn();
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            iris.IrisOut();
+        }
+
     }
 
     public void SetClear(bool set)
@@ -66,12 +76,43 @@ public class CanvasManagerScript : MonoBehaviour
 
     public void DrawClearCanvas()
     {
-        // クリアキャンバスを出す
-        clearCanvas.SetActive(true);
-        int tmp = GameObject.Find("TurnNumber").GetComponent<TurnScript>().GetTurn();
-        GameObject.Find("ClearTurnNumber").GetComponent<ClearTurnScript>().SetTurn(tmp);
+        // フェード中は処理しない
+        if (iris.GetIsFade() == true) return;
 
-        // ついでに音変える
-        bgm.StartBGM();
+        switch (fadeState)
+        {
+            case IrisFade.None:
+                // クリア開始時一回目なら
+                nekoShot.SetActive(true);
+                iris.IrisOut();
+                fadeState = IrisFade.FadeOut;
+                break;
+
+            case IrisFade.FadeOut:
+                // クリアキャンバスを出す
+                clearCanvas.SetActive(true);
+                int tmp = GameObject.Find("TurnNumber").GetComponent<TurnScript>().GetTurn();
+                GameObject.Find("ClearTurnNumber").GetComponent<ClearTurnScript>().SetTurn(tmp);
+                // 音変える
+                bgm.StartBGM();
+                // インして状態変更
+                iris.IrisIn();
+                Debug.Log("いん");
+                fadeState = IrisFade.FadeIn;
+                break;
+
+            case IrisFade.FadeIn:
+                // クリア演出開始
+                GameObject.Find("getitem").GetComponent<GetItemClear>().ClearStart();
+                // 下は各種変数をクリア画面に渡したあと
+                gameCanvas.SetActive(false);// ゲームキャンバスを消す
+                GameObject.Find("Neko").GetComponent<NekoOff>().NekoStop();
+                GameObject.Find("GameObject").SetActive(false); // ゲームオブジェクトを消す
+                // フェード状態の後片付け
+                fadeState = IrisFade.None;
+                // クリア状態に変更する
+                canvasSet = true;
+                break;
+        }
     }
 }

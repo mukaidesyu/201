@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.coffee.unmask": "https://github.com/mob-sakai/UnmaskForUGUI.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.spriteshape": "7.0.7",
     "com.unity.ai.navigation": "1.0.0-exp.4",

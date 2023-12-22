@@ -53,6 +53,8 @@ public class FoodBigToSmall : MonoBehaviour
                 }
                 break;
             case ClearItemState.Finish:
+
+
                 break;
         }
     }
