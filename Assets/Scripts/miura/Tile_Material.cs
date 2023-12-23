@@ -220,7 +220,6 @@ public class Tile_Material : MonoBehaviour
                 status = TileStatus.Grass;
             }
         }
-
     }
     public void CubeSet()
     {

@@ -162,6 +162,8 @@ public class Move : MonoBehaviour
                         //操作不能時間のフラグ
                         Unpossible = false;
                         UnpossibleTimer = 1.0f;
+
+                        
                     }
                 }
             }
@@ -182,8 +184,7 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //ベイク
-        GameObject.Find("NavMeshSurface").GetComponent<NavMesh_Surface>().Bake();
+
     }
 
     public void UnpossibleTimerCount()
