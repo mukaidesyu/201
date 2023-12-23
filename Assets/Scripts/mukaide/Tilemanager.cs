@@ -55,7 +55,6 @@ public class Tilemanager : MonoBehaviour, Clickable
     // Start is called before the first frame update
     void Start()
     {
-
         if (panelStatus == PanelStatus.Nothing)// "無い"の状態のときは表示しない
         {
             GetComponent<MeshRenderer>().enabled = false; // もしかしてNavMeshこわれる？？
@@ -111,12 +110,15 @@ public class Tilemanager : MonoBehaviour, Clickable
             this.gameObject.layer = 7; // 7はNotWalk
         }
 
-        this.GetComponent<Tile_Material>().SetMaterial(walkflag);
-
         if (Goalflag == true)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.gray;
         }
+    }
+
+    public void ChangeTile()
+    {
+        this.GetComponent<Tile_Material>().SetMaterial(walkflag);
     }
 
     // ゲッターとセッター

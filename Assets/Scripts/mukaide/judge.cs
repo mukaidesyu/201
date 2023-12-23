@@ -37,6 +37,11 @@ public class judge : MonoBehaviour, Clickable
         return 0;
     }
 
+    public void ChangeTile()
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -29,6 +29,8 @@ public class Tile_Material : MonoBehaviour
     Material[] tmp;
     TileStatus status;
 
+
+
     [SerializeField]bool UpPanel;
     [SerializeField]bool RightPanel;
     [SerializeField]bool LeftPanel;

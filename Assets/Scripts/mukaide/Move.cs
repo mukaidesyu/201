@@ -142,7 +142,6 @@ public class Move : MonoBehaviour
                         activePiece = spawner.SpawnPiece(this.gameObject);
                         Pice = activePiece.gameObject;
 
-
                         // Ç±Ç±Ç≈ìnÇ∑ÉsÅ[ÉXÇîªíËÇ∑ÇÈ
                         tile tileScript = GameObject.Find("Tile").GetComponent<tile>();
                         GameObject onTile = tileScript.GetOnTile();

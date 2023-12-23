@@ -19,6 +19,28 @@ public class Tile_select : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //// パネルの状態によって色が変わる
+        //// タイルのタグも変わる
+        //switch (IsWalk)
+        //{
+        //    case true:
+        //        this.gameObject.layer = 6;
+        //        break;
+        //    case false:
+        //        this.gameObject.layer = 7;
+        //        break;
+        //}
+
+        //this.GetComponent<Tile_Material>().SetMaterial(IsWalk);
+    }
+
+    public void SetTileID(int no)
+    {
+        tileID = no;
+    }
+
+    public void ChangeTile()
+    {
         // パネルの状態によって色が変わる
         // タイルのタグも変わる
         switch (IsWalk)
@@ -30,12 +52,6 @@ public class Tile_select : MonoBehaviour
                 this.gameObject.layer = 7;
                 break;
         }
-
         this.GetComponent<Tile_Material>().SetMaterial(IsWalk);
-    }
-
-    public void SetTileID(int no)
-    {
-        tileID = no;
     }
 }

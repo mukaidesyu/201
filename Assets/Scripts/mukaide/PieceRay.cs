@@ -13,6 +13,7 @@ interface Clickable
 
     EventStatus GetEvent();
     PanelStatus GetPanelStatus();
+    void ChangeTile();
 }
 
 public class PieceRay : MonoBehaviour
@@ -83,6 +84,7 @@ public class PieceRay : MonoBehaviour
                             c.WalkFlag();
                             c.PutNo();
                             c.SetNowPut(true);
+                            
 
                             ParticleSystem newParticle = Instantiate(ef);
                             ParticleSystem newParticle1 = Instantiate(ef);
@@ -101,6 +103,8 @@ public class PieceRay : MonoBehaviour
                             {
                                 c.SetOnTile(true);
                             }
+
+                            c.ChangeTile();
                         }
 
                     }

@@ -63,7 +63,6 @@ public class CanvasManagerScript : MonoBehaviour
         {
             iris.IrisOut();
         }
-
     }
 
     public void SetClear(bool set)
