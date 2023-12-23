@@ -80,6 +80,9 @@ public class Tilemanager : MonoBehaviour, Clickable
             GameObject tmp = (GameObject)Resources.Load("Item");
             tmp.GetComponent<ItemSprite>().SetEventSta(Event);
         }
+
+
+        ChangeTile();
     }
 
     // Update is called once per frame
@@ -109,7 +112,7 @@ public class Tilemanager : MonoBehaviour, Clickable
             this.gameObject.layer = 7; // 7‚ÍNotWalk
         }
 
-        ChangeTile();
+        
 
         if (Goalflag == true)
         {
