@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Neko_Camera : MonoBehaviour
 {
-    //プレイヤーを変数に格納
-    public GameObject Player;
-
     //回転させるスピード
     public float rotateSpeed = 3.0f;
+    Vector3 playerPos;
 
     // Use this for initialization
     void Start()
@@ -20,7 +18,7 @@ public class Neko_Camera : MonoBehaviour
     void Update()
     {
         //プレイヤー位置情報
-        Vector3 playerPos = Player.transform.position;
+        playerPos = this.transform.position;
 
         if (Input.GetKey(KeyCode.O))
         {           

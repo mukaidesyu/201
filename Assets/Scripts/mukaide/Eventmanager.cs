@@ -7,6 +7,8 @@ public class Eventmanager : MonoBehaviour
     public GameObject[] MemoUI;
     TreasureCount treasure;
 
+    ItemgetUI itemUI;
+
     //猫ちゃんに呼んでほしい関数(タイルのイベントフラグが立ってたのをとったら)
     //今からいろんな動き追加していくから待っててほしいとりあえずで作った
     public void Event(GameObject eventTile) // 引数イベントの種類
@@ -16,7 +18,7 @@ public class Eventmanager : MonoBehaviour
         {
             case EventStatus.Kinoko:
                 // ここに演出的な処理
-
+                itemUI.SwitchItemGetStart(0);
                 // 取得状態に変更
                 MemoUI[0].GetComponent<Memo_UI>().SetIsGet(true);
                 script.SetEvent(EventStatus.Kinoko_Got);
@@ -24,7 +26,7 @@ public class Eventmanager : MonoBehaviour
 
             case EventStatus.Sakana:
                 // ここに演出的な処理
-
+                itemUI.SwitchItemGetStart(1);
 
                 MemoUI[1].GetComponent<Memo_UI>().SetIsGet(true);
                 script.SetEvent(EventStatus.Sakana_Got);
@@ -32,27 +34,26 @@ public class Eventmanager : MonoBehaviour
             case EventStatus.Kari1:
                 treasure.TreasurePlus();
                 // ここに演出的な処理
-
+                itemUI.SwitchItemGetStart(2);
                 MemoUI[2].GetComponent<Memo_UI>().SetIsGet(true);
                 script.SetEvent(EventStatus.Kari1_Got);
                 break;
 
             case EventStatus.Kari2:
                 // ここに演出的な処理
-
+                itemUI.SwitchItemGetStart(3);
                 MemoUI[3].GetComponent<Memo_UI>().SetIsGet(true);
                 script.SetEvent(EventStatus.Kari2_Got);
                 break;
             case EventStatus.Kari3:
                 // ここに演出的な処理
-
+                itemUI.SwitchItemGetStart(4);
                 MemoUI[4].GetComponent<Memo_UI>().SetIsGet(true);
                 script.SetEvent(EventStatus.Kari3_Got);
                 break;
 
             case EventStatus.Zasso:
                 // ここに演出的な処理
-
                 script.SetEvent(EventStatus.Zasso_Got); // 雑草を消す
                 break;
                 // どんどこどんどんここにアイテムの処理追加
@@ -62,7 +63,8 @@ public class Eventmanager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        treasure = GameObject.Find("UI_TreasureCount").GetComponent<TreasureCount>();  
+        treasure = GameObject.Find("UI_TreasureCount").GetComponent<TreasureCount>();
+        itemUI = GameObject.Find("ItemGet").GetComponent<ItemgetUI>();
     }
 
     // Update is called once per frame
