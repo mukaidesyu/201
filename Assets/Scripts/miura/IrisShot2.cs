@@ -6,7 +6,7 @@ public class IrisShot2 : MonoBehaviour
 {
     [SerializeField] RectTransform unmask;
 
-    readonly Vector2 IRIS_IN_SCALE = new Vector2(30, 30);
+    readonly Vector2 IRIS_IN_SCALE = new Vector2(40, 40);
     readonly Vector2 IRIS_MID_SCALE1 = new Vector2(8.0f, 8.0f);
     readonly Vector2 IRIS_MID_SCALE2 = new Vector2(10.0f, 10.0f);
     bool isFade = false;
