@@ -12,18 +12,15 @@ public class ItemSprite : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //spriteRenderer = GetComponent<SpriteRenderer>();
-        //now = sprite[0];
-        //grass = GetComponent<Animator>();
-        //grass.enabled = false;
-    }
-
-    private void Awake()
-    {
         spriteRenderer = GetComponent<SpriteRenderer>();
         now = sprite[0];
         grass = GetComponent<Animator>();
         grass.enabled = false;
+    }
+
+    private void Awake()
+    {
+
     }
 
     // Update is called once per frame

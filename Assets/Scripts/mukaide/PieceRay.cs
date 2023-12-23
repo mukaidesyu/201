@@ -104,7 +104,7 @@ public class PieceRay : MonoBehaviour
                                 c.SetOnTile(true);
                             }
 
-                            //c.ChangeTile();
+                            c.ChangeTile();
                         }
 
                     }
