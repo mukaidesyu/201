@@ -43,6 +43,8 @@ public class Tile_Material : MonoBehaviour
     public GameObject nowTerrain;
     public GameObject nowGrass;
 
+    Tilemanager tilemanager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +58,8 @@ public class Tile_Material : MonoBehaviour
         EventStatus eveSta = GetComponent<Tilemanager>().GetEvent();
         PanelStatus paneSta = GetComponent<Tilemanager>().GetPanelStatus();
 
+
+        tilemanager = GetComponent<Tilemanager>();
 
         if (paneSta != PanelStatus.Nothing)
         {
@@ -71,6 +75,8 @@ public class Tile_Material : MonoBehaviour
                 , Quaternion.Euler(0, 0, 0));
             nowGrass.transform.SetParent(this.gameObject.transform, true);
         }
+
+        SetMaterial(tilemanager.PutWalkFlag());
     }
 
     // Update is called once per frame
@@ -78,6 +84,11 @@ public class Tile_Material : MonoBehaviour
     {
         GetComponent<Renderer>().material = Materials[(int)status];
 
+        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
+        {
+            SetMaterial(tilemanager.PutWalkFlag());
+
+        }
     }
 
     // É^ÉCÉãÇ™ïœçXÇ∑ÇÈÇΩÇ—Ç…åƒÇ‘Ç∆Ç¢Ç¢Ç©Ç‡
@@ -204,7 +215,7 @@ public class Tile_Material : MonoBehaviour
             {
                 status = TileStatus.Ike;
             }
-            else
+             else
             {
                 status = TileStatus.Grass;
             }

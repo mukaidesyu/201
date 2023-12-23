@@ -81,8 +81,6 @@ public class Tilemanager : MonoBehaviour, Clickable
             tmp.GetComponent<ItemSprite>().SetEventSta(Event);
         }
 
-
-        ChangeTile();
     }
 
     // Update is called once per frame
@@ -120,10 +118,6 @@ public class Tilemanager : MonoBehaviour, Clickable
         }
     }
 
-    public void ChangeTile()
-    {
-        this.GetComponent<Tile_Material>().SetMaterial(walkflag);
-    }
 
     // ゲッターとセッター
     // タイルNO
