@@ -16,7 +16,7 @@ public class Tilemanager : MonoBehaviour, Clickable
     public EventStatus Event = EventStatus.None;//イベントがあるか否か
     PanelStatus panelStatus = PanelStatus.Walkable; // 0:ゲーム内に表示しない 1:表示するけど歩けない 2:普通の道になる
     GameObject eventObject;
-    [SerializeField] GameObject terrein;
+    [SerializeField] GameObject house;
 
     Eventmanager eventmanager;
 

@@ -45,6 +45,8 @@ public class Tile_Material : MonoBehaviour
 
     Tilemanager tilemanager;
 
+    bool isGoal = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +63,14 @@ public class Tile_Material : MonoBehaviour
 
         tilemanager = GetComponent<Tilemanager>();
 
-        if (paneSta != PanelStatus.Nothing)
+        isGoal = tilemanager.GetGoalFlag();
+        if (isGoal)
+        {
+            GameObject house = Resources.Load<GameObject>("CountryHouse");
+            GameObject temp = GameObject.Instantiate(house, new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z), Quaternion.Euler(0, 90, 0));
+            temp.transform.SetParent(this.gameObject.transform);
+        }
+        else if (paneSta != PanelStatus.Nothing)
         {
             nowTerrain = GameObject.Instantiate(Terrain[(int)status], new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z), Quaternion.Euler(0, 0, 0));
             nowTerrain.transform.SetParent(this.gameObject.transform, true);
@@ -87,7 +96,6 @@ public class Tile_Material : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
         {
             SetMaterial(tilemanager.PutWalkFlag());
-
         }
     }
 
@@ -205,7 +213,7 @@ public class Tile_Material : MonoBehaviour
             {
                Destroy(nowGrass,0.0f);
             }
-            CubeSet();
+            //CubeSet();
 
         }
         else
@@ -215,7 +223,7 @@ public class Tile_Material : MonoBehaviour
             {
                 status = TileStatus.Ike;
             }
-             else
+            else
             {
                 status = TileStatus.Grass;
             }
@@ -223,6 +231,9 @@ public class Tile_Material : MonoBehaviour
     }
     public void CubeSet()
     {
+        // ó·äOèàóù
+        if (isGoal == true)return;
+
         Destroy(nowTerrain);
         nowTerrain = GameObject.Instantiate(Terrain[(int)status], new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z), Quaternion.Euler(0, 0, 0));
         nowTerrain.transform.SetParent(this.gameObject.transform, true);
