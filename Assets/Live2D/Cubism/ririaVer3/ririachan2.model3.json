@@ -1,0 +1,36 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "ririachan2.moc3",
+		"Textures": [
+			"ririachan2.4096/texture_00.png"
+		],
+		"DisplayInfo": "ririachan2.cdi3.json",
+		"Expressions": [
+			{
+				"Name": "Smile",
+				"File": "Smile.exp3.json"
+			},
+			{
+				"Name": "Trouble",
+				"File": "Trouble.exp3.json"
+			}
+		]
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	],
+	"HitAreas": []
+}

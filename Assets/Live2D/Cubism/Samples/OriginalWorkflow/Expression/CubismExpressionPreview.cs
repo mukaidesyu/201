@@ -28,7 +28,7 @@ namespace Live2D.Cubism.Samples.OriginalWorkflow.Expression
         {
             var model = this.FindCubismModel();
 
-            _expressionController = model.GetComponent<CubismExpressionController>();
+           // _expressionController = model.GetComponent<CubismExpressionController>();
         }
 
         /// <summary>
