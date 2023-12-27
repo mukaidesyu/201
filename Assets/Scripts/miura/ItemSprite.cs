@@ -83,6 +83,13 @@ public class ItemSprite : MonoBehaviour
                     grass.enabled = false;
                     spriteRenderer.enabled = false;
                     break;
+                case EventStatus.SakuSaku_Hocho:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.SakuSaku_Hocho_Got:
+                    spriteRenderer.sprite = now;
+                    break;
             }
         }
     }

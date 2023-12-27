@@ -5,14 +5,17 @@ using UnityEngine;
 public class MapItem : MonoBehaviour
 {
     bool downFlag = false;
-    public float DownTime;
-    public float UpTime;
-    public float TargetPosY;
+    float DownTime = 10;
+    float UpTime = 10;
+    float TargetPosY = -300;
     RectTransform rectTransform;
     Vector3 startPos;
     float startMove;
     Vector3 targetPos;
     float targetMove;
+    bool isStop;
+    string[] controllerNames;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,18 +25,23 @@ public class MapItem : MonoBehaviour
         targetPos = new Vector3(startPos.x, TargetPosY ,0);
         targetMove = (startPos.y - targetPos.y) / UpTime;
         downFlag = false;
+        isStop = false;
+        controllerNames = Input.GetJoystickNames();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isStop == true) return;
+
+        
+
         // キーの判定
-        if (Input.GetKeyDown(KeyCode.Space))//|| (Input.GetAxis("TriggerLR") < 0)) //|| (Input.GetKeyDown("joystick button 6") && Input.GetKeyDown("joystick button 7"))) // いじる前
+        if ((Input.GetKeyDown(KeyCode.Space) && (controllerNames[0] == ""))|| (Input.GetAxis("TriggerLR") < 0)) //|| (Input.GetKeyDown("joystick button 6") && Input.GetKeyDown("joystick button 7"))) // いじる前
         {
-            Debug.Log("ああああああ");
             downFlag = true;
         }
-        if (Input.GetKeyUp(KeyCode.Space)) //|| (Input.GetAxis("TriggerLR") >= 0))
+        if ((Input.GetKeyUp(KeyCode.Space) && (controllerNames[0] == "")) || (Input.GetAxis("TriggerLR") >= 0))
         {
             downFlag = false;
         }
@@ -57,5 +65,17 @@ public class MapItem : MonoBehaviour
                 rectTransform.position = startPos;
             }
         }
+    }
+
+
+    // 上げ下げする関数
+    public void StopMapDown()
+    {
+        isStop = true;
+    }
+
+    public void StartMapDown()
+    {
+        isStop = false;
     }
 }
