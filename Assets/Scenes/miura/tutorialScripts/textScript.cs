@@ -9,15 +9,15 @@ public class textScript : MonoBehaviour
     TextMeshProUGUI tmPro;
     string text;
     string textMax;
-    float nextMojiTimeMax;
-    public float NextMojiTime = 0.05f;
+    public float nextMojiTimeMax = 0.01f;
+    float NextMojiTime;
     bool finish;
     int index;
     int indexMax;
     // Start is called before the first frame update
     void Start()
     {
-        nextMojiTimeMax = NextMojiTime;
+        NextMojiTime = nextMojiTimeMax;
         script = GameObject.Find("TalkData").GetComponent<TalkDataScript>();
         tmPro = this.GetComponent<TextMeshProUGUI>();
         finish = false;
@@ -44,6 +44,13 @@ public class textScript : MonoBehaviour
             }
         }
 
+        //if (Input.GetKeyUp(KeyCode.Return))
+        //{
+        //    index = indexMax - 1;
+        //    text = textMax;
+        //    finish = true;
+        //}
+
         tmPro.text = text;
     }
 
@@ -57,5 +64,10 @@ public class textScript : MonoBehaviour
         index = 0;
         indexMax = scenario.Length;
         finish = false;
+    }
+
+    public bool GetTextFinish()
+    {
+        return finish;
     }
 }

@@ -13,7 +13,6 @@ public class Scenario
 
 public class TalkDataScript : MonoBehaviour
 {
-
     [SerializeField]
     List<Scenario> scenarios = new List<Scenario>();
 
@@ -53,7 +52,6 @@ public class TalkDataScript : MonoBehaviour
             }
         };
 
-
         // シナリオスタート
         SetScenario(scenario01);
         setText.SetText(currentScenario.Texts[index]);
@@ -64,7 +62,7 @@ public class TalkDataScript : MonoBehaviour
     {
         if (scenarioFinish == true) return;
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (setText.GetTextFinish() == true && Input.GetKeyDown(KeyCode.Return))
         {
             if (index < indexMax - 1)
             {
