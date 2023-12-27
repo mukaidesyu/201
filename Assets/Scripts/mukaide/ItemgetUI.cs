@@ -35,7 +35,6 @@ public class ItemgetUI : MonoBehaviour
 
     public void SwitchItemGetStart(int no)
     {
-
         Time.timeScale = 0;
         ItemGetPanel.SetActive(true);
         get = GameObject.Find("Item").GetComponent<GetItemneko>();

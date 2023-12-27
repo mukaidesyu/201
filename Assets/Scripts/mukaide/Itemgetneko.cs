@@ -9,7 +9,7 @@ public class Itemgetneko : MonoBehaviour
     public float move = 5;
 
     ItemgetUI ui;
-
+ 
     public float cnt = 60;
      
     // Start is called before the first frame update

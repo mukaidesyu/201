@@ -449,6 +449,11 @@ namespace Live2D.Cubism.Framework.Expression
             return (source * (1.0f - fadeWeight)) + (destination * fadeWeight);
         }
 
+        public void FaceChange(int no)
+        {
+            CurrentExpressionIndex = no;
+        }
+
         #region Unity Event Handling
 
         /// <summary>
