@@ -34,8 +34,6 @@ public class MapItem : MonoBehaviour
     {
         if (isStop == true) return;
 
-        
-
         // ÉLÅ[ÇÃîªíË
         if ((Input.GetKeyDown(KeyCode.Space) && (controllerNames[0] == ""))|| (Input.GetAxis("TriggerLR") < 0)) //|| (Input.GetKeyDown("joystick button 6") && Input.GetKeyDown("joystick button 7"))) // Ç¢Ç∂ÇÈëO
         {

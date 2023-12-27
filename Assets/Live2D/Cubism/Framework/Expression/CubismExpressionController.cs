@@ -48,6 +48,7 @@ namespace Live2D.Cubism.Framework.Expression
         /// </summary>
         [SerializeField]
         public int CurrentExpressionIndex = -1;
+        public float facetime = 0;
 
         /// <summary>
         /// Last playing expressions index.
@@ -157,6 +158,13 @@ namespace Live2D.Cubism.Framework.Expression
             else
             {
                 UpdateExpression();
+            }
+
+            facetime -= Time.deltaTime;
+            if (facetime <= 0)
+            {
+                CurrentExpressionIndex = 0;
+                facetime = 0;
             }
         }
 
@@ -452,6 +460,7 @@ namespace Live2D.Cubism.Framework.Expression
         public void FaceChange(int no)
         {
             CurrentExpressionIndex = no;
+            facetime = 3;
         }
 
         #region Unity Event Handling

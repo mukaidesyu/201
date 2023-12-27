@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Wink.exp3
   m_EditorClassIdentifier: 
   Type: Live2D Expression
-  FadeInTime: 0.5
-  FadeOutTime: 0.5
+  FadeInTime: 1
+  FadeOutTime: 1
   Parameters:
   - Id: Smile
     Value: 1
