@@ -21,8 +21,6 @@ public class textScript : MonoBehaviour
         script = GameObject.Find("TalkData").GetComponent<TalkDataScript>();
         tmPro = this.GetComponent<TextMeshProUGUI>();
         finish = false;
-        index = 0;
-        indexMax = 0;
     }
 
     // Update is called once per frame
@@ -54,6 +52,7 @@ public class textScript : MonoBehaviour
         textMax = scenario;
         // ˆê•¶Žš–Ú‚ð•\Ž¦
         text = scenario[0].ToString();
+        NextMojiTime = nextMojiTimeMax;
 
         index = 0;
         indexMax = scenario.Length;
