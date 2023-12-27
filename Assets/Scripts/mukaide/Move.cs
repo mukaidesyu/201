@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Move : MonoBehaviour
@@ -36,13 +37,20 @@ public class Move : MonoBehaviour
     public bool Hit = true;//操作不能フラグ
     public float HitsTimer = 0;//操作不能タイマー
 
+    // チュートリアルかどうか
+    string sceneName;
+
     //SE
     AudioSource audio;
 
     private void Start()
     {
+        sceneName = SceneManager.GetActiveScene().name;
+
         // スポナーオブジェクトをスポナー変数に格納する
         spawner = GameObject.FindObjectOfType<Spawner>();
+        // もしチュートリアルシーンだったら、チュートリアル
+
         if (!activePiece)
         {
             activePiece = spawner.SpawnPiece(this.gameObject);

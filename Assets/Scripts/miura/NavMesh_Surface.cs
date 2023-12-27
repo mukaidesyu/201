@@ -18,7 +18,9 @@ public class NavMesh_Surface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        // ‘€ì‰Â”\‰»”»’f
+
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
         {
             Bake();
         }

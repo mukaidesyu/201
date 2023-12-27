@@ -7,7 +7,7 @@ public class ItemgetUI : MonoBehaviour
 {
 
     public bool isItemGet;
-    GameObject ItemGetPanel;
+    [SerializeField]GameObject ItemGetPanel;
     GetItemneko get;
 
     // Start is called before the first frame update
