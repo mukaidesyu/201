@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: Live2D Expression
   FadeInTime: 0.5
-  FadeOutTime: 0.5
+  FadeOutTime: 0.2
   Parameters:
   - Id: ParamEyeLOpen
     Value: -1
