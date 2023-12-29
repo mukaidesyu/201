@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Tile_Material : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class Tile_Material : MonoBehaviour
     Tilemanager tilemanager;
 
     bool isGoal = false;
+    GameObject instance;
 
     // Start is called before the first frame update
     void Start()
@@ -72,8 +74,8 @@ public class Tile_Material : MonoBehaviour
         }
         else if (paneSta != PanelStatus.Nothing)
         {
-            nowTerrain = GameObject.Instantiate(Terrain[(int)status], new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z), Quaternion.Euler(0, 0, 0));
-            nowTerrain.transform.SetParent(this.gameObject.transform, true);
+            nowTerrain = PrefabUtility.InstantiatePrefab(Terrain[(int)status]) as GameObject;
+            nowTerrain.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 10, this.gameObject.transform.position.z);
         }
 
         // ëêçÏê¨
@@ -213,7 +215,7 @@ public class Tile_Material : MonoBehaviour
             {
                Destroy(nowGrass,0.0f);
             }
-            //CubeSet();
+            CubeSet();
 
         }
         else
@@ -235,7 +237,9 @@ public class Tile_Material : MonoBehaviour
         if (isGoal == true)return;
 
         Destroy(nowTerrain);
-        nowTerrain = GameObject.Instantiate(Terrain[(int)status], new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z), Quaternion.Euler(0, 0, 0));
-        nowTerrain.transform.SetParent(this.gameObject.transform, true);
+        // nowTerrain = GameObject.Instantiate(Terrain[(int)status], new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z),Quaternion.identity);
+        // nowTerrain.transform.SetParent(this.gameObject.transform, true);
+        nowTerrain = PrefabUtility.InstantiatePrefab(Terrain[(int)status]) as GameObject;
+        nowTerrain.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 10, this.gameObject.transform.position.z);
     }
 }
