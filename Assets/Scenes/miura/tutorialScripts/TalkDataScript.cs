@@ -25,36 +25,53 @@ public class TalkDataScript : MonoBehaviour
     int indexMax = 0;
     bool scenarioFinish = false;
 
+    // チュートリアルを管理するデータ
+    TutorialData data;
+
     // Start is called before the first frame update
     void Start()
     {
         setText = GameObject.Find("talk").GetComponent<textScript>();
+        data = GameObject.Find("TutorialState").GetComponent<TutorialData>();
 
         var scenario01 = new Scenario()
         {
             ID = "scenario01",
             Texts = new List<string>()
             {
+                "ある日あるところ…",
+                "人里離れた森の奥にその見習い魔女は住んでいました。",
+                "今日のご飯は何にしようか。クロちゃん？",
                 "にゃ～",
-                "どうしたの？",
-                "にゃ～",
-                "お腹すいたの？",
-                "はい、ねこかん"
+                "今日はパンケーキがいいかなぁ",
+                "にゃ！",
+                "そうだ、クロちゃん！\n魔法で森の中に飛ばすから、食材を取ってきてくれない？",
+                "にゃ！！",
+                "せーの！！",
+                "にゃーー！",
+                "こうして、リリアとクロの食材集めが始まったのでした。"
             },
 
             Names = new List<string>()
             {
+                "",
+                "",
+                "リリア",
+                "クロ",
+                "リリア",
                 "クロ",
                 "リリア",
                 "クロ",
                 "リリア",
-                "リリア"
+                "クロ",
+                "",
             }
         };
 
         // シナリオスタート
         SetScenario(scenario01);
-        setText.SetText(currentScenario.Texts[index]);
+        
+        // プレイヤーを止める
     }
 
     // Update is called once per frame
@@ -69,9 +86,14 @@ public class TalkDataScript : MonoBehaviour
                 index++;
                 setText.SetText(currentScenario.Texts[index]);
             }
+            //else if (index >= indexMax && scenarioFinish == true)
+            //{
+                
+            //}
             else
             {
                 scenarioFinish = true;
+                data.TutorialNext();
             }
         }
     }
@@ -82,6 +104,8 @@ public class TalkDataScript : MonoBehaviour
         index = 0;
         indexMax = currentScenario.Texts.Count;
         scenarioFinish = false;
+        setText.SetTextFinish(false);
+        setText.SetText(currentScenario.Texts[index]);
     }
 
     public string GetName()
