@@ -70,4 +70,9 @@ public class textScript : MonoBehaviour
     {
         return finish;
     }
+
+    public void SetTextFinish(bool set)
+    {
+        finish = set;
+    }
 }
