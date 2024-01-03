@@ -16,13 +16,13 @@ public class TutorialData : MonoBehaviour
 
 
     GameObject talkCanvas;
-    GameObject unmasked;
     // 会話シーンのオブジェクト
     GameObject riria;
     GameObject kuro;
     GameObject Waku;
     GameObject NameWaku;
-    GameObject MojiWaku;
+    GameObject Tutorial2Canvas;
+    GameObject Tutorial3Canvas;
 
     TalkDataScript talkData;
     [SerializeField] Scenarios scenarios;
@@ -33,17 +33,17 @@ public class TutorialData : MonoBehaviour
     {
         //state = TutorialState.FirstKaiwa;
         talkCanvas = GameObject.Find("TalkCanvas");
-        unmasked = GameObject.Find("Tutorial_Unmasked");
+        Tutorial2Canvas = GameObject.Find("TalkCanvas2");
+        Tutorial3Canvas = GameObject.Find("TalkCanvas3");
         talkCanvas.SetActive(true);
-        unmasked.SetActive(false);
+        Tutorial2Canvas.SetActive(false);
+        Tutorial3Canvas.SetActive(false);
         riria = GameObject.Find("riria");
         kuro = GameObject.Find("kuro");
         Waku = GameObject.Find("Waku");
         NameWaku = GameObject.Find("Waku_Name");
         talkData = GameObject.Find("TalkData").GetComponent<TalkDataScript>();
         scenarios = GetComponent<Scenarios>();
-        MojiWaku = GameObject.Find("Mojiwaku");
-        MojiWaku.SetActive(false);
     }
 
     // Update is called once per frame
@@ -53,10 +53,7 @@ public class TutorialData : MonoBehaviour
         switch (state)
         {
             case TutorialState.Play2:
-                if (Input.GetKeyDown(KeyCode.Return))
-                {
                     TutorialNext();
-                }
                 break;
 
         }
@@ -77,14 +74,12 @@ public class TutorialData : MonoBehaviour
                 break;
             case TutorialState.Play2:
                 talkCanvas.SetActive(false);
-                MojiWaku.SetActive(true);
-                unmasked.SetActive(true);
+                Tutorial2Canvas.SetActive(true);
                 break;
             case TutorialState.Play3:
                 talkCanvas.SetActive(false);
-                MojiWaku.SetActive(true);
-                MojiWaku.SetActive(true);
-                unmasked.SetActive(true);
+                Tutorial2Canvas.SetActive(false);
+                Tutorial3Canvas.SetActive(true);
                 break;
         }
     }
