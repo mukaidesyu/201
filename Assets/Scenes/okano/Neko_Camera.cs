@@ -20,12 +20,12 @@ public class Neko_Camera : MonoBehaviour
         //プレイヤー位置情報
         playerPos = this.transform.position;
 
-        if (Input.GetKey(KeyCode.O))
+        if (Input.GetKey(KeyCode.O) || Input.GetAxis("Horizontal2") > 0.5f)
         {           
             //カメラを回転させる
             transform.RotateAround(playerPos, Vector3.up, rotateSpeed);
         }
-        else if (Input.GetKey(KeyCode.U))
+        else if (Input.GetKey(KeyCode.U) || Input.GetAxis("Horizontal2") < -0.5f)
         {
             //カメラを回転させる
             transform.RotateAround(playerPos, Vector3.up, -rotateSpeed);
