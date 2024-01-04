@@ -134,7 +134,7 @@ MonoBehaviour:
   DownPanel: 0
   id: 0
   Materials:
-  - {fileID: 2100000, guid: 7c962b51045eea446b81c5dfe6bc078f, type: 2}
+  - {fileID: 2100000, guid: 0b70014df3e804443ba9b08e3f60d9d4, type: 2}
   - {fileID: 2100000, guid: a80c02a4e82ca2d4ab2428043638bbb3, type: 2}
   - {fileID: 2100000, guid: 195e7149a711ec54faa3a57567dc2ab8, type: 2}
   - {fileID: 2100000, guid: 8432eb8af200a044c8d5ee82e2796b58, type: 2}
@@ -150,7 +150,18 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b3bacd5a73bd6a244ac2476be2a7b278, type: 2}
   - {fileID: 2100000, guid: db601254e2e3f61489862ddfcb73915b, type: 2}
   - {fileID: 2100000, guid: 60798442f8d2d9540a884e5fa8586425, type: 2}
+  - {fileID: 2100000, guid: f2d0f40fd845a3648b190b7bae42eb9f, type: 2}
+  Ike_Materials:
   - {fileID: 2100000, guid: 886fa72fe3e9bc3459b0dcaa55852471, type: 2}
+  - {fileID: 2100000, guid: 93fbba2ccfdf9924bb2c6d71bc951093, type: 2}
+  - {fileID: 2100000, guid: a0f9f7fb0981d254fad3004c6f7790fd, type: 2}
+  - {fileID: 2100000, guid: 14a935009ffdffc439569e15f54c12f6, type: 2}
+  Grass_Materials:
+  - {fileID: 2100000, guid: 7c962b51045eea446b81c5dfe6bc078f, type: 2}
+  - {fileID: 2100000, guid: b0009a0246e452b4b87526de933d0455, type: 2}
+  - {fileID: 2100000, guid: 0b70014df3e804443ba9b08e3f60d9d4, type: 2}
+  - {fileID: 2100000, guid: cbbe0d8f3f258414db1f92604f98aa08, type: 2}
+  - {fileID: 2100000, guid: c9155015473242347bee663a3e6a0ed7, type: 2}
   Terrain:
   - {fileID: 363899658175041173, guid: c2be7dd0f3df6184aaa1f53a848791e3, type: 3}
   - {fileID: 6736071887741349612, guid: cd7a4e58cb8862c4da3e9f6af72ecc52, type: 3}

@@ -27,19 +27,40 @@ public class Tile_Material : MonoBehaviour
         Ike,
     };
 
+    enum Ike
+    {
+        Ike_1,
+        Ike_2,
+        Ike_3,
+        Ike_4,
+    };
+
+    enum Grass
+    {
+        grass_1,
+        grass_2,
+        grass_3,
+        grass_4,
+        grass_5,
+    };
+
     Material[] tmp;
     TileStatus status;
+    Ike ike;
+    Grass grass;
 
 
 
-    [SerializeField]bool UpPanel;
-    [SerializeField]bool RightPanel;
-    [SerializeField]bool LeftPanel;
-    [SerializeField]bool DownPanel;
+    [SerializeField] bool UpPanel;
+    [SerializeField] bool RightPanel;
+    [SerializeField] bool LeftPanel;
+    [SerializeField] bool DownPanel;
 
-    [SerializeField]  private int id;
+    [SerializeField] private int id;
 
     public Material[] Materials;
+    public Material[] Ike_Materials;
+    public Material[] Grass_Materials;
     public GameObject[] Terrain;
     public GameObject nowTerrain;
     public GameObject nowGrass;
@@ -47,13 +68,18 @@ public class Tile_Material : MonoBehaviour
     Tilemanager tilemanager;
 
     bool isGoal = false;
+<<<<<<< HEAD
     GameObject instance;
+=======
+    float seconds;
+>>>>>>> feature/tarumoto
 
     // Start is called before the first frame update
     void Start()
     {
         Material[] tmp = gameObject.GetComponent<Renderer>().materials;
         status = TileStatus.Grass;
+        ike = Ike.Ike_1;
 
         //ƒ^ƒCƒ‹‚ÌidŽæ“¾
         id = this.gameObject.GetComponent<Tilemanager>().GetTileNo();
@@ -87,13 +113,36 @@ public class Tile_Material : MonoBehaviour
             nowGrass.transform.SetParent(this.gameObject.transform, true);
         }
 
+        if (status == TileStatus.Grass)
+        {
+            GetComponent<Renderer>().material = Grass_Materials[(int)grass];
+        }
+
         SetMaterial(tilemanager.PutWalkFlag());
-    }
+    } 
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Renderer>().material = Materials[(int)status];
+        if(status == TileStatus.Ike)
+        {
+            GetComponent<Renderer>().material = Ike_Materials[(int)ike];
+
+            seconds += Time.deltaTime;
+            if (seconds >= 0.5)
+            {
+                seconds = 0;
+                ike++;
+                if (ike > Ike.Ike_4)
+                {
+                    ike = Ike.Ike_1;
+                }
+            }
+        }
+        else
+        {
+            GetComponent<Renderer>().material = Materials[(int)status];
+        }
 
         if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
         {
