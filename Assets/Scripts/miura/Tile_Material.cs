@@ -68,11 +68,8 @@ public class Tile_Material : MonoBehaviour
     Tilemanager tilemanager;
 
     bool isGoal = false;
-<<<<<<< HEAD
     GameObject instance;
-=======
     float seconds;
->>>>>>> feature/tarumoto
 
     // Start is called before the first frame update
     void Start()
