@@ -51,7 +51,7 @@ public class PieceRay : MonoBehaviour
     {
         putflag = false;
         RaycastHit hit;
-        if (Physics.Raycast(this.transform.position, Vector3.down, out hit, 10.0f))
+        if (Physics.Raycast(this.transform.position, Vector3.down, out hit, 20.0f))
         {
             // クールタイム中かどうか判断する
             if (GameObject.Find("player").GetComponent<Move>().GetUnpossible())
