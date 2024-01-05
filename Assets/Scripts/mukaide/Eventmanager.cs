@@ -24,6 +24,7 @@ public class Eventmanager : MonoBehaviour
                 // æ“¾ó‘Ô‚É•ÏX
                 MemoUI[0].GetComponent<Memo_UI>().SetIsGet(true);
                 script.SetEvent(EventStatus.Kinoko_Got);
+                treasure.TreasurePlus();
                 break;
 
             case EventStatus.Sakana:
@@ -32,6 +33,7 @@ public class Eventmanager : MonoBehaviour
                 face.FaceChange(1);
                 MemoUI[1].GetComponent<Memo_UI>().SetIsGet(true);
                 script.SetEvent(EventStatus.Sakana_Got);
+                treasure.TreasurePlus();
                 break;
             case EventStatus.Kari1:
                 treasure.TreasurePlus();
@@ -48,6 +50,7 @@ public class Eventmanager : MonoBehaviour
                 face.FaceChange(1);
                 MemoUI[3].GetComponent<Memo_UI>().SetIsGet(true);
                 script.SetEvent(EventStatus.Kari2_Got);
+                treasure.TreasurePlus();
                 break;
             case EventStatus.Kari3:
                 // ‚±‚±‚É‰‰o“I‚Èˆ—
@@ -55,6 +58,7 @@ public class Eventmanager : MonoBehaviour
                 face.FaceChange(1);
                 MemoUI[4].GetComponent<Memo_UI>().SetIsGet(true);
                 script.SetEvent(EventStatus.Kari3_Got);
+                treasure.TreasurePlus();
                 break;
 
             case EventStatus.Zasso:
