@@ -39,6 +39,7 @@ public class Move : MonoBehaviour
 
     // チュートリアルかどうか
     string sceneName;
+    bool tutorialBool;
 
     //SE
     AudioSource audio;
@@ -49,12 +50,24 @@ public class Move : MonoBehaviour
 
         // スポナーオブジェクトをスポナー変数に格納する
         spawner = GameObject.FindObjectOfType<Spawner>();
-        // もしチュートリアルシーンだったら、チュートリアル
 
-        if (!activePiece)
+        // もしチュートリアルシーンだったら、チュートリアル
+        if (sceneName == "tutorial")
         {
-            activePiece = spawner.SpawnPiece(this.gameObject);
-            Pice = activePiece.gameObject;
+            if (!activePiece)
+            {
+                // チュートリアルの最初のピースは決まったピース
+                activePiece = spawner.SpawnPiece(this.gameObject,1);
+                Pice = activePiece.gameObject;
+            }
+        }
+        else // 他のシーン
+        {
+            if (!activePiece)
+            {
+                activePiece = spawner.SpawnPiece(this.gameObject);
+                Pice = activePiece.gameObject;
+            }
         }
 
         tilemanager = GameObject.Find("judgment1").GetComponent<judgment>(); // 右

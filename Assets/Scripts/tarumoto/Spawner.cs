@@ -40,4 +40,20 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    // 指定されたピースを生成する関数
+    public Piece SpawnPiece(GameObject player, int no)
+    {
+        var playerpos = player.transform;
+
+        Piece piece = Instantiate(pieces[no], transform.position, Quaternion.Euler(90, 0, 0), playerpos);
+
+        if (piece)
+        {
+            return piece;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
