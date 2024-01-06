@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/main/StageSelect.unity
     guid: ce5237770e9baca4eaf93cc104e4dd53
   - enabled: 1
-    path: Assets/Scenes/miura/m_3.unity
-    guid: fca545fd6ebdf7f47a0f983026134745
-  - enabled: 1
     path: Assets/Scenes/main/Game.unity
-    guid: b0af34be54a879541a589c13c8dacf49
+    guid: fedc9c1f598839647840855466fd6e27
   m_configObjects: {}
