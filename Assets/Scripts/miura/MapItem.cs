@@ -35,11 +35,12 @@ public class MapItem : MonoBehaviour
         if (isStop == true) return;
 
         // キーの判定
-        if (Input.GetKeyDown(KeyCode.Space))//|| (Input.GetKeyDown("joystick button 6") && Input.GetKeyDown("joystick button 7"))) // いじる前
+        //if (Input.GetKeyDown(KeyCode.Space))//|| (Input.GetKeyDown("joystick button 6") && Input.GetKeyDown("joystick button 7"))) // いじる前
+        if ((Input.GetAxis("TriggerLR") < 0)) // いじる前
         {
             downFlag = true;
         }
-        if (Input.GetKeyUp(KeyCode.Space)/* || (Input.GetAxis("TriggerLR") >= 0)*/)
+        if (Input.GetKeyUp(KeyCode.Space) || (Input.GetAxis("TriggerLR") >= 0))
         {
             downFlag = false;
         }
