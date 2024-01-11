@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum TutorialState
 {
-    FirstKaiwa = 0,
+    Play0 = 0,
     Play1,
     Play2,
     Play3,
@@ -32,7 +32,7 @@ public enum TutorialState
 
 public class TutorialData : MonoBehaviour
 {
-    public TutorialState state = TutorialState.FirstKaiwa;
+    public TutorialState state = TutorialState.Play0;
 
 
     GameObject talkCanvas;
@@ -62,7 +62,8 @@ public class TutorialData : MonoBehaviour
     GameObject Tutorial22Canvas;
 
     TalkDataScript talkData;
-    [SerializeField] Scenarios scenarios;
+    Scenarios scenarios;
+    bool isMove;
 
     bool BOOL; // ”Ä—p
     float StickTime = 0.5f;
@@ -73,7 +74,7 @@ public class TutorialData : MonoBehaviour
     void Start()
     {
         StickTime = 0.5f;
-        state = TutorialState.FirstKaiwa;
+        state = TutorialState.Play0;
         talkCanvas = GameObject.Find("TalkCanvas");
         Tutorial2Canvas = GameObject.Find("TalkCanvas2");
         Tutorial3Canvas = GameObject.Find("TalkCanvas3");
@@ -122,6 +123,7 @@ public class TutorialData : MonoBehaviour
         scenarios = GetComponent<Scenarios>();
 
         BOOL = false;
+        isMove = false;
 
         Player = GameObject.Find("player");
     }
@@ -264,25 +266,31 @@ public class TutorialData : MonoBehaviour
                 kuro.SetActive(false);
                 NameWaku.SetActive(false);              
                 talkData.SetScenario(scenarios.scenario02);
+                isMove = false;
                 break;
             case TutorialState.Play2:
                 talkCanvas.SetActive(false);
                 Tutorial2Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play3:
                 Tutorial2Canvas.SetActive(false);
                 Tutorial3Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play4:
                 Tutorial3Canvas.SetActive(false);
                 Tutorial4Canvas.SetActive(true);
+                isMove = true;
                 break;
             case TutorialState.Play5:
                 Tutorial4Canvas.SetActive(false);
                 Tutorial5Canvas.SetActive(true);
+                isMove = true;
                 break;
             case TutorialState.Play6:
                 Tutorial5Canvas.SetActive(false);
+                isMove = false;
                 break;
             case TutorialState.Play7:
                 Tutorial7Canvas.SetActive(true);
@@ -453,5 +461,10 @@ public class TutorialData : MonoBehaviour
         }
 
         BOOL = false;
+    }
+
+    public bool GetIsMove()
+    {
+        return isMove;
     }
 }

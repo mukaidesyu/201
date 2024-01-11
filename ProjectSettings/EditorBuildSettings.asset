@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/miura/tutorial.unity
+    guid: 3bbf14ca50345284683354635a6c5fd3
+  - enabled: 1
     path: Assets/Scenes/main/StartScene.unity
     guid: d2f4ca906445266459133ff117d68d1e
   - enabled: 1

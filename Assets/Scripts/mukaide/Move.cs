@@ -39,7 +39,8 @@ public class Move : MonoBehaviour
 
     // チュートリアルかどうか
     string sceneName;
-    bool tutorialBool;
+    TutorialData tutorialData;
+    bool tutorialBool = true;
 
     //SE
     AudioSource audio;
@@ -60,6 +61,9 @@ public class Move : MonoBehaviour
                 activePiece = spawner.SpawnPiece(this.gameObject,1);
                 Pice = activePiece.gameObject;
             }
+            turnScript = GameObject.Find("TurnNumber").GetComponent<TurnScript>();
+            tutorialData = GameObject.Find("TutorialState").GetComponent<TutorialData>();
+            tutorialBool = false;
         }
         else // 他のシーン
         {
@@ -68,6 +72,7 @@ public class Move : MonoBehaviour
                 activePiece = spawner.SpawnPiece(this.gameObject);
                 Pice = activePiece.gameObject;
             }
+            tutorialBool = true;
         }
 
         tilemanager = GameObject.Find("judgment1").GetComponent<judgment>(); // 右
@@ -79,78 +84,88 @@ public class Move : MonoBehaviour
 
         audio = GetComponent<AudioSource>();
 
-        turnScript = GameObject.Find("TurnNumber").GetComponent<TurnScript>();
     }
 
     void Update()
     {
+       // bool isMove = tutorialData.GetIsMove();
 
-        //移動
-        if (Input.GetAxis("Vertical") >= 0.3f && transform.position == targetPos)
-        {
-            targetPos += new Vector3(0, 0, move) * distance;
-            //this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
-        }
-        else if (Input.GetAxis("Vertical") <= -0.3f && transform.position == targetPos)
-        {
-            targetPos += new Vector3(0, 0, -move) * distance;
-            //this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
-        }
-        else if (Input.GetAxis("Horizontal") <= -0.3f && transform.position == targetPos)
-        {
-            targetPos += new Vector3(-move, 0, 0) * distance;
-            // this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
-        }
-        else if (Input.GetAxis("Horizontal") >= 0.3f && transform.position == targetPos)
-        {
-            targetPos += new Vector3(move, 0, 0) * distance;
-            //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
-        }
+        //if (isMove == true)
+        //{
+            //移動
+            if (Input.GetAxis("Vertical") >= 0.3f && transform.position == targetPos)
+            {
+                targetPos += new Vector3(0, 0, move) * distance;
+                //this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
+            }
+            else if (Input.GetAxis("Vertical") <= -0.3f && transform.position == targetPos)
+            {
+                targetPos += new Vector3(0, 0, -move) * distance;
+                //this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
+            }
+            else if (Input.GetAxis("Horizontal") <= -0.3f && transform.position == targetPos)
+            {
+                targetPos += new Vector3(-move, 0, 0) * distance;
+                // this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
+            }
+            else if (Input.GetAxis("Horizontal") >= 0.3f && transform.position == targetPos)
+            {
+                targetPos += new Vector3(move, 0, 0) * distance;
+                //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
+            }
 
-        MovePlyer(targetPos);
+            MovePlyer(targetPos);
 
-        //回転
-        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 4"))
-        {
-            rot = false;
-            StartCoroutine(rt());
-        }
-        else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown("joystick button 5"))
-        {
-            rot = false;
-            StartCoroutine(rt2());
-        }
+            //回転
+            if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 4"))
+            {
+                rot = false;
+                StartCoroutine(rt());
+            }
+            else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown("joystick button 5"))
+            {
+                rot = false;
+                StartCoroutine(rt2());
+            }
+        //}
 
         //画面外判定
         if (tilemanager.PutFlag() == false && transform.position == targetPos)
         {
+            Debug.Log("a");
             targetPos -= new Vector3(-move, 0, 0) * distance;
+
             //this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
         }
         if (tilemanager1.PutFlag1() == false && transform.position == targetPos)
         {
+            Debug.Log("b");
             targetPos -= new Vector3(0, 0, move) * distance;
+
             //this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
         }
         if (tilemanager2.PutFlag2() == false && transform.position == targetPos)
         {
+            Debug.Log("c");
             targetPos -= new Vector3(0, 0, -move) * distance;
+  
             // this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
         }
         if (tilemanager3.PutFlag3() == false && transform.position == targetPos)
         {
+            Debug.Log("d");
             targetPos -= new Vector3(move, 0, 0) * distance;
+
             //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
         }
 
 
         //操作可能か判断
-        if (Unpossible == true)
+        if (Unpossible == true )
         {
             //場所を選ぶ
             if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
-
                 if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
                 {
                     // ピースを置くとここに入る
