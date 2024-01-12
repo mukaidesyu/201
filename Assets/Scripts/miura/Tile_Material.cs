@@ -141,7 +141,7 @@ public class Tile_Material : MonoBehaviour
             GetComponent<Renderer>().material = Materials[(int)status];
         }
 
-        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
+        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
         {
             SetMaterial(tilemanager.PutWalkFlag());
         }

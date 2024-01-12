@@ -20,7 +20,7 @@ public class NavMesh_Surface : MonoBehaviour
     {
         // ‘€ì‰Â”\‰»”»’f
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
         {
             Bake();
         }
