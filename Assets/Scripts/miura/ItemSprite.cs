@@ -104,6 +104,34 @@ public class ItemSprite : MonoBehaviour
                 case EventStatus.Milk_Got:
                     spriteRenderer.sprite = now;
                     break;
+                case EventStatus.Egg2:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Egg2_Got:
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Milk2:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Milk2_Got:
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Pasta:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Pasta_Got:
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Kinoko2:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Kinoko2_Got:
+                    spriteRenderer.sprite = now;
+                    break;
             }
         }
     }

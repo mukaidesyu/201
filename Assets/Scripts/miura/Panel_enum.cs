@@ -25,6 +25,14 @@ public enum EventStatus // イベントの種類
     Egg_Got,
     Milk,
     Milk_Got,
+    Egg2,
+    Egg2_Got,
+    Milk2,
+    Milk2_Got,
+    Pasta,
+    Pasta_Got,
+    Kinoko2,
+    Kinoko2_Got,
     // 追加した場合,Itemプレハブのスプライトも追加しないとNuる。
 
     EventMax

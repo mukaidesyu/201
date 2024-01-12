@@ -6,15 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/miura/tutorial.unity
-    guid: 3bbf14ca50345284683354635a6c5fd3
-  - enabled: 1
     path: Assets/Scenes/main/StartScene.unity
     guid: d2f4ca906445266459133ff117d68d1e
   - enabled: 1
     path: Assets/Scenes/main/StageSelect.unity
     guid: ce5237770e9baca4eaf93cc104e4dd53
   - enabled: 1
+    path: Assets/Scenes/main/Game1.unity
+    guid: c985f3d2cba9cae40b0126d0a99064ba
+  - enabled: 1
+    path: Assets/Scenes/main/Game2.unity
+    guid: bbd54de6ce492b748a45d8ee71988de8
+  - enabled: 1
     path: Assets/Scenes/main/Game3.unity
     guid: fedc9c1f598839647840855466fd6e27
+  - enabled: 1
+    path: Assets/Scenes/miura/tutorial.unity
+    guid: 3bbf14ca50345284683354635a6c5fd3
   m_configObjects: {}
