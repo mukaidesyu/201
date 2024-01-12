@@ -83,11 +83,25 @@ public class ItemSprite : MonoBehaviour
                     grass.enabled = false;
                     spriteRenderer.enabled = false;
                     break;
-                case EventStatus.SakuSaku_Hocho:
+                case EventStatus.Bread:
                     grass.enabled = true;
                     spriteRenderer.sprite = now;
                     break;
-                case EventStatus.SakuSaku_Hocho_Got:
+                case EventStatus.Bread_Got:
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Egg:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Egg_Got:
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Milk:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Milk_Got:
                     spriteRenderer.sprite = now;
                     break;
             }

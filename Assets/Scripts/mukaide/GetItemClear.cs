@@ -2,39 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GetItemClear : MonoBehaviour
 {
     // 各アイテムを
-    [SerializeField] bool kinokoGet;
-    [SerializeField] bool sakanaGet;
-    [SerializeField] bool kari1Get;
-    [SerializeField] bool kari2Get;
-    [SerializeField] bool kari3Get;
+    [SerializeField] bool item0Get;
+    [SerializeField] bool item1Get;
+    [SerializeField] bool item2Get;
+    [SerializeField] bool item3Get;
+    [SerializeField] bool item4Get;
 
-    Image kinoko;
-    Image sakana;
-    Image kari1;
-    Image kari2;
-    Image kari3;
+    Image item0;
+    Image item1;
+    Image item2;
+    Image item3;
+    Image item4;
 
     List<GameObject> getItems = new List<GameObject>();
     bool effectFinish;
+    int ChildConut;
+    string sceneName;
 
     // Start is called before the first frame update
     void Start()
     {
-        kinoko = this.transform.GetChild(0).GetComponent<Image>();
-        sakana = this.transform.GetChild(1).GetComponent<Image>();
-        kari1 = this.transform.GetChild(2).GetComponent<Image>();
-        kari2 = this.transform.GetChild(3).GetComponent<Image>();
-        kari3 = this.transform.GetChild(4).GetComponent<Image>();
+        sceneName = SceneManager.GetActiveScene().name;
 
+        ChildConut = 0;
         // 子オブジェクトを全部取ってくる
         for (int i = 0; i < this.transform.childCount; i++)
         {
             getItems.Add(transform.GetChild(i).gameObject);
+            ChildConut++;
         }
+
+        item0 = this.transform.GetChild(0).GetComponent<Image>();
+        item1 = this.transform.GetChild(1).GetComponent<Image>();
+        item2 = this.transform.GetChild(2).GetComponent<Image>();
+        
+        if (ChildConut > 3) item3 = this.transform.GetChild(3).GetComponent<Image>();
+        if (ChildConut > 4) item4 = this.transform.GetChild(4).GetComponent<Image>();
+
+
 
         effectFinish = false;
     }
@@ -57,19 +67,19 @@ public class GetItemClear : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    script.SetIsGet(kinokoGet);
+                    script.SetIsGet(item0Get);
                     break;
                 case 1:
-                    script.SetIsGet(sakanaGet);
+                    script.SetIsGet(item1Get);
                     break;
                 case 2:
-                    script.SetIsGet(kari1Get);
+                    script.SetIsGet(item2Get);
                     break;
                 case 3:
-                    script.SetIsGet(kari2Get);
+                    script.SetIsGet(item3Get);
                     break;
                 case 4:
-                    script.SetIsGet(kari3Get);
+                    script.SetIsGet(item4Get);
                     break;
             }
 
@@ -90,11 +100,11 @@ public class GetItemClear : MonoBehaviour
     public void ClearStart()
     {
         GameObject getItem = GameObject.Find("GetItems");
-        kinokoGet = getItem.transform.GetChild(0).GetComponent<Memo_UI>().GetIsGet();
-        sakanaGet = getItem.transform.GetChild(1).GetComponent<Memo_UI>().GetIsGet();
-        kari1Get = getItem.transform.GetChild(2).GetComponent<Memo_UI>().GetIsGet();
-        kari2Get = getItem.transform.GetChild(3).GetComponent<Memo_UI>().GetIsGet();
-        kari3Get = getItem.transform.GetChild(4).GetComponent<Memo_UI>().GetIsGet();
+        item0Get = getItem.transform.GetChild(0).GetComponent<Memo_UI>().GetIsGet();
+        item1Get = getItem.transform.GetChild(1).GetComponent<Memo_UI>().GetIsGet();
+        item2Get = getItem.transform.GetChild(2).GetComponent<Memo_UI>().GetIsGet();
+        if(ChildConut > 3)item3Get = getItem.transform.GetChild(3).GetComponent<Memo_UI>().GetIsGet();
+        if(ChildConut > 4) item4Get = getItem.transform.GetChild(4).GetComponent<Memo_UI>().GetIsGet();
 
         this.transform.GetChild(0).GetComponent<ItemBigToSmall>().StartEffect();
     }

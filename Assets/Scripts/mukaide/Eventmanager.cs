@@ -17,6 +17,7 @@ public class Eventmanager : MonoBehaviour
         Tilemanager script = eventTile.GetComponent<Tilemanager>();
         switch (script.GetEvent())// イベント内容をスイッチしそう
         {
+            // バン山脈のアイテム***********************************
             case EventStatus.Kinoko:
                 // ここに演出的な処理
                 itemUI.SwitchItemGetStart(0);
@@ -64,6 +65,37 @@ public class Eventmanager : MonoBehaviour
             case EventStatus.Zasso:
                 // ここに演出的な処理
                 script.SetEvent(EventStatus.Zasso_Got); // 雑草を消す
+                break;
+
+            // アサ湖畔のアイテム***********************************
+            case EventStatus.Bread:
+                // ここに演出的な処理
+                itemUI.SwitchItemGetStart(5);
+                face.FaceChange(1);
+                // 取得状態に変更
+                MemoUI[0].GetComponent<Memo_UI>().SetIsGet(true);
+                script.SetEvent(EventStatus.Bread_Got);
+                treasure.TreasurePlus();
+                break;
+
+            case EventStatus.Egg:
+                // ここに演出的な処理
+                itemUI.SwitchItemGetStart(6);
+                face.FaceChange(1);
+                // 取得状態に変更
+                MemoUI[1].GetComponent<Memo_UI>().SetIsGet(true);
+                script.SetEvent(EventStatus.Egg_Got);
+                treasure.TreasurePlus();
+                break;
+
+            case EventStatus.Milk:
+                // ここに演出的な処理
+                itemUI.SwitchItemGetStart(7);
+                face.FaceChange(1);
+                // 取得状態に変更
+                MemoUI[2].GetComponent<Memo_UI>().SetIsGet(true);
+                script.SetEvent(EventStatus.Milk_Got);
+                treasure.TreasurePlus();
                 break;
                 // どんどこどんどんここにアイテムの処理追加
         }
