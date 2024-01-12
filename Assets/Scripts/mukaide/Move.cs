@@ -61,7 +61,6 @@ public class Move : MonoBehaviour
                 activePiece = spawner.SpawnPiece(this.gameObject,1);
                 Pice = activePiece.gameObject;
             }
-            turnScript = GameObject.Find("TurnNumber").GetComponent<TurnScript>();
             tutorialData = GameObject.Find("TutorialState").GetComponent<TutorialData>();
             tutorialBool = false;
         }
@@ -74,6 +73,8 @@ public class Move : MonoBehaviour
             }
             tutorialBool = true;
         }
+
+        turnScript = GameObject.Find("TurnNumber").GetComponent<TurnScript>();
 
         tilemanager = GameObject.Find("judgment1").GetComponent<judgment>(); // âE
         tilemanager1 = GameObject.Find("judgment2").GetComponent<judgment1>(); // è„
