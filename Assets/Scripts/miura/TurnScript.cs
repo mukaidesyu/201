@@ -12,7 +12,7 @@ public class TurnScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int turn = 0;
+        turn = 0;
         tmp = this.GetComponent<TextMeshProUGUI>();
     }
 
