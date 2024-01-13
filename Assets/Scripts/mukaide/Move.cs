@@ -89,10 +89,13 @@ public class Move : MonoBehaviour
 
     void Update()
     {
-       // bool isMove = tutorialData.GetIsMove();
-
-        //if (isMove == true)
-        //{
+        bool isMove = true;
+        if (sceneName == "tutorial")
+        {
+            isMove = tutorialData.GetIsMove();
+        }
+        if (isMove == true)
+        {
             //ˆÚ“®
             if (Input.GetAxis("Vertical") >= 0.3f && transform.position == targetPos)
             {
@@ -128,7 +131,7 @@ public class Move : MonoBehaviour
                 rot = false;
                 StartCoroutine(rt2());
             }
-        //}
+        }
 
         //‰æ–ÊŠO”»’è
         if (tilemanager.PutFlag() == false && transform.position == targetPos)

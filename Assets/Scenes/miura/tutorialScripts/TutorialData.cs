@@ -156,13 +156,15 @@ public class TutorialData : MonoBehaviour
                 }
                 break;
             case TutorialState.Play5:
-                if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+                if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.DownArrow)
+                   || Input.GetAxis("Vertical") >= 0.3f || Input.GetAxis("Vertical") <= -0.3f || Input.GetAxis("Horizontal") <= -0.3f || Input.GetAxis("Horizontal") >= 0.3f
+                    )
                 {
                    // BOOL = true;
                     TutorialBack();
                 }
 
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
                 {
                     // ピースレイが置けたら
 
@@ -191,7 +193,7 @@ public class TutorialData : MonoBehaviour
                 BOOL = true;
                 break;
             case TutorialState.Play11:
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
                 {
                     BOOL = true;
                     TutorialNext();
@@ -294,44 +296,55 @@ public class TutorialData : MonoBehaviour
                 break;
             case TutorialState.Play7:
                 Tutorial7Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play8:
                 Tutorial7Canvas.SetActive(false);
                 Tutorial8Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play9:
                 Tutorial8Canvas.SetActive(false);
                 Tutorial9Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play10:
                 Tutorial9Canvas.SetActive(false);
                 Tutorial10Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play11:
                 Tutorial10Canvas.SetActive(false);
                 Tutorial11Canvas.SetActive(true);
+                isMove = true;
                 break;
             case TutorialState.Play12:
                 Tutorial11Canvas.SetActive(false);
+                isMove = false;
                 break;
             case TutorialState.Play13:
                 Tutorial13Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play14:
                 Tutorial13Canvas.SetActive(false);
                 Tutorial14Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play15:
                 Tutorial14Canvas.SetActive(false);
                 Tutorial15Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play16:
                 Tutorial15Canvas.SetActive(false);
                 Tutorial16Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play17:
                 Tutorial16Canvas.SetActive(false);
                 Tutorial17Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play18:
                 Tutorial17Canvas.SetActive(false);
@@ -340,21 +353,26 @@ public class TutorialData : MonoBehaviour
             case TutorialState.Play19:
                 Tutorial18Canvas.SetActive(false);
                 Tutorial19Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play20:
                 Tutorial19Canvas.SetActive(false);
                 Tutorial20Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play21:
                 Tutorial20Canvas.SetActive(false);
                 Tutorial21Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play22:
                 Tutorial21Canvas.SetActive(false);
                 Tutorial22Canvas.SetActive(true);
+                isMove = false;
                 break;
             case TutorialState.Play23:
                 Tutorial22Canvas.SetActive(false);
+                isMove = true;
                 break;
         }
 
@@ -386,6 +404,7 @@ public class TutorialData : MonoBehaviour
             case TutorialState.Play4:
                 Tutorial3Canvas.SetActive(false);
                 Tutorial4Canvas.SetActive(true);
+                Tutorial5Canvas.SetActive(false);
                 break;
             case TutorialState.Play5:
                 Tutorial4Canvas.SetActive(false);
