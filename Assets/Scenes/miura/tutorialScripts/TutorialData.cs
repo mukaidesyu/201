@@ -60,6 +60,7 @@ public class TutorialData : MonoBehaviour
     GameObject Tutorial20Canvas;
     GameObject Tutorial21Canvas;
     GameObject Tutorial22Canvas;
+    GameObject Tutorial23Canvas;
 
     TalkDataScript talkData;
     Scenarios scenarios;
@@ -95,6 +96,7 @@ public class TutorialData : MonoBehaviour
         Tutorial20Canvas = GameObject.Find("TalkCanvas20");
         Tutorial21Canvas = GameObject.Find("TalkCanvas21");
         Tutorial22Canvas = GameObject.Find("TalkCanvas22");
+        Tutorial23Canvas = GameObject.Find("TalkCanvas23");
         talkCanvas.SetActive(true);
         Tutorial2Canvas.SetActive(false);
         Tutorial3Canvas.SetActive(false);
@@ -115,6 +117,7 @@ public class TutorialData : MonoBehaviour
         Tutorial20Canvas.SetActive(false);
         Tutorial21Canvas.SetActive(false);
         Tutorial22Canvas.SetActive(false);
+        Tutorial23Canvas.SetActive(false);
         riria = GameObject.Find("riria");
         kuro = GameObject.Find("kuro");
         Waku = GameObject.Find("Waku");
@@ -232,9 +235,14 @@ public class TutorialData : MonoBehaviour
                         if (StickTime <= 0)
                         {
                             BOOL = true;
-                            TutorialNext();  
+                            TutorialNext();
                         }
                     }
+                }
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    BOOL = true;
+                    TutorialNext();
                 }
                 break;
             case TutorialState.Play19:
@@ -372,6 +380,7 @@ public class TutorialData : MonoBehaviour
                 break;
             case TutorialState.Play23:
                 Tutorial22Canvas.SetActive(false);
+                Tutorial23Canvas.SetActive(true);
                 isMove = true;
                 break;
         }
@@ -476,6 +485,7 @@ public class TutorialData : MonoBehaviour
                 break;
             case TutorialState.Play23:
                 Tutorial22Canvas.SetActive(false);
+                Tutorial23Canvas.SetActive(true);
                 break;
         }
 
