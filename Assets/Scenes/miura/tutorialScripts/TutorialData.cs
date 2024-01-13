@@ -140,7 +140,7 @@ public class TutorialData : MonoBehaviour
         switch (state)
         {
             case TutorialState.Play2:
-                Invoke("TutorialNext", 1.0f);
+                Invoke("TutorialNext", 2.5f);
                 BOOL = true;
                 break;
             case TutorialState.Play3:

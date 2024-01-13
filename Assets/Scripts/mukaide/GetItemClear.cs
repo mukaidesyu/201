@@ -39,8 +39,7 @@ public class GetItemClear : MonoBehaviour
 
         item0 = this.transform.GetChild(0).GetComponent<Image>();
         item1 = this.transform.GetChild(1).GetComponent<Image>();
-        item2 = this.transform.GetChild(2).GetComponent<Image>();
-        
+        if (ChildConut > 2) item2 = this.transform.GetChild(2).GetComponent<Image>();
         if (ChildConut > 3) item3 = this.transform.GetChild(3).GetComponent<Image>();
         if (ChildConut > 4) item4 = this.transform.GetChild(4).GetComponent<Image>();
 
@@ -102,8 +101,8 @@ public class GetItemClear : MonoBehaviour
         GameObject getItem = GameObject.Find("GetItems");
         item0Get = getItem.transform.GetChild(0).GetComponent<Memo_UI>().GetIsGet();
         item1Get = getItem.transform.GetChild(1).GetComponent<Memo_UI>().GetIsGet();
-        item2Get = getItem.transform.GetChild(2).GetComponent<Memo_UI>().GetIsGet();
-        if(ChildConut > 3)item3Get = getItem.transform.GetChild(3).GetComponent<Memo_UI>().GetIsGet();
+        if(ChildConut > 2) item2Get = getItem.transform.GetChild(2).GetComponent<Memo_UI>().GetIsGet();
+        if(ChildConut > 3) item3Get = getItem.transform.GetChild(3).GetComponent<Memo_UI>().GetIsGet();
         if(ChildConut > 4) item4Get = getItem.transform.GetChild(4).GetComponent<Memo_UI>().GetIsGet();
 
         this.transform.GetChild(0).GetComponent<ItemBigToSmall>().StartEffect();
