@@ -45,6 +45,10 @@ public class Move : MonoBehaviour
 
     //SE
     AudioSource audio;
+    AudioClip clip1;
+    AudioClip clip2;
+
+    Live2D.Cubism.Framework.Expression.CubismExpressionController face;
 
     private void Start()
     {
@@ -87,6 +91,10 @@ public class Move : MonoBehaviour
         targetPos = transform.position;
 
         audio = GetComponent<AudioSource>();
+        clip1 = Resources.Load<AudioClip>("SE/mahou");
+        clip2 = Resources.Load<AudioClip>("SE/maou_se_onepoint33");
+
+        face = GameObject.Find("ririachan2").GetComponent<Live2D.Cubism.Framework.Expression.CubismExpressionController>();
 
     }
 
@@ -179,6 +187,7 @@ public class Move : MonoBehaviour
                     if (Pice.GetComponent<Piece>().flagp() == true && Pice.GetComponent<Piece>().flage() == false && rot == true) // 現状Pフラグが立ってない
                     {
                         //Debug.Log("ムーブ");
+                        audio.clip = clip1;
                         audio.PlayOneShot(audio.clip);
                         Destroy(Pice);
                         //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
@@ -215,6 +224,12 @@ public class Move : MonoBehaviour
                         UnpossibleTimer = 1.0f;
 
                         
+                    }
+                    else
+                    {
+                        audio.clip = clip2;
+                        audio.PlayOneShot(audio.clip);
+                        face.FaceChange(2);
                     }
                 }
             }
