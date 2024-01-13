@@ -31,7 +31,7 @@ public class TurnScript : MonoBehaviour
     {
         turn++;
         faceturn++;
-        if (faceturn == 10)
+        if (faceturn == 5)
         {
             faceturn = 0;
             face.FaceChange(2);
