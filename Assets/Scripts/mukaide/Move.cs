@@ -176,7 +176,7 @@ public class Move : MonoBehaviour
 
 
         //操作可能か判断
-        if (Unpossible == true )
+        if (Unpossible == true)
         {
             //場所を選ぶ
             if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
@@ -186,50 +186,57 @@ public class Move : MonoBehaviour
                     // ピースを置くとここに入る
                     if (Pice.GetComponent<Piece>().flagp() == true && Pice.GetComponent<Piece>().flage() == false && rot == true) // 現状Pフラグが立ってない
                     {
-                        //Debug.Log("ムーブ");
-                        audio.clip = clip1;
-                        audio.PlayOneShot(audio.clip);
-                        Destroy(Pice);
-                        //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
-                        if (tutorialFirst == true)
-                        {
-                            activePiece = spawner.SpawnPiece(this.gameObject,1);
-                            tutorialFirst = false;
-                        }
-                        else
-                        {
-                            activePiece = spawner.SpawnPiece(this.gameObject);
-                        }
-                        Pice = activePiece.gameObject;
 
                         // ここで渡すピースを判定する
                         tile tileScript = GameObject.Find("Tile").GetComponent<tile>();
                         GameObject onTile = tileScript.GetOnTile();
                         GameObject farTile = tileScript.GetFarTile(onTile);
 
-                        // 猫に渡す
-                        Neko_NavMesh nekoScript = GameObject.Find("Neko").GetComponent<Neko_NavMesh>();
-                        nekoScript.SetTarget(onTile);
-                        nekoScript.SetNextTarget(farTile);
-                        nekoScript.SetNyanFlag(false);
+                        if (isMove)
+                        {
+                            //Debug.Log("ムーブ");
+                            audio.clip = clip1;
+                            audio.PlayOneShot(audio.clip);
+                            Destroy(Pice);
+                            //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
+                            if (tutorialFirst == true)
+                            {
+                                activePiece = spawner.SpawnPiece(this.gameObject, 1);
+                                tutorialFirst = false;
+                            }
+                            else
+                            {
+                                activePiece = spawner.SpawnPiece(this.gameObject);
+                            }
+                            Pice = activePiece.gameObject;
 
-                        // ターンを1ターン経過させる
-                        turnScript.TurnPlus();
 
-                        // 全フラグ下げる
-                        tileScript.EndNowPut();
+                            // 猫に渡す
+                            Neko_NavMesh nekoScript = GameObject.Find("Neko").GetComponent<Neko_NavMesh>();
+                            nekoScript.SetTarget(onTile);
+                            nekoScript.SetNextTarget(farTile);
+                            nekoScript.SetNyanFlag(false);
 
-                        //操作不能時間のフラグ
-                        Unpossible = false;
-                        UnpossibleTimer = 1.0f;
+                            // ターンを1ターン経過させる
+                            turnScript.TurnPlus();
 
+                            // 全フラグ下げる
+                            tileScript.EndNowPut();
+
+                            //操作不能時間のフラグ
+                            Unpossible = false;
+                            UnpossibleTimer = 1.0f;
+                        }
                         
                     }
                     else
                     {
-                        audio.clip = clip2;
-                        audio.PlayOneShot(audio.clip);
-                        face.FaceChange(2);
+                        if (isMove)
+                        {
+                            audio.clip = clip2;
+                            audio.PlayOneShot(audio.clip);
+                            face.FaceChange(2);
+                        }
                     }
                 }
             }
