@@ -6,6 +6,7 @@ using TMPro;
 public class TreasureCount : MonoBehaviour
 {
     public int treasure;
+    [SerializeField]
     public int treasuremax;
     GameObject ui;
     TextMeshProUGUI tmp;
@@ -14,7 +15,6 @@ public class TreasureCount : MonoBehaviour
     void Start()
     {
         treasure = 0;
-        treasuremax = 5;
         ui = GameObject.Find("UI_TreasureCount");
         tmp = ui.GetComponent<TextMeshProUGUI>();
         tmp.enabled = true;

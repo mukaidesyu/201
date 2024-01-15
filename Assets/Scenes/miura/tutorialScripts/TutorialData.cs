@@ -38,6 +38,7 @@ public class TutorialData : MonoBehaviour
     GameObject talkCanvas;
     // 会話シーンのオブジェクト
     GameObject riria;
+    GameObject haikei;
     GameObject kuro;
     GameObject Waku;
     GameObject NameWaku;
@@ -119,6 +120,7 @@ public class TutorialData : MonoBehaviour
         Tutorial22Canvas.SetActive(false);
         Tutorial23Canvas.SetActive(false);
         riria = GameObject.Find("riria");
+        haikei = GameObject.Find("haikei");
         kuro = GameObject.Find("kuro");
         Waku = GameObject.Find("Waku");
         NameWaku = GameObject.Find("Waku_Name");
@@ -273,6 +275,7 @@ public class TutorialData : MonoBehaviour
         {
             case TutorialState.Play1:
                 riria.SetActive(false);
+                haikei.SetActive(false);
                 kuro.SetActive(false);
                 NameWaku.SetActive(false);              
                 talkData.SetScenario(scenarios.scenario02);
@@ -398,6 +401,7 @@ public class TutorialData : MonoBehaviour
         {
             case TutorialState.Play1:
                 riria.SetActive(false);
+                haikei.SetActive(false);
                 kuro.SetActive(false);
                 NameWaku.SetActive(false);
                 talkData.SetScenario(scenarios.scenario02);
