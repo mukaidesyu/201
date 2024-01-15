@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Move : MonoBehaviour
@@ -36,18 +37,51 @@ public class Move : MonoBehaviour
     public bool Hit = true;//操作不能フラグ
     public float HitsTimer = 0;//操作不能タイマー
 
+    // チュートリアルかどうか
+    string sceneName;
+    TutorialData tutorialData;
+    bool tutorialBool = true;
+    bool tutorialFirst = true;
+
     //SE
     AudioSource audio;
+    AudioClip clip1;
+    AudioClip clip2;
+
+    Live2D.Cubism.Framework.Expression.CubismExpressionController face;
 
     private void Start()
     {
+        sceneName = SceneManager.GetActiveScene().name;
+
         // スポナーオブジェクトをスポナー変数に格納する
         spawner = GameObject.FindObjectOfType<Spawner>();
-        if (!activePiece)
+
+        tutorialFirst = false;
+        // もしチュートリアルシーンだったら、チュートリアル
+        if (sceneName == "tutorial")
         {
-            activePiece = spawner.SpawnPiece(this.gameObject);
-            Pice = activePiece.gameObject;
+            if (!activePiece)
+            {
+                // チュートリアルの最初のピースは決まったピース
+                activePiece = spawner.SpawnPiece(this.gameObject,1);
+                Pice = activePiece.gameObject;
+            }
+            tutorialData = GameObject.Find("TutorialState").GetComponent<TutorialData>();
+            tutorialBool = false;
+            tutorialFirst = true;
         }
+        else // 他のシーン
+        {
+            if (!activePiece)
+            {
+                activePiece = spawner.SpawnPiece(this.gameObject);
+                Pice = activePiece.gameObject;
+            }
+            tutorialBool = true;
+        }
+
+        turnScript = GameObject.Find("TurnNumber").GetComponent<TurnScript>();
 
         tilemanager = GameObject.Find("judgment1").GetComponent<judgment>(); // 右
         tilemanager1 = GameObject.Find("judgment2").GetComponent<judgment1>(); // 上
@@ -57,68 +91,86 @@ public class Move : MonoBehaviour
         targetPos = transform.position;
 
         audio = GetComponent<AudioSource>();
+        clip1 = Resources.Load<AudioClip>("SE/mahou");
+        clip2 = Resources.Load<AudioClip>("SE/maou_se_onepoint33");
 
-        turnScript = GameObject.Find("TurnNumber").GetComponent<TurnScript>();
+        face = GameObject.Find("ririachan2").GetComponent<Live2D.Cubism.Framework.Expression.CubismExpressionController>();
+
     }
 
     void Update()
     {
+        bool isMove = true;
+        if (sceneName == "tutorial")
+        {
+            isMove = tutorialData.GetIsMove();
+        }
+        if (isMove == true)
+        {
+            //移動
+            if (Input.GetAxis("Vertical") >= 0.3f && transform.position == targetPos)
+            {
+                targetPos += new Vector3(0, 0, move) * distance;
+                //this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
+            }
+            else if (Input.GetAxis("Vertical") <= -0.3f && transform.position == targetPos)
+            {
+                targetPos += new Vector3(0, 0, -move) * distance;
+                //this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
+            }
+            else if (Input.GetAxis("Horizontal") <= -0.3f && transform.position == targetPos)
+            {
+                targetPos += new Vector3(-move, 0, 0) * distance;
+                // this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
+            }
+            else if (Input.GetAxis("Horizontal") >= 0.3f && transform.position == targetPos)
+            {
+                targetPos += new Vector3(move, 0, 0) * distance;
+                //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
+            }
 
-        //移動
-        if (Input.GetAxis("Vertical") >= 0.3f && transform.position == targetPos)
-        {
-            targetPos += new Vector3(0, 0, move) * distance;
-            //this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
-        }
-        else if (Input.GetAxis("Vertical") <= -0.3f && transform.position == targetPos)
-        {
-            targetPos += new Vector3(0, 0, -move) * distance;
-            //this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
-        }
-        else if (Input.GetAxis("Horizontal") <= -0.3f && transform.position == targetPos)
-        {
-            targetPos += new Vector3(-move, 0, 0) * distance;
-            // this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
-        }
-        else if (Input.GetAxis("Horizontal") >= 0.3f && transform.position == targetPos)
-        {
-            targetPos += new Vector3(move, 0, 0) * distance;
-            //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
-        }
+            MovePlyer(targetPos);
 
-        MovePlyer(targetPos);
-
-        //回転
-        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 4"))
-        {
-            rot = false;
-            StartCoroutine(rt());
-        }
-        else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown("joystick button 5"))
-        {
-            rot = false;
-            StartCoroutine(rt2());
+            //回転
+            if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 4"))
+            {
+                rot = false;
+                StartCoroutine(rt());
+            }
+            else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown("joystick button 5"))
+            {
+                rot = false;
+                StartCoroutine(rt2());
+            }
         }
 
         //画面外判定
         if (tilemanager.PutFlag() == false && transform.position == targetPos)
         {
+            Debug.Log("a");
             targetPos -= new Vector3(-move, 0, 0) * distance;
+
             //this.transform.position += new Vector3(0, 0, move * Time.deltaTime);
         }
         if (tilemanager1.PutFlag1() == false && transform.position == targetPos)
         {
+            Debug.Log("b");
             targetPos -= new Vector3(0, 0, move) * distance;
+
             //this.transform.position += new Vector3(0, 0, -move * Time.deltaTime);
         }
         if (tilemanager2.PutFlag2() == false && transform.position == targetPos)
         {
+            Debug.Log("c");
             targetPos -= new Vector3(0, 0, -move) * distance;
+  
             // this.transform.position += new Vector3(-move * Time.deltaTime, 0, 0);
         }
         if (tilemanager3.PutFlag3() == false && transform.position == targetPos)
         {
+            Debug.Log("d");
             targetPos -= new Vector3(move, 0, 0) * distance;
+
             //this.transform.position += new Vector3(move * Time.deltaTime, 0, 0);
         }
 
@@ -129,41 +181,62 @@ public class Move : MonoBehaviour
             //場所を選ぶ
             if (tilemanager.PutFlag() == true && tilemanager1.PutFlag1() == true && tilemanager2.PutFlag2() == true && tilemanager3.PutFlag3() == true)
             {
-
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
                 {
                     // ピースを置くとここに入る
                     if (Pice.GetComponent<Piece>().flagp() == true && Pice.GetComponent<Piece>().flage() == false && rot == true) // 現状Pフラグが立ってない
                     {
-                        //Debug.Log("ムーブ");
-                        audio.PlayOneShot(audio.clip);
-                        Destroy(Pice);
-                        //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
-                        activePiece = spawner.SpawnPiece(this.gameObject);
-                        Pice = activePiece.gameObject;
 
                         // ここで渡すピースを判定する
                         tile tileScript = GameObject.Find("Tile").GetComponent<tile>();
                         GameObject onTile = tileScript.GetOnTile();
                         GameObject farTile = tileScript.GetFarTile(onTile);
 
-                        // 猫に渡す
-                        Neko_NavMesh nekoScript = GameObject.Find("Neko").GetComponent<Neko_NavMesh>();
-                        nekoScript.SetTarget(onTile);
-                        nekoScript.SetNextTarget(farTile);
-                        nekoScript.SetNyanFlag(false);
+                        if (isMove)
+                        {
+                            //Debug.Log("ムーブ");
+                            audio.clip = clip1;
+                            audio.PlayOneShot(audio.clip);
+                            Destroy(Pice);
+                            //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
+                            if (tutorialFirst == true)
+                            {
+                                activePiece = spawner.SpawnPiece(this.gameObject, 1);
+                                tutorialFirst = false;
+                            }
+                            else
+                            {
+                                activePiece = spawner.SpawnPiece(this.gameObject);
+                            }
+                            Pice = activePiece.gameObject;
 
-                        // ターンを1ターン経過させる
-                        turnScript.TurnPlus();
 
-                        // 全フラグ下げる
-                        tileScript.EndNowPut();
+                            // 猫に渡す
+                            Neko_NavMesh nekoScript = GameObject.Find("Neko").GetComponent<Neko_NavMesh>();
+                            nekoScript.SetTarget(onTile);
+                            nekoScript.SetNextTarget(farTile);
+                            nekoScript.SetNyanFlag(false);
 
-                        //操作不能時間のフラグ
-                        Unpossible = false;
-                        UnpossibleTimer = 1.0f;
+                            // ターンを1ターン経過させる
+                            turnScript.TurnPlus();
 
+                            // 全フラグ下げる
+                            tileScript.EndNowPut();
+
+                            //操作不能時間のフラグ
+                            Unpossible = false;
+                            UnpossibleTimer = 1.0f;
+                        }
                         
+                    }
+                    else
+                    {
+                        if (isMove)
+                        {
+                            audio.clip = clip2;
+                            audio.PlayOneShot(audio.clip);
+                            face.FaceChange(2);
+                        }
                     }
                 }
             }

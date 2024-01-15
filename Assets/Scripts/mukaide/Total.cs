@@ -15,6 +15,8 @@ public class Total : MonoBehaviour
     ClearTurnScript turnScript;
     public int turn;
 
+    private Animator anim;
+
     GetItemClear itemcs;
 
     // Start is called before the first frame update
@@ -25,6 +27,8 @@ public class Total : MonoBehaviour
         turnScript = GameObject.Find("ClearTurnNumber").GetComponent<ClearTurnScript>();
         itemcs = GameObject.Find("getitem").GetComponent<GetItemClear>();
 
+        anim = gameObject.GetComponent<Animator>();
+
         turn = turnScript.GetTurn();
     }
 
@@ -34,7 +38,7 @@ public class Total : MonoBehaviour
         turn = turnScript.GetTurn();
         if (turn <= 10)
         {
-            image.sprite = rankA;
+            anim.SetBool("max", true);
         }
         else if (turn > 10 && turn <= 20)
         {
@@ -42,7 +46,7 @@ public class Total : MonoBehaviour
         }
         else if (turn > 20)
         {
-            image.sprite = rankC;
+            anim.SetBool("bad", true);
         }
     }
 }

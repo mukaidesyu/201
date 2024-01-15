@@ -14,6 +14,14 @@
 			{
 				"Name": "Trouble",
 				"File": "Trouble.exp3.json"
+			},
+			{
+				"Name": "Normal.exp3.json",
+				"File": "Normal.exp3.json"
+			},
+			{
+				"Name": "Wink.exp3.json",
+				"File": "Wink.exp3.json"
 			}
 		]
 	},

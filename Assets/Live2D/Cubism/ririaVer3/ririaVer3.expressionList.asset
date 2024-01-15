@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ririaVer3.expressionList
   m_EditorClassIdentifier: 
   CubismExpressionObjects:
+  - {fileID: 11400000, guid: 58f4423fed3fe2b479c31e3bf373eebe, type: 2}
   - {fileID: 11400000, guid: 7e2cd201518b238438ad61a093a2ec7a, type: 2}
   - {fileID: 11400000, guid: 279d6261de93b42418336a456cb21cd6, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: c6861c042285afe4fb766336a071c164, type: 2}

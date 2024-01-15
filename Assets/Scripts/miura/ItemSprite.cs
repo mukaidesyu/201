@@ -83,6 +83,55 @@ public class ItemSprite : MonoBehaviour
                     grass.enabled = false;
                     spriteRenderer.enabled = false;
                     break;
+                case EventStatus.Bread:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Bread_Got:
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Egg:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Egg_Got:
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Milk:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Milk_Got:
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Egg2:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Egg2_Got:
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Milk2:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Milk2_Got:
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Pasta:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Pasta_Got:
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Kinoko2:
+                    grass.enabled = true;
+                    spriteRenderer.sprite = now;
+                    break;
+                case EventStatus.Kinoko2_Got:
+                    spriteRenderer.sprite = now;
+                    break;
             }
         }
     }
