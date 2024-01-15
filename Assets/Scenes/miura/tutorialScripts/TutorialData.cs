@@ -167,7 +167,7 @@ public class TutorialData : MonoBehaviour
                     TutorialBack();
                 }
 
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
                 {
                     // ピースレイが置けたら
 
@@ -196,7 +196,7 @@ public class TutorialData : MonoBehaviour
                 BOOL = true;
                 break;
             case TutorialState.Play11:
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
                 {
                     BOOL = true;
                     TutorialNext();

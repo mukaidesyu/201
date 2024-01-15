@@ -79,7 +79,7 @@ public class TalkDataScript : MonoBehaviour
     {
         if (scenarioFinish == true) return;
 
-        if (setText.GetTextFinish() == true && (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown("joystick button 1")))
+        if (setText.GetTextFinish() == true && (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown("joystick button 0")))
         {
             if (index < indexMax - 1)
             {

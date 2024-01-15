@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI.Navigation;
 
-
 public class NavMesh_Surface : MonoBehaviour
 {
     [SerializeField] private NavMeshSurface surface;
@@ -20,7 +19,7 @@ public class NavMesh_Surface : MonoBehaviour
     {
         // ëÄçÏâ¬î\âªîªíf
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 1"))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick button 0"))
         {
             Bake();
         }
