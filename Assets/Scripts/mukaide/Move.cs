@@ -192,8 +192,8 @@ public class Move : MonoBehaviour
                         GameObject onTile = tileScript.GetOnTile();
                         GameObject farTile = tileScript.GetFarTile(onTile);
 
-                        if (isMove)
-                        {
+                        //if (isMove)
+                        //{
                             //Debug.Log("ムーブ");
                             audio.clip = clip1;
                             audio.PlayOneShot(audio.clip);
@@ -225,7 +225,7 @@ public class Move : MonoBehaviour
                             //操作不能時間のフラグ
                             Unpossible = false;
                             UnpossibleTimer = 1.0f;
-                        }
+                        //}
                         
                     }
                     else
