@@ -1,0 +1,290 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "",
+			"Name": "角度 X"
+		},
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "",
+			"Name": "角度 Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "",
+			"Name": "角度 Z"
+		},
+		{
+			"Id": "ParamEyeLOpen",
+			"GroupId": "",
+			"Name": "左目　開閉"
+		},
+		{
+			"Id": "ParamEyeLSmile",
+			"GroupId": "",
+			"Name": "左目　笑顔"
+		},
+		{
+			"Id": "ParamEyeROpen",
+			"GroupId": "",
+			"Name": "右目　開閉"
+		},
+		{
+			"Id": "ParamEyeRSmile",
+			"GroupId": "",
+			"Name": "右目　笑顔"
+		},
+		{
+			"Id": "ParamEyeBallX",
+			"GroupId": "",
+			"Name": "目玉 X"
+		},
+		{
+			"Id": "ParamEyeBallY",
+			"GroupId": "",
+			"Name": "目玉 Y"
+		},
+		{
+			"Id": "ParamBrowLY",
+			"GroupId": "",
+			"Name": "左眉　上下"
+		},
+		{
+			"Id": "ParamBrowRY",
+			"GroupId": "",
+			"Name": "右眉　上下"
+		},
+		{
+			"Id": "ParamBrowLX",
+			"GroupId": "",
+			"Name": "左眉　左右"
+		},
+		{
+			"Id": "ParamBrowRX",
+			"GroupId": "",
+			"Name": "右眉　左右"
+		},
+		{
+			"Id": "ParamBrowLAngle",
+			"GroupId": "",
+			"Name": "左眉　角度"
+		},
+		{
+			"Id": "ParamBrowRAngle",
+			"GroupId": "",
+			"Name": "右眉　角度"
+		},
+		{
+			"Id": "ParamBrowLForm",
+			"GroupId": "",
+			"Name": "左眉　変形"
+		},
+		{
+			"Id": "ParamBrowRForm",
+			"GroupId": "",
+			"Name": "右眉　変形"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "",
+			"Name": "口　変形"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "",
+			"Name": "口　開閉"
+		},
+		{
+			"Id": "ParamCheek",
+			"GroupId": "",
+			"Name": "照れ"
+		},
+		{
+			"Id": "ParamBodyAngleX",
+			"GroupId": "",
+			"Name": "体の回転　X"
+		},
+		{
+			"Id": "ParamBodyAngleY",
+			"GroupId": "",
+			"Name": "体の回転　Y"
+		},
+		{
+			"Id": "ParamBodyAngleZ",
+			"GroupId": "",
+			"Name": "体の回転　Z"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "",
+			"Name": "呼吸"
+		},
+		{
+			"Id": "ParamHairBack2",
+			"GroupId": "",
+			"Name": "髪揺れ"
+		},
+		{
+			"Id": "Param",
+			"GroupId": "",
+			"Name": "左手動かし"
+		}
+	],
+	"ParameterGroups": [],
+	"Parts": [
+		{
+			"Id": "Part",
+			"Name": "フォルダー 1"
+		},
+		{
+			"Id": "Part2",
+			"Name": "フォルダー 2"
+		},
+		{
+			"Id": "Part3",
+			"Name": "フォルダー 110"
+		},
+		{
+			"Id": "Part14",
+			"Name": "フォルダー 38"
+		},
+		{
+			"Id": "Part19",
+			"Name": "フォルダー 108"
+		},
+		{
+			"Id": "Part20",
+			"Name": "フォルダー 63"
+		},
+		{
+			"Id": "Part21",
+			"Name": "フォルダー 30"
+		},
+		{
+			"Id": "Part26",
+			"Name": "フォルダー 119"
+		},
+		{
+			"Id": "Part27",
+			"Name": "フォルダー 86"
+		},
+		{
+			"Id": "Part28",
+			"Name": "フォルダー 75"
+		},
+		{
+			"Id": "Part32",
+			"Name": "フォルダー 100"
+		},
+		{
+			"Id": "Part33",
+			"Name": "フォルダー 47"
+		},
+		{
+			"Id": "Part34",
+			"Name": "フォルダー 62"
+		},
+		{
+			"Id": "Part35",
+			"Name": "フォルダー 64"
+		},
+		{
+			"Id": "Part36",
+			"Name": "フォルダー 51"
+		},
+		{
+			"Id": "Part37",
+			"Name": "フォルダー 99"
+		},
+		{
+			"Id": "Part38",
+			"Name": "フォルダー 31"
+		},
+		{
+			"Id": "Part4",
+			"Name": "フォルダー 114 のコピー"
+		},
+		{
+			"Id": "Part5",
+			"Name": "フォルダー 114"
+		},
+		{
+			"Id": "Part6",
+			"Name": "フォルダー 52"
+		},
+		{
+			"Id": "Part10",
+			"Name": "フォルダー 52 のコピー"
+		},
+		{
+			"Id": "Part15",
+			"Name": "フォルダー 32"
+		},
+		{
+			"Id": "Part22",
+			"Name": "フォルダー 46"
+		},
+		{
+			"Id": "Part23",
+			"Name": "フォルダー 87"
+		},
+		{
+			"Id": "Part24",
+			"Name": "フォルダー 89"
+		},
+		{
+			"Id": "Part25",
+			"Name": "フォルダー 42"
+		},
+		{
+			"Id": "Part29",
+			"Name": "フォルダー 48"
+		},
+		{
+			"Id": "Part30",
+			"Name": "フォルダー 39"
+		},
+		{
+			"Id": "Part31",
+			"Name": "フォルダー 54"
+		},
+		{
+			"Id": "Part7",
+			"Name": "フォルダー 104"
+		},
+		{
+			"Id": "Part9",
+			"Name": "フォルダー 56 のコピー"
+		},
+		{
+			"Id": "Part11",
+			"Name": "フォルダー 60"
+		},
+		{
+			"Id": "Part13",
+			"Name": "フォルダー 57"
+		},
+		{
+			"Id": "Part16",
+			"Name": "フォルダー 33"
+		},
+		{
+			"Id": "Part17",
+			"Name": "フォルダー 35"
+		},
+		{
+			"Id": "Part18",
+			"Name": "フォルダー 36"
+		},
+		{
+			"Id": "Part8",
+			"Name": "フォルダー 103"
+		},
+		{
+			"Id": "Part12",
+			"Name": "フォルダー 59"
+		}
+	]
+}
