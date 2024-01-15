@@ -47,7 +47,7 @@ public class Move : MonoBehaviour
     AudioSource audio;
     AudioClip clip1;
     AudioClip clip2;
-
+    Neko_NavMesh nekoScript;
     Live2D.Cubism.Framework.Expression.CubismExpressionController face;
 
     private void Start()
@@ -95,7 +95,7 @@ public class Move : MonoBehaviour
         clip2 = Resources.Load<AudioClip>("SE/maou_se_onepoint33");
 
         face = GameObject.Find("ririachan2").GetComponent<Live2D.Cubism.Framework.Expression.CubismExpressionController>();
-
+        nekoScript = GameObject.Find("Neko").GetComponent<Neko_NavMesh>();
     }
 
     void Update()
@@ -212,7 +212,6 @@ public class Move : MonoBehaviour
 
 
                             // ”L‚É“n‚·
-                            Neko_NavMesh nekoScript = GameObject.Find("Neko").GetComponent<Neko_NavMesh>();
                             nekoScript.SetTarget(onTile);
                             nekoScript.SetNextTarget(farTile);
                             nekoScript.SetNyanFlag(false);
