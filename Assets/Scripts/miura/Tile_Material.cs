@@ -102,7 +102,8 @@ public class Tile_Material : MonoBehaviour
         }
 
         // ëêçÏê¨
-        if (eveSta == EventStatus.Kinoko || eveSta == EventStatus.Sakana || eveSta == EventStatus.Kari1 || eveSta == EventStatus.Kari2 || eveSta == EventStatus.Kari3 || eveSta == EventStatus.Zasso)
+        if (eveSta == EventStatus.Kinoko || eveSta == EventStatus.Sakana || eveSta == EventStatus.Kari1 || eveSta == EventStatus.Kari2 || eveSta == EventStatus.Kari3 || eveSta == EventStatus.Zasso
+            || eveSta == EventStatus.Bread || eveSta == EventStatus.Egg || eveSta == EventStatus.Milk || eveSta == EventStatus.Egg2 || eveSta == EventStatus.Milk2 || eveSta == EventStatus.Pasta || eveSta == EventStatus.Kinoko2)
         {
             GameObject temp = (GameObject)Resources.Load("Terrein/Prefabs/GrassEvent");
             nowGrass = Instantiate(temp, new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z)

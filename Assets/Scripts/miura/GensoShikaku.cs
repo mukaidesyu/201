@@ -23,7 +23,9 @@ public class GensoShikaku : MonoBehaviour
         NekoShikaku = GameObject.Find("Neko").GetComponent<Terrain>();
 
         if (panelEve == EventStatus.Kinoko || panelEve == EventStatus.Sakana || panelEve == EventStatus.Kari1
-                    || panelEve == EventStatus.Kari2 || panelEve == EventStatus.Kari3)
+                    || panelEve == EventStatus.Kari2 || panelEve == EventStatus.Kari3 || panelEve == EventStatus.Milk
+             || panelEve == EventStatus.Egg || panelEve == EventStatus.Egg2 || panelEve == EventStatus.Milk2 
+             || panelEve == EventStatus.Pasta || panelEve == EventStatus.Kinoko2)
                 {
                     blueCircle.Play();
                     redCircle.Stop();

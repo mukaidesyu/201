@@ -451,6 +451,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3305686844481838603, guid: 45188125aaee9c749bb1d0b84d5813f1, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3305686844481838603, guid: 45188125aaee9c749bb1d0b84d5813f1, type: 3}
       propertyPath: ShapeModule.radius.value
       value: 1
       objectReference: {fileID: 0}
@@ -512,6 +516,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3305686844481838603, guid: 45188125aaee9c749bb1d0b84d5813f1, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342903309955547929, guid: 45188125aaee9c749bb1d0b84d5813f1, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4342903309955547929, guid: 45188125aaee9c749bb1d0b84d5813f1, type: 3}
@@ -599,6 +607,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5052240120113588669, guid: 45188125aaee9c749bb1d0b84d5813f1, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052240120113588669, guid: 45188125aaee9c749bb1d0b84d5813f1, type: 3}
       propertyPath: SizeModule.enabled
       value: 0
       objectReference: {fileID: 0}
@@ -624,6 +636,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5052240120113588671, guid: 45188125aaee9c749bb1d0b84d5813f1, type: 3}
       propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412180122720427599, guid: 45188125aaee9c749bb1d0b84d5813f1, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7412180122720427599, guid: 45188125aaee9c749bb1d0b84d5813f1, type: 3}
@@ -725,6 +741,10 @@ PrefabInstance:
     - target: {fileID: 7412180122720427599, guid: 45188125aaee9c749bb1d0b84d5813f1, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].tangentMode
       value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977316153704399556, guid: 45188125aaee9c749bb1d0b84d5813f1, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8977316153704399556, guid: 45188125aaee9c749bb1d0b84d5813f1, type: 3}
       propertyPath: SizeModule.enabled
