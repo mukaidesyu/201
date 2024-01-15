@@ -116,6 +116,15 @@ public class Tile_Material : MonoBehaviour
         }
 
         SetMaterial(tilemanager.PutWalkFlag());
+
+        if (status == TileStatus.Ike)
+        {
+
+            Destroy(nowTerrain);
+            nowTerrain = Instantiate(Terrain[(int)status]);
+            nowTerrain.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 9.98f, this.gameObject.transform.position.z);
+        }
+
     } 
 
     // Update is called once per frame
@@ -283,8 +292,6 @@ public class Tile_Material : MonoBehaviour
         if (isGoal == true)return;
 
         Destroy(nowTerrain);
-        // nowTerrain = GameObject.Instantiate(Terrain[(int)status], new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z),Quaternion.identity);
-        // nowTerrain.transform.SetParent(this.gameObject.transform, true);
         nowTerrain = Instantiate(Terrain[(int)status]);
         nowTerrain.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 10, this.gameObject.transform.position.z);
     }
