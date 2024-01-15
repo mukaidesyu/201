@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class tile : MonoBehaviour
 {
@@ -9,14 +10,20 @@ public class tile : MonoBehaviour
     public int _rows = 3;
     public int _cols = 3;
     private int i = 0;
+    bool goalSet;
 
     Rigidbody rb;
 
     // 生成したタイル全部のリスト
     List<GameObject> cd = new List<GameObject>();
+    // シーンの名前
+    string sceneName;
 
     private void Awake()
     {
+        sceneName = SceneManager.GetActiveScene().name;
+        goalSet = false;
+
         // タイル生成
         for (int row = -5; row < _rows - 5; row++)
         {
@@ -46,12 +53,29 @@ public class tile : MonoBehaviour
             {
                 cd[j].GetComponent<Tilemanager>().Startpanel();
             }
+
+            if (goalSet == false)
+            {
+                if (sceneName == "Game2")// ゴールをセット
+                {
+                    if (j == 121) // Game2のゴール位置 ヒルメ森林
+                    {
+                        cd[j].GetComponent<Tilemanager>().Goalpanel();
+                        // 猫にゴールのタイルを渡す
+                        GameObject.Find("Neko").GetComponent<Neko_NavMesh>().SetGoal(cd[j]);
+                        goalSet = true;
+                        Debug.Log("goal");
+                    }
+                }
+            }
+
             //if (j == data.GoalID) // 任意で設定したゴールのID
-            if (j == i - 1)// 最後のピース
+            if (j == i - 1 && goalSet == false)// 最後のピース
             {
                 cd[j].GetComponent<Tilemanager>().Goalpanel();
                 // 猫にゴールのタイルを渡す
                 GameObject.Find("Neko").GetComponent<Neko_NavMesh>().SetGoal(cd[j]);
+                goalSet = true;
             }
 
             // ステージデータのゲーム情報をタイルに設定する
