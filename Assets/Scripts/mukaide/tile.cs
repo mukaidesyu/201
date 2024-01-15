@@ -61,15 +61,21 @@ public class tile : MonoBehaviour
                     if (j == 121) // Game2‚ÌƒS[ƒ‹ˆÊ’u ƒqƒ‹ƒX—Ñ
                     {
                         cd[j].GetComponent<Tilemanager>().Goalpanel();
-                        // ”L‚ÉƒS[ƒ‹‚Ìƒ^ƒCƒ‹‚ğ“n‚·
                         GameObject.Find("Neko").GetComponent<Neko_NavMesh>().SetGoal(cd[j]);
                         goalSet = true;
-                        Debug.Log("goal");
+                    }
+                }
+                else if (sceneName == "Game3")
+                {
+                    if (j == 20)
+                    {
+                        cd[j].GetComponent<Tilemanager>().Goalpanel();
+                        GameObject.Find("Neko").GetComponent<Neko_NavMesh>().SetGoal(cd[j]);
+                        goalSet = true;
                     }
                 }
             }
 
-            //if (j == data.GoalID) // ”CˆÓ‚Åİ’è‚µ‚½ƒS[ƒ‹‚ÌID
             if (j == i - 1 && goalSet == false)// ÅŒã‚Ìƒs[ƒX
             {
                 cd[j].GetComponent<Tilemanager>().Goalpanel();
