@@ -92,13 +92,13 @@ public class Tile_Material : MonoBehaviour
         if (isGoal)
         {
             GameObject house = Resources.Load<GameObject>("CountryHouse");
-            GameObject temp = GameObject.Instantiate(house, new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z), Quaternion.Euler(0, 90, 0));
+            GameObject temp = GameObject.Instantiate(house, new Vector3(this.transform.position.x, transform.position.y - 36.3f, transform.position.z), Quaternion.Euler(0, 90, 0));
             temp.transform.SetParent(this.gameObject.transform);
         }
         else if (paneSta != PanelStatus.Nothing)
         {
             nowTerrain = Instantiate(Terrain[(int)status]);
-            nowTerrain.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 10, this.gameObject.transform.position.z);
+            nowTerrain.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 36.3f, this.gameObject.transform.position.z);
         }
 
         // ëêçÏê¨
@@ -106,7 +106,7 @@ public class Tile_Material : MonoBehaviour
             || eveSta == EventStatus.Bread || eveSta == EventStatus.Egg || eveSta == EventStatus.Milk || eveSta == EventStatus.Egg2 || eveSta == EventStatus.Milk2 || eveSta == EventStatus.Pasta || eveSta == EventStatus.Kinoko2)
         {
             GameObject temp = (GameObject)Resources.Load("Terrein/Prefabs/GrassEvent");
-            nowGrass = Instantiate(temp, new Vector3(this.transform.position.x, transform.position.y - 10.0f, transform.position.z)
+            nowGrass = Instantiate(temp, new Vector3(this.transform.position.x, transform.position.y - 36.3f, transform.position.z)
                 , Quaternion.Euler(0, 0, 0));
             nowGrass.transform.SetParent(this.gameObject.transform, true);
         }
@@ -123,7 +123,7 @@ public class Tile_Material : MonoBehaviour
 
             Destroy(nowTerrain);
             nowTerrain = Instantiate(Terrain[(int)status]);
-            nowTerrain.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 9.98f, this.gameObject.transform.position.z);
+            nowTerrain.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 36.3f, this.gameObject.transform.position.z);
         }
 
     } 
@@ -294,6 +294,6 @@ public class Tile_Material : MonoBehaviour
 
         Destroy(nowTerrain);
         nowTerrain = Instantiate(Terrain[(int)status]);
-        nowTerrain.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 10, this.gameObject.transform.position.z);
+        nowTerrain.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 36.3f, this.gameObject.transform.position.z);
     }
 }
