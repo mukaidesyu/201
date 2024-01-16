@@ -12,8 +12,10 @@ public class Neko_NavMesh : MonoBehaviour
     private GameObject goalPanel;
     Animator animator;
     bool isRun;
-    public float FastSpeed;
+    [SerializeField] public float FastSpeed;
+       [SerializeField] public float FastAngleSpeed;
     float speed;
+    float angleSpeed;
     bool nyanFlag; // ”L‚ª–Â‚¢‚½‚©‚Ç‚¤‚©
     Neko_SE nyan;
 
@@ -25,6 +27,8 @@ public class Neko_NavMesh : MonoBehaviour
         animator = GetComponent<Animator>();
         isRun = false;
         speed = 1.0f;
+        angleSpeed = m_Agent.angularSpeed;
+        FastAngleSpeed = angleSpeed * 100;
         nyan = GetComponent<Neko_SE>();
         nyanFlag = false;
     }
@@ -63,10 +67,12 @@ public class Neko_NavMesh : MonoBehaviour
 
 
         m_Agent.speed = speed;
+        m_Agent.angularSpeed = angleSpeed;
         // ‘‘—‚èƒ{ƒ^ƒ“
         if (Input.GetKey(KeyCode.F) || (Input.GetAxis("TriggerLR") > 0))
         {
             m_Agent.speed = FastSpeed;
+            m_Agent.angularSpeed = FastAngleSpeed;
         }
 
         m_Agent.SetDestination(target.position); // ˆÚ“®ˆ—

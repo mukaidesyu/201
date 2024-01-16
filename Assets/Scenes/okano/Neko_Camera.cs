@@ -48,7 +48,8 @@ public class Neko_Camera : MonoBehaviour
 
     void CameraFoward()
     {
-        float angle = Mathf.LerpAngle(transform.eulerAngles.y, Vector3.forward.y, 0.3f);
+        GameObject neko = GameObject.Find("Neko");
+        float angle = Mathf.LerpAngle(transform.eulerAngles.y, neko.transform.eulerAngles.y, 0.3f);
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, angle, transform.eulerAngles.z);
     }
 }
