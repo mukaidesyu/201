@@ -24704,6 +24704,7 @@ MonoBehaviour:
   target: {fileID: 0}
   nextTarget: {fileID: 0}
   FastSpeed: 20
+  FastAngleSpeed: 0
 --- !u!114 &1144678884
 MonoBehaviour:
   m_ObjectHideFlags: 0
