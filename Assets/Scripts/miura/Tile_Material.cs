@@ -267,7 +267,9 @@ public class Tile_Material : MonoBehaviour
             }
 
             EventStatus eveSta = this.GetComponent<Tilemanager>().GetEvent();
-            if (eveSta == EventStatus.Kinoko_Got || eveSta == EventStatus.Sakana_Got || eveSta == EventStatus.Kari1_Got || eveSta == EventStatus.Kari2_Got || eveSta == EventStatus.Kari3_Got || eveSta == EventStatus.Zasso_Got)
+            if (eveSta == EventStatus.Kinoko_Got || eveSta == EventStatus.Sakana_Got || eveSta == EventStatus.Kari1_Got || eveSta == EventStatus.Kari2_Got || eveSta == EventStatus.Kari3_Got || eveSta == EventStatus.Zasso_Got ||
+                eveSta == EventStatus.Bread_Got || eveSta == EventStatus.Egg_Got || eveSta == EventStatus.Milk_Got 
+                || eveSta == EventStatus.Egg2_Got || eveSta == EventStatus.Milk2_Got || eveSta == EventStatus.Pasta_Got || eveSta == EventStatus.Kinoko2_Got                )
             {
                Destroy(nowGrass,0.0f);
             }
