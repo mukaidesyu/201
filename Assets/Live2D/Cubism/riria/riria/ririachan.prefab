@@ -12109,6 +12109,7 @@ MonoBehaviour:
   ExpressionsList: {fileID: 0}
   UseLegacyBlendCalculation: 0
   CurrentExpressionIndex: -1
+  facetime: 0
 --- !u!95 &3749039145504765755
 Animator:
   serializedVersion: 5

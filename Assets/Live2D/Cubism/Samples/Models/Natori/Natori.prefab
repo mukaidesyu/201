@@ -15161,6 +15161,7 @@ MonoBehaviour:
   ExpressionsList: {fileID: 11400000, guid: 3a537a92ee1560549aa1cf5c31af8e65, type: 2}
   UseLegacyBlendCalculation: 0
   CurrentExpressionIndex: -1
+  facetime: 0
 --- !u!95 &95434638689952108
 Animator:
   serializedVersion: 5
