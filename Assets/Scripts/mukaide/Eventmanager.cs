@@ -15,6 +15,7 @@ public class Eventmanager : MonoBehaviour
     public void Event(GameObject eventTile) // 引数イベントの種類
     {
         Tilemanager script = eventTile.GetComponent<Tilemanager>();
+
         switch (script.GetEvent())// イベント内容をスイッチしそう
         {
             // バン山脈のアイテム***********************************
@@ -133,6 +134,9 @@ public class Eventmanager : MonoBehaviour
                 break;
                 // どんどこどんどんここにアイテムの処理追加
         }
+        // 最後に雑草を消す
+        Tile_Material mateScript = eventTile.GetComponent<Tile_Material>();
+        mateScript.DestroyGrass3D();
     }
 
     // Start is called before the first frame update

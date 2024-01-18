@@ -64,4 +64,9 @@ public class GensoShikaku : MonoBehaviour
     //       panelEveOld = EventStatus.None;
     //    }
     }
+
+    public void DestroyGrass3D()
+    {
+        Destroy(this.gameObject);
+    }
 }
