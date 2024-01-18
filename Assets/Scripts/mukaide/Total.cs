@@ -25,7 +25,7 @@ public class Total : MonoBehaviour
 
     ClearTurnScript turnScript;
     public int turn;
-    int treasureCount;
+    public int treasureCount;
 
     private Animator anim;
 
@@ -51,44 +51,6 @@ public class Total : MonoBehaviour
     {
         turn = turnScript.GetTurn();
 
-        if (turn <= rankATurn && treasureCount >= rankAItem)
-        {
-            anim.SetBool("max", true);
-            if(toMealMoji == false) 
-            {
-                GameObject.Find("mojiMeal").GetComponent<ClearMeal>().SetRank(1);
-                toMealMoji = true;
-            }
-            
-        }
-        else if (turn > rankATurn && turn <= rankBTurn && treasureCount >= rankBItem) // ランクB
-        {
-            image.sprite = rankB;
-            if (toMealMoji == false)
-            {
-                GameObject.Find("mojiMeal").GetComponent<ClearMeal>().SetRank(2);
-                toMealMoji = true;
-            }
-        }
-        else if (turn > rankBTurn && treasureCount >= rankAItem) // 特別に何ターンかかっても、食材を全部集めたらランクB
-        {
-            image.sprite = rankB;
-            if (toMealMoji == false)
-            {
-                GameObject.Find("mojiMeal").GetComponent<ClearMeal>().SetRank(2);
-                toMealMoji = true;
-            }
-        }
-        else
-        {
-            anim.SetBool("bad", true);
-            if (toMealMoji == false)
-            {
-                GameObject.Find("mojiMeal").GetComponent<ClearMeal>().SetRank(3);
-                toMealMoji = true;
-            }
-        }
-
         //元のやつ
         //if (turn <= 10)
         //{
@@ -107,5 +69,44 @@ public class Total : MonoBehaviour
     public void SetTreaureCount(int set) 
     {
         treasureCount = set;
+        
+        if (turn <= rankATurn && treasureCount >= rankAItem)
+        {
+            anim.SetBool("max", true);
+            if (toMealMoji == false)
+            {
+                GameObject.Find("mojiMeal").GetComponent<ClearMeal>().SetRank(1);
+                toMealMoji = true;
+            }
+
+        }
+        else if (turn > rankATurn && turn <= rankBTurn && treasureCount >= rankBItem) // ランクB
+        {
+            image.sprite = rankB;
+            if (toMealMoji == false)
+            {
+                GameObject.Find("mojiMeal").GetComponent<ClearMeal>().SetRank(2);
+                toMealMoji = true;
+            }
+        }
+        else if (treasureCount >= rankAItem) // 特別に何ターンかかっても、食材を全部集めたらランクB
+        {
+            image.sprite = rankB;
+            if (toMealMoji == false)
+            {
+                GameObject.Find("mojiMeal").GetComponent<ClearMeal>().SetRank(2);
+                toMealMoji = true;
+            }
+        }
+        else
+        {
+            anim.SetBool("bad", true);
+            if (toMealMoji == false)
+            {
+                GameObject.Find("mojiMeal").GetComponent<ClearMeal>().SetRank(3);
+                toMealMoji = true;
+            }
+        }
+
     }
 }
