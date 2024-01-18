@@ -19235,6 +19235,10 @@ MonoBehaviour:
   rankA: {fileID: 21300000, guid: 228e74c8cb6bb1b4bae401e121f4741b, type: 3}
   rankB: {fileID: 21300000, guid: c34be6bb34a207347bbfa9a7aa04d01c, type: 3}
   rankC: {fileID: 21300000, guid: 7f3f77c109ff01542a633f1005172e77, type: 3}
+  rankATurn: 15
+  rankAItem: 4
+  rankBTurn: 20
+  rankBItem: 2
   turn: 0
 --- !u!114 &673501943
 MonoBehaviour:

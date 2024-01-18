@@ -22,6 +22,9 @@ public class CanvasManagerScript : MonoBehaviour
     GameObject nekoShot;
     IrisShot2 iris;
     IrisFade fadeState;
+
+    int tmpTeasure; // 一旦、取得食材を保存
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,7 @@ public class CanvasManagerScript : MonoBehaviour
 
         // フェードの状態を初期化
         fadeState = IrisFade.None;
+        tmpTeasure = 0;
     }
 
     // Update is called once per frame
@@ -85,13 +89,14 @@ public class CanvasManagerScript : MonoBehaviour
                 nekoShot.SetActive(true);
                 iris.IrisOut();
                 fadeState = IrisFade.FadeOut;
+                tmpTeasure = GameObject.Find("UI_TreasureCount").GetComponent<TreasureCount>().GetTreasureCount();
                 break;
 
             case IrisFade.FadeOut:
                 // クリアキャンバスを出す
                 clearCanvas.SetActive(true);
                 int tmp = GameObject.Find("TurnNumber").GetComponent<TurnScript>().GetTurn();
-                GameObject.Find("ClearTurnNumber").GetComponent<ClearTurnScript>().SetTurn(tmp);
+                GameObject.Find("ClearTurnNumber").GetComponent<ClearTurnScript>().SetTurn(tmp);            
                 // 音変える
                 bgm.StartBGM();
                 // インして状態変更
@@ -111,6 +116,8 @@ public class CanvasManagerScript : MonoBehaviour
                 fadeState = IrisFade.None;
                 // クリア状態に変更する
                 canvasSet = true;
+                // クリアアイテム取得数を渡す
+                GameObject.Find("Food").GetComponent<Total>().SetTreaureCount(tmpTeasure);
                 break;
         }
     }

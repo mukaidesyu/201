@@ -33,4 +33,8 @@ public class TreasureCount : MonoBehaviour
         treasure++;
     }
    
+    public int GetTreasureCount() 
+    {
+        return treasure;
+    }
 }
