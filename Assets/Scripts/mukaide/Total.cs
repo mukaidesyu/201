@@ -80,7 +80,7 @@ public class Total : MonoBehaviour
             }
 
         }
-        else if (turn > rankATurn && turn <= rankBTurn && treasureCount >= rankBItem) // ƒ‰ƒ“ƒNB
+        else if (turn > rankATurn && turn <= rankBTurn && treasureCount >= rankBItem && treasureCount < rankAItem) // ƒ‰ƒ“ƒNB
         {
             image.sprite = rankB;
             if (toMealMoji == false)
