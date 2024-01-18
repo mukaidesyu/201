@@ -7,6 +7,7 @@ public class Total : MonoBehaviour
 {
     public Image image;
 
+
     [SerializeField]
     public Sprite rankA;
     public Sprite rankB;
@@ -19,6 +20,8 @@ public class Total : MonoBehaviour
     // ランクBのターン数
     public int rankBTurn;
     public int rankBItem;
+
+    bool toMealMoji;
 
     ClearTurnScript turnScript;
     public int turn;
@@ -40,6 +43,7 @@ public class Total : MonoBehaviour
 
         turn = turnScript.GetTurn();
         treasureCount = 0;
+        toMealMoji = false;
     }
 
     // Update is called once per frame
@@ -50,18 +54,39 @@ public class Total : MonoBehaviour
         if (turn <= rankATurn && treasureCount >= rankAItem)
         {
             anim.SetBool("max", true);
+            if(toMealMoji == false) 
+            {
+                GameObject.Find("mojiMeal").GetComponent<ClearMeal>().SetRank(1);
+                toMealMoji = true;
+            }
+            
         }
         else if (turn > rankATurn && turn <= rankBTurn && treasureCount >= rankBItem) // ランクB
         {
             image.sprite = rankB;
+            if (toMealMoji == false)
+            {
+                GameObject.Find("mojiMeal").GetComponent<ClearMeal>().SetRank(2);
+                toMealMoji = true;
+            }
         }
         else if (turn > rankBTurn && treasureCount >= rankAItem) // 特別に何ターンかかっても、食材を全部集めたらランクB
         {
             image.sprite = rankB;
+            if (toMealMoji == false)
+            {
+                GameObject.Find("mojiMeal").GetComponent<ClearMeal>().SetRank(2);
+                toMealMoji = true;
+            }
         }
         else
         {
             anim.SetBool("bad", true);
+            if (toMealMoji == false)
+            {
+                GameObject.Find("mojiMeal").GetComponent<ClearMeal>().SetRank(3);
+                toMealMoji = true;
+            }
         }
 
         //元のやつ

@@ -49,6 +49,9 @@ public class FoodBigToSmall : MonoBehaviour
                 if (time < 0)
                 {
                     state = ClearItemState.Finish;
+                    ClearMeal mealScript = GameObject.Find("mojiMeal").GetComponent<ClearMeal>();
+                    mealScript.GoAppear();
+
                     time = TimeMax;
                 }
                 break;
