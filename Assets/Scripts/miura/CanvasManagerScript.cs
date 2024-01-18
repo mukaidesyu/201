@@ -96,7 +96,7 @@ public class CanvasManagerScript : MonoBehaviour
                 // クリアキャンバスを出す
                 clearCanvas.SetActive(true);
                 int tmp = GameObject.Find("TurnNumber").GetComponent<TurnScript>().GetTurn();
-                GameObject.Find("ClearTurnNumber").GetComponent<ClearTurnScript>().SetTurn(tmp);            
+                GameObject.Find("ClearTurnNumber").GetComponent<ClearTurnScript>().SetTurn(tmp);          
                 // 音変える
                 bgm.StartBGM();
                 // インして状態変更

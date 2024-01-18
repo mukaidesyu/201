@@ -50,6 +50,8 @@ public class Move : MonoBehaviour
     Neko_NavMesh nekoScript;
     Live2D.Cubism.Framework.Expression.CubismExpressionController face;
 
+    Vector3 staPos;
+
     private void Start()
     {
         sceneName = SceneManager.GetActiveScene().name;
@@ -96,6 +98,8 @@ public class Move : MonoBehaviour
 
         face = GameObject.Find("ririachan2").GetComponent<Live2D.Cubism.Framework.Expression.CubismExpressionController>();
         nekoScript = GameObject.Find("Neko").GetComponent<Neko_NavMesh>();
+
+        staPos = this.transform.position;
     }
 
     void Update()
@@ -201,6 +205,7 @@ public class Move : MonoBehaviour
                             if (tutorialFirst == true)
                             {
                                 activePiece = spawner.SpawnPiece(this.gameObject, 1);
+                                this.transform.position = staPos;
                                 tutorialFirst = false;
                             }
                             else
