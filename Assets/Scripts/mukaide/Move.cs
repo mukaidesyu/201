@@ -42,6 +42,7 @@ public class Move : MonoBehaviour
     TutorialData tutorialData;
     bool tutorialBool = true;
     bool tutorialFirst = true;
+    bool tutorialSecond = true;
 
     //SE
     AudioSource audio;
@@ -60,6 +61,7 @@ public class Move : MonoBehaviour
         spawner = GameObject.FindObjectOfType<Spawner>();
 
         tutorialFirst = false;
+        tutorialSecond = false;
         // もしチュートリアルシーンだったら、チュートリアル
         if (sceneName == "tutorial")
         {
@@ -72,6 +74,7 @@ public class Move : MonoBehaviour
             tutorialData = GameObject.Find("TutorialState").GetComponent<TutorialData>();
             tutorialBool = false;
             tutorialFirst = true;
+            tutorialSecond = true;
         }
         else // 他のシーン
         {
@@ -202,11 +205,17 @@ public class Move : MonoBehaviour
                             audio.PlayOneShot(audio.clip);
                             Destroy(Pice);
                             //this.gameObject.transform.position = new Vector3(0,0,-0.5f);
-                            if (tutorialFirst == true)
+                            if (tutorialFirst == true && tutorialSecond == true)
                             {
                                 activePiece = spawner.SpawnPiece(this.gameObject, 1);
                                 this.transform.position = staPos;
                                 tutorialFirst = false;
+                            }
+                            else if (tutorialFirst == false && tutorialSecond == true)
+                            {
+                                activePiece = spawner.SpawnPiece(this.gameObject, 0);
+                                this.transform.position = staPos;
+                                tutorialSecond = false;
                             }
                             else
                             {
